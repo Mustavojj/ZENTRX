@@ -1301,22 +1301,31 @@ class App {
     }
     
     async initFirebase() {
-        const config = {
-            apiKey: "AIzaSyCWnfPAgBHr1beeph4OxxmXokY45MgPsFM",
-            authDomain: "vevaia.firebaseapp.com",
-            databaseURL: "https://vevaia-default-rtdb.firebaseio.com",
-            projectId: "vevaia",
-            storageBucket: "vevaia.firebasestorage.app",
-            messagingSenderId: "284687408904",
-            appId: "1:284687408904:web:25e88c5066b5844aefd6bd",
-            measurementId: "G-LPRMK4JY0Z"
-        };
-        
-        let app;
-        try { app = firebase.initializeApp(config); } catch(e) { app = firebase.app(); }
-        this.db = app.database();
-        this.auth = app.auth();
-        await this.auth.signInAnonymously();
+        return new Promise((resolve, reject) => {
+            const config = {
+                apiKey: "AIzaSyCWnfPAgBHr1beeph4OxxmXokY45MgPsFM",
+                authDomain: "vevaia.firebaseapp.com",
+                databaseURL: "https://vevaia-default-rtdb.firebaseio.com",
+                projectId: "vevaia",
+                storageBucket: "vevaia.firebasestorage.app",
+                messagingSenderId: "284687408904",
+                appId: "1:284687408904:web:25e88c5066b5844aefd6bd",
+                measurementId: "G-LPRMK4JY0Z"
+            };
+            
+            try {
+                let app;
+                try { app = firebase.initializeApp(config); } catch(e) { app = firebase.app(); }
+                this.db = app.database();
+                this.auth = app.auth();
+                
+                this.auth.signInAnonymously()
+                    .then(() => resolve())
+                    .catch((error) => reject(error));
+            } catch (error) {
+                reject(error);
+            }
+        });
     }
     
     async loadUserData() {
@@ -2356,31 +2365,39 @@ class App {
         };
         
         try {
-            updateProgress(10);
-            if (!window.Telegram?.WebApp) throw new Error('Open from Telegram');
+            updateProgress(5);
+            
+            if (!window.Telegram?.WebApp) {
+                throw new Error('Open from Telegram');
+            }
+            
             this.tg = window.Telegram.WebApp;
             this.tgUser = this.tg.initDataUnsafe.user;
-            if (!this.tgUser) throw new Error('No user data');
+            
+            if (!this.tgUser) {
+                throw new Error('No user data');
+            }
+            
             this.tg.ready();
             this.tg.expand();
+            updateProgress(15);
             
-            updateProgress(30);
             await this.initFirebase();
+            updateProgress(35);
             
-            updateProgress(40);
             await this.checkUserState();
+            updateProgress(45);
             
-            updateProgress(50);
             await this.checkDevice();
             await this.updateFirebaseUid();
+            updateProgress(60);
             
-            updateProgress(70);
             await this.syncServerTime();
+            updateProgress(70);
             
-            updateProgress(80);
             await this.loadUserData();
+            updateProgress(85);
             
-            updateProgress(90);
             const savedAdTime = localStorage.getItem('last_reward_ad_time');
             if (savedAdTime) this.lastRewardAdTime = parseInt(savedAdTime);
             
@@ -2429,23 +2446,25 @@ class App {
                     loader.style.opacity = '0';
                     setTimeout(() => {
                         loader.style.display = 'none';
-                        document.getElementById('app').style.display = 'block';
+                        const app = document.getElementById('app');
+                        if (app) app.style.display = 'block';
                         this.updateAdCooldownDisplay();
                         this.updateMiningRing();
                     }, 500);
                 } else {
-                    document.getElementById('app').style.display = 'block';
+                    const app = document.getElementById('app');
+                    if (app) app.style.display = 'block';
                     this.updateAdCooldownDisplay();
                 }
             }, 500);
+            
             this.isInitialized = true;
             
         } catch(err) {
             console.error('Initialization error:', err);
-            if (err.message === 'User banned') return;
             const errorEl = document.getElementById('loader-error');
             if (errorEl) {
-                errorEl.textContent = err.message;
+                errorEl.textContent = err.message || 'Failed to initialize';
                 errorEl.style.display = 'block';
             }
         }
