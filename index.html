@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>ZENTRIX | Mine TON</title>
+    <title>Z MINER | Mine TON</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -18,9 +18,9 @@
 <div id="app-loader">
     <div class="loader-container">
         <div class="loader-card">
-            <img src="https://i.ibb.co/JwHWrrX3/4ef418a7e09b.jpg" class="loader-logo" alt="ZENTRIX">
+            <img src="https://i.ibb.co/JwHWrrX3/4ef418a7e09b.jpg" class="loader-logo" alt="Z MINER">
             <div class="loader-brand">
-                <h2>ZENTRIX</h2>
+                <h2>Z MINER</h2>
                 <p>Mine TON with Power</p>
             </div>
             <div class="loader-progress-container">
@@ -103,45 +103,38 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <label class="form-label">Task Name (max 15 chars, English only)</label>
-                <input type="text" id="task-name-input" class="form-input" maxlength="15" placeholder="e.g., MyChannel">
+                <label class="form-label">Task Name</label>
+                <input type="text" id="task-name-input" class="form-input" maxlength="15" placeholder="Enter Task Name">
             </div>
             <div class="form-group">
-                <label class="form-label">Task URL (must start with https://)</label>
-                <input type="url" id="task-url-input" class="form-input" placeholder="https://t.me/...">
+                <label class="form-label">Task URL</label>
+                <input type="url" id="task-url-input" class="form-input" placeholder="Enter Task URL (https://t.me/..)">
+                <small id="verify-note" style="display:none; color: var(--primary-light);">Add @Zentrxbot as admin</small>
             </div>
             <div class="form-group">
-                <label class="form-label">Verification Required</label>
-                <select id="task-verify-select" class="form-input">
-                    <option value="true">YES</option>
-                    <option value="false">NO</option>
-                </select>
+                <label class="form-label">Verification</label>
+                <div class="toggle-group">
+                    <button class="toggle-option active" data-value="true">YES</button>
+                    <button class="toggle-option" data-value="false">NO</button>
+                </div>
             </div>
             <div class="form-group">
-                <label class="form-label">Max Completions</label>
-                <select id="task-max-select" class="form-input">
-                    <option value="100">100 completions</option>
-                    <option value="250">250 completions</option>
-                    <option value="500">500 completions</option>
-                    <option value="1000">1000 completions</option>
-                </select>
+                <label class="form-label">Total Completions</label>
+                <div class="toggle-group completions-group">
+                    <button class="toggle-option" data-value="100">100</button>
+                    <button class="toggle-option" data-value="250">250</button>
+                    <button class="toggle-option" data-value="500">500</button>
+                    <button class="toggle-option active" data-value="1000">1000</button>
+                </div>
             </div>
-            <div class="price-display">
-                <i class="fas fa-star"></i> Price: <span id="task-price">50</span> Stars
+            <button id="pay-task-btn" class="modern-support-btn">PAY 50 STAR</button>
+            
+            <div class="my-tasks-section">
+                <h4><i class="fas fa-tasks"></i> My Tasks</h4>
+                <div id="my-tasks-list-modal" class="my-tasks-list">
+                    <div class="no-data">No tasks created<br>Create your first task now!</div>
+                </div>
             </div>
-            <button id="pay-task-btn" class="modern-support-btn">Pay with Stars</button>
-        </div>
-    </div>
-</div>
-
-<div id="my-tasks-modal" class="modal" style="display:none;">
-    <div class="modal-content glass-modal modern-modal">
-        <div class="modal-header">
-            <h3><i class="fas fa-tasks"></i> My Tasks</h3>
-            <button class="modal-close" id="close-my-tasks-modal">&times;</button>
-        </div>
-        <div class="modal-body" id="my-tasks-list">
-            <div class="no-data">No tasks added yet</div>
         </div>
     </div>
 </div>
@@ -151,7 +144,6 @@
         <div class="modal-header">
             <h3><i class="fas fa-globe"></i> Social Tasks</h3>
             <div class="header-actions-modal">
-                <button id="my-tasks-btn" class="header-icon-btn-sm"><i class="fas fa-list"></i></button>
                 <button id="add-task-btn" class="header-icon-btn-sm"><i class="fas fa-plus"></i></button>
                 <button class="modal-close" id="close-tasks-info">&times;</button>
             </div>
