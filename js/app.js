@@ -423,11 +423,6 @@ class App {
         const closeBtn = document.getElementById('close-claim-modal');
         
         const handleClaim = async () => {
-            try {
-                const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
-                await AdController.show();
-            }
-            
             const earnedAmount = this.pendingTonReward;
             const originalTon = this.tonBalance;
             this.tonBalance += earnedAmount;
