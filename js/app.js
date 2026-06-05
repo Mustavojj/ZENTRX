@@ -1,4 +1,4 @@
-import { APP_CONFIG } from '../data.js';
+import { APP_CONFIG } from './data.js';
 
 const translations = {
     ru: {
