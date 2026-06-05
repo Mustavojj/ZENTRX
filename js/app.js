@@ -1,0 +1,2462 @@
+import { APP_CONFIG } from '../data.js';
+
+const translations = {
+    ru: {
+        level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "8 часов", daily: "Ежедневно", monthly: "Ежемесячно",
+        start_mining: "НАЧАТЬ МАЙНИНГ", claim_reward: "ПОЛУЧИТЬ НАГРАДУ", mining_note: "Награды можно получить после окончания сеанса майнинга",
+        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", promo_code: "Промокод",
+        enter_code: "Введите код", claim: "Получить", main_tasks: "Основные задания", partner_tasks: "Социальные задания",
+        watch_ad: "Смотреть рекламу", reward_amount: "Награда", available_in: "Доступно через", hours: "ч",
+        watch: "Смотреть", all_tasks_completed: "Все задания выполнены!", check_later: "Заходите позже за новыми",
+        no_tasks: "Нет доступных заданий", team_benefits: "Преимущества команды", share_earn: "ДЕЛИСЬ И ЗАРАБАТЫВАЙ",
+        copy: "Копировать", share: "Поделиться", total_members: "Всего участников",
+        power_earnings: "Заработок энергии", withdraw: "Вывести",
+        available: "Доступно", ton_wallet: "TON кошелек", amount: "Сумма", min_withdraw: "Мин. вывод",
+        confirm_withdrawal: "Подтвердить вывод", withdrawal_history: "История выводов", no_withdrawals: "Пока нет выводов",
+        pending: "В ОЖИДАНИИ", completed: "ВЫПЛАЧЕНО", claim_mining_title: "Получить награды майнинга", claim_btn: "Получить награды",
+        partner_info_title: "Социальные задания", mining: "Майнинг", earn: "Заработок", team: "Команда",
+        copy_success: "Скопировано!", link_copied: "Ссылка скопирована", earn_more: "Заработай больше энергии",
+        complete_tasks: "Выполнить задания", go: "ПЕРЕЙТИ", invite_frens: "Пригласить друзей", ad_reward: "Смотреть рекламу", loading: "Загрузка",
+        ready: "Готово", mining_active: "МАЙНИНГ АКТИВЕН", team_earnings: "Зарабатывайте %from%% от дохода команды", save_error: "Ошибка сохранения данных! Попробуйте снова.",
+        daily_tasks: "Ежедневные задания", daily_check_news: "Проверка новостей", refresh_in: "Обновление через",
+        watch_ad_btn: "СМОТРЕТЬ", claiming: "Получение...", promo_info_title: "Как получить промокоды?", promo_info_text: "Получайте промокоды в нашем новостном канале! Подпишитесь, чтобы не пропустить новые коды.",
+        get_promo_codes: "Получить промокоды", promo_from_news: "Промокоды в Telegram",
+        how_it_works: "Как это работает", step1: "1. Подпишитесь на наш новостной канал", step2: "2. Следите за новыми публикациями", step3: "3. Вводите промокоды и получайте награды",
+        available_tasks: "Доступные задания", completed_tasks: "Выполненные задания", no_tasks_available: "Нет доступных заданий", my_tasks: "Мои задания",
+        add_task: "Добавить задание", task_name: "Название задачи", task_url: "Ссылка", verification: "Проверка", max_completions: "Макс. выполнений",
+        price: "Цена", pay_with_stars: "Оплатить Stars", stars: "Stars", referral_bonus: "Бонус за реферала",
+        referrer_reward_notification: "Вы получили бонус! Ваш реферал выполнил условия",
+        ban_message: "Ваш аккаунт заблокирован. Обратитесь в поддержку.",
+        withdrawal_requested: "Запрос на вывод",
+        new_referral: "Новый реферал",
+        task_payment_failed: "Ошибка оплаты задачи"
+    },
+    en: {
+        level: "Level", mining_rig: "Mining Rig Lv.", hourly: "8 Hours", daily: "Daily", monthly: "Monthly",
+        start_mining: "START MINING", claim_reward: "CLAIM REWARD", mining_note: "Rewards can be collected after mining session ends",
+        next_level_reward: "Next level reward", power: "Power", ton: "TON", promo_code: "Promo Code",
+        enter_code: "Enter code", claim: "Claim", main_tasks: "Main Tasks", partner_tasks: "Social Tasks",
+        watch_ad: "Watch Reward AD", reward_amount: "Reward", available_in: "Available in", hours: "h",
+        watch: "Watch", all_tasks_completed: "All tasks completed!", check_later: "Check back later for more",
+        no_tasks: "No tasks available", team_benefits: "Team Benefits", share_earn: "SHARE & EARN",
+        copy: "Copy", share: "Share", total_members: "Total Members",
+        power_earnings: "Power Earnings", withdraw: "Withdraw",
+        available: "Available", ton_wallet: "TON Wallet", amount: "Amount", min_withdraw: "Minimum withdrawal",
+        confirm_withdrawal: "Confirm Withdrawal", withdrawal_history: "Withdrawal History", no_withdrawals: "No withdrawals yet",
+        pending: "PENDING", completed: "PAID", claim_mining_title: "Claim Mining Rewards", claim_btn: "Claim Rewards",
+        partner_info_title: "Social Tasks", mining: "Mining", earn: "Earn", team: "Team",
+        copy_success: "Copied!", link_copied: "Link copied to clipboard", earn_more: "Earn More Power",
+        complete_tasks: "Complete Tasks", go: "GO", invite_frens: "Invite Frens", ad_reward: "Watch AD", loading: "Loading",
+        ready: "Ready", mining_active: "MINING ACTIVE", team_earnings: "Earn %from%% from team earnings", save_error: "Data save failed! Please try again.",
+        daily_tasks: "Daily Tasks", daily_check_news: "Daily Check News", refresh_in: "Refresh in",
+        watch_ad_btn: "WATCH", claiming: "Claiming...", promo_info_title: "How to get Promo Codes?", promo_info_text: "Get promo codes from our news channel! Subscribe to never miss new codes.",
+        get_promo_codes: "Get Promo Codes", promo_from_news: "Promo Codes on Telegram",
+        how_it_works: "How it works", step1: "1. Subscribe to our news channel", step2: "2. Follow new posts", step3: "3. Enter promo codes and get rewards",
+        available_tasks: "Available Tasks", completed_tasks: "Completed Tasks", no_tasks_available: "No tasks available", my_tasks: "My Tasks",
+        add_task: "Add Task", task_name: "Task Name", task_url: "URL", verification: "Verification", max_completions: "Max Completions",
+        price: "Price", pay_with_stars: "Pay with Stars", stars: "Stars", referral_bonus: "Referral Bonus",
+        referrer_reward_notification: "You received a bonus! Your referral completed the requirements",
+        ban_message: "Your account has been banned. Please contact support.",
+        withdrawal_requested: "Withdrawal Requested",
+        new_referral: "New Referral",
+        task_payment_failed: "Task Payment Failed"
+    },
+    tr: {
+        level: "Seviye", mining_rig: "Madenci Seviye", hourly: "8 saat", daily: "Günlük", monthly: "Aylık",
+        start_mining: "MADENCİLİĞE BAŞLA", claim_reward: "ÖDÜLÜ AL", mining_note: "Ödüller madencilik oturumu bittikten sonra toplanabilir",
+        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", promo_code: "Promosyon Kodu",
+        enter_code: "Kodu girin", claim: "Al", main_tasks: "Ana Görevler", partner_tasks: "Sosyal Görevler",
+        watch_ad: "Ödüllü Reklam İzle", reward_amount: "Ödül", available_in: "Kalan süre", hours: "sa",
+        watch: "İzle", all_tasks_completed: "Tüm görevler tamamlandı!", check_later: "Daha fazlası için daha sonra kontrol edin",
+        no_tasks: "Görev yok", team_benefits: "Takım Avantajları", share_earn: "PAYLAŞ VE KAZAN",
+        copy: "Kopyala", share: "Paylaş", total_members: "Toplam Üye",
+        power_earnings: "Güç Kazancı", withdraw: "Çek",
+        available: "Mevcut", ton_wallet: "TON Cüzdanı", amount: "Miktar", min_withdraw: "Minimum çekim",
+        confirm_withdrawal: "Çekimi Onayla", withdrawal_history: "Çekim Geçmişi", no_withdrawals: "Henüz çekim yok",
+        pending: "beklemede", completed: "tamamlandı", claim_mining_title: "Madencilik Ödüllerini Al", claim_btn: "Ödülleri Al",
+        partner_info_title: "Sosyal Görevler", mining: "Madencilik", earn: "Kazan", team: "Takım",
+        copy_success: "Kopyalandı!", link_copied: "Bağlantı panoya kopyalandı", earn_more: "Daha Fazla Güç Kazan",
+        complete_tasks: "Görevleri Tamamla", go: "GİT", invite_frens: "Arkadaşları Davet Et", ad_reward: "Reklam İzle", loading: "Yükleniyor",
+        ready: "Hazır", mining_active: "MADENCİLİK AKTİF", team_earnings: "Takım kazancından %from%% kazanın", save_error: "Veri kaydedilemedi! Lütfen tekrar deneyin.",
+        daily_tasks: "Günlük Görevler", daily_check_news: "Günlük Haber Kontrolü", refresh_in: "Yenileme süresi",
+        watch_ad_btn: "İZLE", claiming: "Alınıyor...", promo_info_title: "Promosyon Kodları Nasıl Alınır?", promo_info_text: "Promosyon kodlarını haber kanalımızdan alın! Yeni kodları kaçırmamak için abone olun.",
+        get_promo_codes: "Promosyon Kodları Al", promo_from_news: "Telegram'da Promosyon Kodları",
+        how_it_works: "Nasıl çalışır", step1: "1. Haber kanalımıza abone olun", step2: "2. Yeni gönderileri takip edin", step3: "3. Promosyon kodlarını girin ve ödülleri alın",
+        available_tasks: "Mevcut Görevler", completed_tasks: "Tamamlanan Görevler", no_tasks_available: "Görev yok", my_tasks: "Görevlerim",
+        add_task: "Görev Ekle", task_name: "Görev Adı", task_url: "Bağlantı", verification: "Doğrulama", max_completions: "Maks. Tamamlama",
+        price: "Fiyat", pay_with_stars: "Yıldız ile Öde", stars: "Yıldız", referral_bonus: "Referans Bonusu",
+        referrer_reward_notification: "Bonus kazandınız! Referansınız koşulları tamamladı",
+        ban_message: "Hesabınız yasaklandı. Lütfen desteğe başvurun.",
+        withdrawal_requested: "Çekim Talebi",
+        new_referral: "Yeni Referans",
+        task_payment_failed: "Görev Ödemesi Başarısız"
+    },
+    ar: {
+        level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 8 ساعات", daily: "يومي", monthly: "شهري",
+        start_mining: "بدء التعدين", claim_reward: "استلام المكافأة", mining_note: "يمكن جمع المكافآت بعد انتهاء جلسة التعدين",
+        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", promo_code: "رمز ترويجي",
+        enter_code: "أدخل الرمز", claim: "استلام", main_tasks: "المهام الرئيسية", partner_tasks: "المهام الاجتماعية",
+        watch_ad: "مشاهدة إعلان مكافأة", reward_amount: "المكافأة", available_in: "متاح بعد", hours: "ساعة",
+        watch: "مشاهدة", all_tasks_completed: "جميع المهام مكتملة!", check_later: "تحقق لاحقاً للمزيد",
+        no_tasks: "لا توجد مهام متاحة", team_benefits: "مزايا الفريق", share_earn: "شارك واربح",
+        copy: "نسخ", share: "مشاركة", total_members: "إجمالي الأعضاء",
+        power_earnings: "أرباح الطاقة", withdraw: "سحب",
+        available: "الرصيد المتوفر", ton_wallet: "محفظة تون", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
+        confirm_withdrawal: "تأكيد السحب", withdrawal_history: "سجل السحوبات", no_withdrawals: "لا توجد سحوبات بعد",
+        pending: "قيد الانتظار", completed: "مكتمل", claim_mining_title: "استلام مكافآت التعدين", claim_btn: "استلام المكافآت",
+        partner_info_title: "المهام الاجتماعية", mining: "التعدين", earn: "الأرباح", team: "الفريق",
+        copy_success: "تم النسخ!", link_copied: "تم نسخ الرابط", earn_more: "احصل على طاقة أكثر",
+        complete_tasks: "إكمال المهام", go: "اذهب", invite_frens: "دعوة الأصدقاء", ad_reward: "مشاهدة إعلان", loading: "جاري التحميل",
+        ready: "جاهز", mining_active: "التعدين نشط", team_earnings: "اربح %from%% من أرباح الفريق", save_error: "فشل حفظ البيانات! حاول مرة أخرى.",
+        daily_tasks: "المهام اليومية", daily_check_news: "فحص الأخبار اليومي", refresh_in: "تحديث خلال",
+        watch_ad_btn: "شاهد", claiming: "جاري الاستلام...", promo_info_title: "كيفية الحصول على الرموز الترويجية؟", promo_info_text: "احصل على الرموز الترويجية من قناة الأخبار الخاصة بنا! اشترك لعدم تفويت الرموز الجديدة.",
+        get_promo_codes: "الحصول على الرموز الترويجية", promo_from_news: "الرموز الترويجية على تيليغرام",
+        how_it_works: "كيف يعمل", step1: "1. اشترك في قناة الأخبار", step2: "2. تابع المنشورات الجديدة", step3: "3. أدخل الرموز الترويجية واحصل على المكافآت",
+        available_tasks: "المهام المتاحة", completed_tasks: "المهام المكتملة", no_tasks_available: "لا توجد مهام متاحة", my_tasks: "مهامي",
+        add_task: "إضافة مهمة", task_name: "اسم المهمة", task_url: "الرابط", verification: "التحقق", max_completions: "الحد الأقصى للإكمال",
+        price: "السعر", pay_with_stars: "الدفع بالنجوم", stars: "نجوم", referral_bonus: "مكافأة الإحالة",
+        referrer_reward_notification: "لقد تلقيت مكافأة! قام المحال الخاص بك بإكمال المتطلبات",
+        ban_message: "تم حظر حسابك. يرجى الاتصال بالدعم.",
+        withdrawal_requested: "طلب السحب",
+        new_referral: "إحالة جديدة",
+        task_payment_failed: "فشل دفع المهمة"
+    }
+};
+
+class App {
+    constructor() {
+        this.tg = null;
+        this.db = null;
+        this.auth = null;
+        this.tgUser = null;
+        this.isInitialized = false;
+        this.deviceId = null;
+        this.deviceOwnerId = null;
+        
+        this.powerBalance = 0;
+        this.tonBalance = 0;
+        this.userLevel = 1;
+        this.hasStartedMining = false;
+        this.userCompletedTasks = new Set();
+        this.userCompletedMainTasks = new Set();
+        this.userCompletedPromoCodes = new Set();
+        this.userCompletedSocialTasks = new Set();
+        this.miningActive = false;
+        this.miningStartTime = null;
+        this.miningEndTime = null;
+        this.miningInterval = null;
+        this.uiUpdateInterval = null;
+        this.pendingTonReward = 0;
+        this.miningSessionHours = APP_CONFIG.MINING_SESSION_HOURS;
+        this.withdrawals = [];
+        this.totalReferrals = 0;
+        this.referralPower = 0;
+        this.isTaskRunning = false;
+        this.mainTasks = [];
+        this.partnerTasks = [];
+        this.userTasks = [];
+        this.userState = null;
+        
+        this.lastRewardAdTime = 0;
+        this.lang = 'en';
+        this.cooldownInterval = null;
+        
+        this.vibrationEnabled = true;
+        this.loadSettings();
+        this.referredBy = null;
+        this.referralRewardGiven = false;
+        this.totalTasksCompleted = 0;
+        this.totalMiningStarts = 0;
+        
+        this.serverTimeOffset = 0;
+        
+        this._dirtyPower = false;
+        this._dirtyTon = false;
+        this._dirtyMining = false;
+        this._saveTimeout = null;
+        this._isSaving = false;
+        
+        this.cache = {
+            tasks: null,
+            tasksTime: 0
+        };
+        
+        this._userDataLoaded = false;
+        this._earnLoaded = false;
+        this._teamLoaded = false;
+        this._withdrawLoaded = false;
+        this._withdrawLock = false;
+        
+        this.lastDailyCheckNews = 0;
+        this.dailyCheckNewsCompleted = false;
+        
+        this.membershipCache = new Map();
+    }
+    
+    t(key) {
+        let text = translations[this.lang]?.[key] || translations.en[key] || key;
+        if (key === 'team_earnings') {
+            text = text.replace('%from%', APP_CONFIG.REFERRAL_PERCENTAGE);
+        }
+        return text;
+    }
+    
+    formatNumber(num) {
+        return num.toLocaleString('en');
+    }
+    
+    getHourlyTonRate() {
+        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_TON_RATE * 8;
+    }
+    
+    getDailyTonRate() {
+        return this.getHourlyTonRate() * 3;
+    }
+    
+    getMonthlyTonRate() {
+        return this.getDailyTonRate() * 15;
+    }
+    
+    calculateRewardForHours(hours) {
+        return this.getHourlyTonRate() * (hours / 8);
+    }
+    
+    updateLevelFromPower() {
+        const power = this.powerBalance;
+        let newLevel = 1;
+        
+        if (power >= 60000) newLevel = 10;
+        else if (power >= 50000) newLevel = 9;
+        else if (power >= 40000) newLevel = 8;
+        else if (power >= 30000) newLevel = 7;
+        else if (power >= 20000) newLevel = 6;
+        else if (power >= 10000) newLevel = 5;
+        else if (power >= 8000) newLevel = 4;
+        else if (power >= 4000) newLevel = 3;
+        else if (power >= 2000) newLevel = 2;
+        else newLevel = 1;
+        
+        if (newLevel > this.userLevel) {
+            this.userLevel = newLevel;
+        } else if (newLevel < this.userLevel) {
+            this.userLevel = newLevel;
+        }
+        
+        const levelSpan = document.getElementById('user-level');
+        const levelBadge = document.getElementById('user-level-badge');
+        if (levelSpan) levelSpan.innerText = this.userLevel;
+        if (levelBadge) levelBadge.innerText = this.userLevel;
+        
+        localStorage.setItem(`user_level_${this.tgUser?.id}`, this.userLevel.toString());
+    }
+    
+    getRequiredPowerForLevel(level) {
+        if (level === 2) return 2000;
+        if (level === 3) return 4000;
+        if (level === 4) return 8000;
+        if (level === 5) return 10000;
+        if (level === 6) return 20000;
+        if (level === 7) return 30000;
+        if (level === 8) return 40000;
+        if (level === 9) return 50000;
+        if (level === 10) return 60000;
+        return 1000;
+    }
+    
+    async sendNotification(userId, title, message) {
+        try {
+            const response = await fetch('/api/send-notification', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, title, message })
+            });
+            const data = await response.json();
+            return data.success;
+        } catch (error) {
+            console.error('Failed to send notification:', error);
+            return false;
+        }
+    }
+    
+    async checkReferralReward() {
+        if (this.referralRewardGiven) return;
+        if (!this.referredBy) return;
+        
+        const conditionsMet = (this.totalTasksCompleted >= APP_CONFIG.REFERRAL_REQUIRED_TASKS) || 
+                              (this.totalMiningStarts >= APP_CONFIG.REFERRAL_REQUIRED_MINES);
+        
+        if (conditionsMet) {
+            this.referralRewardGiven = true;
+            const rewardPower = 500;
+            
+            try {
+                const referrerRef = this.db.ref(`users/${this.referredBy}`);
+                const referrerSnap = await referrerRef.once('value');
+                if (referrerSnap.exists()) {
+                    const currentPower = referrerSnap.val().powerBalance ?? 0;
+                    await referrerRef.update({ powerBalance: currentPower + rewardPower });
+                    
+                    await this.sendNotification(
+                        this.referredBy, 
+                        this.t('referral_bonus'), 
+                        `${this.t('referrer_reward_notification')}: ${rewardPower} ${this.t('power')}`
+                    );
+                }
+            } catch (error) {
+                console.error('Failed to give referral reward:', error);
+            }
+            
+            await this.db.ref(`users/${this.tgUser.id}`).update({ referralRewardGiven: true });
+        }
+    }
+    
+    async getRealServerTime() {
+        try {
+            const res = await fetch('/api/current-time');
+            const data = await res.json();
+            return data.serverTime;
+        } catch (error) {
+            console.warn('Failed to get server time:', error);
+            return Date.now();
+        }
+    }
+    
+    async syncServerTime() {
+        const serverTime = await this.getRealServerTime();
+        this.serverTimeOffset = serverTime - Date.now();
+        return serverTime;
+    }
+    
+    getCurrentTime() {
+        return Date.now() + this.serverTimeOffset;
+    }
+    
+    getMiningProgressPercent() {
+        if (!this.miningActive || !this.miningStartTime || !this.miningEndTime) return 0;
+        const totalDuration = this.miningSessionHours * 3600000;
+        const elapsed = Math.min(totalDuration, this.getCurrentTime() - this.miningStartTime);
+        return (elapsed / totalDuration) * 100;
+    }
+    
+    updateMiningRing() {
+        const percent = this.getMiningProgressPercent();
+        const circle = document.querySelector('.progress-ring-circle');
+        if (circle) {
+            const radius = 70;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+    }
+    
+    async startMining() {
+        const adWatched = await this.showInterstitialAd();
+        if (!adWatched) return;
+        
+        const serverTime = await this.syncServerTime();
+        
+        this.miningActive = true;
+        this.miningStartTime = serverTime;
+        this.miningEndTime = serverTime + (this.miningSessionHours * 3600000);
+        this.pendingTonReward = 0;
+        this._dirtyMining = true;
+        
+        this.totalMiningStarts++;
+        await this.db.ref(`users/${this.tgUser.id}`).update({ totalMiningStarts: this.totalMiningStarts });
+        
+        if (!this.hasStartedMining && this.db && this.tgUser) {
+            this.hasStartedMining = true;
+            await this.db.ref(`users/${this.tgUser.id}`).update({ hasStartedMining: true });
+        }
+        
+        const saved = await this.saveUserData(true);
+        if (!saved) {
+            this.miningActive = false;
+            this.miningStartTime = null;
+            this.miningEndTime = null;
+            this.showNotification('Error', this.t('save_error'), 'error');
+            return;
+        }
+        
+        this.renderMining();
+        this.startMiningLoop();
+        this.showNotification(this.t('start_mining'), 'Your rig is now mining TON', 'success');
+        
+        await this.checkReferralReward();
+    }
+    
+    async stopMining() {
+        if (!this.miningActive) return;
+        
+        const currentTime = this.getCurrentTime();
+        const elapsedSeconds = (currentTime - this.miningStartTime) / 1000;
+        const elapsedHours = Math.min(elapsedSeconds / 3600, this.miningSessionHours);
+        
+        this.pendingTonReward = this.calculateRewardForHours(elapsedHours);
+        this.miningActive = false;
+        this.miningStartTime = null;
+        this.miningEndTime = null;
+        this._dirtyMining = true;
+        
+        await this.saveUserData(true);
+        this.renderMining();
+        if (this.miningInterval) clearInterval(this.miningInterval);
+        if (this.uiUpdateInterval) clearInterval(this.uiUpdateInterval);
+        this.showNotification('Mining Stopped', `${this.pendingTonReward.toFixed(8)} TON ready to claim!`, 'success');
+    }
+    
+    async claimMiningRewards() {
+        if (this.miningActive) {
+            this.showNotification('Error', 'Complete mining session first!', 'error');
+            return;
+        }
+        if (this.pendingTonReward <= 0) {
+            this.showNotification('Error', 'No rewards to claim', 'error');
+            return;
+        }
+        
+        await this.syncServerTime();
+        
+        const modal = document.getElementById('claim-modal');
+        const rewardEl = document.getElementById('claim-reward-amount');
+        rewardEl.innerText = this.pendingTonReward.toFixed(6) + ' TON';
+        modal.style.display = 'flex';
+        
+        const confirmBtn = document.getElementById('confirm-claim-btn');
+        const closeBtn = document.getElementById('close-claim-modal');
+        
+        const handleClaim = async () => {
+            const earnedAmount = this.pendingTonReward;
+            const originalTon = this.tonBalance;
+            this.tonBalance += earnedAmount;
+            this._dirtyTon = true;
+            this.pendingTonReward = 0;
+            this._dirtyMining = true;
+            
+            const saved = await this.saveUserData(true);
+            
+            if (!saved) {
+                this.tonBalance = originalTon;
+                this.pendingTonReward = earnedAmount;
+                this._dirtyTon = false;
+                this._dirtyMining = true;
+                this.showNotification('Error', this.t('save_error'), 'error');
+                return;
+            }
+            
+            modal.style.display = 'none';
+            cleanup();
+            
+            this.updateLevelFromPower();
+            this.renderMining();
+            this.showNotification('Rewards Claimed!', `${earnedAmount.toFixed(8)} TON added to balance`, 'success');
+        };
+        
+        const handleClose = () => {
+            modal.style.display = 'none';
+            cleanup();
+        };
+        
+        const cleanup = () => {
+            confirmBtn.removeEventListener('click', handleClaim);
+            closeBtn.removeEventListener('click', handleClose);
+        };
+        
+        confirmBtn.addEventListener('click', handleClaim);
+        closeBtn.addEventListener('click', handleClose);
+    }
+    
+    startMiningLoop() {
+        if (this.miningInterval) clearInterval(this.miningInterval);
+        if (this.uiUpdateInterval) clearInterval(this.uiUpdateInterval);
+        
+        this.miningInterval = setInterval(async () => {
+            if (!this.miningActive) return;
+            const currentTime = this.getCurrentTime();
+            if (this.miningEndTime && currentTime >= this.miningEndTime) {
+                await this.stopMining();
+            }
+            this.updateMiningRing();
+        }, 60000);
+        
+        this.uiUpdateInterval = setInterval(() => {
+            if (this.miningActive) {
+                this.updateMiningTimerDisplay();
+                this.updateMiningRing();
+            }
+        }, 1000);
+    }
+    
+    updateMiningTimerDisplay() {
+        if (!this.miningEndTime) return;
+        
+        const currentTime = this.getCurrentTime();
+        const remaining = Math.max(0, (this.miningEndTime - currentTime) / 1000);
+        
+        if (remaining <= 0 && this.miningActive) {
+            this.stopMining();
+            this.renderMining();
+            return;
+        }
+        
+        const hours = Math.floor(remaining / 3600);
+        const minutes = Math.floor((remaining % 3600) / 60);
+        const seconds = Math.floor(remaining % 60);
+        const timerEl = document.querySelector('.mining-timer');
+        if (timerEl) {
+            timerEl.innerHTML = `<i class="fas fa-hourglass-half"></i> ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+    }
+    
+    async updateAdCooldownDisplay() {
+        const currentTime = this.getCurrentTime();
+        const cooldownMs = APP_CONFIG.AD_COOLDOWN_HOURS * 3600000;
+        const lastAdTime = this.lastRewardAdTime;
+        const remaining = Math.max(0, cooldownMs - (currentTime - lastAdTime));
+        
+        const adBtn = document.getElementById('mining-reward-ad');
+        
+        if (adBtn) {
+            if (remaining > 0) {
+                const hours = Math.floor(remaining / 3600000);
+                const minutes = Math.floor((remaining % 3600000) / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                adBtn.innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                adBtn.disabled = true;
+                adBtn.classList.add('disabled');
+            } else {
+                adBtn.innerHTML = this.t('watch');
+                adBtn.disabled = false;
+                adBtn.classList.remove('disabled');
+            }
+        }
+    }
+    
+    startCooldownTimer() {
+        if (this.cooldownInterval) clearInterval(this.cooldownInterval);
+        this.cooldownInterval = setInterval(() => this.updateAdCooldownDisplay(), 1000);
+    }
+    
+    async watchRewardAd() {
+        await this.syncServerTime();
+        const currentTime = this.getCurrentTime();
+        const cooldownMs = APP_CONFIG.AD_COOLDOWN_HOURS * 3600000;
+        if (currentTime - this.lastRewardAdTime < cooldownMs) {
+            const remaining = Math.ceil((cooldownMs - (currentTime - this.lastRewardAdTime)) / 1000);
+            const hours = Math.floor(remaining / 3600);
+            const minutes = Math.floor((remaining % 3600) / 60);
+            const seconds = remaining % 60;
+            this.showNotification('Cooldown', `${this.t('available_in')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`, 'warning');
+            return;
+        }
+        
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.REWARD_AD_BLOCK_ID });
+            await AdController.show();
+            
+            const adTime = this.getCurrentTime();
+            this.lastRewardAdTime = adTime;
+            localStorage.setItem('last_reward_ad_time', adTime.toString());
+            
+            const originalPower = this.powerBalance;
+            this.powerBalance += 20;
+            this._dirtyPower = true;
+            await this.updateLevelFromPower();
+            
+            const saved = await this.saveUserData(true);
+            if (!saved) {
+                this.powerBalance = originalPower;
+                this._dirtyPower = false;
+                this.showNotification('Error', this.t('save_error'), 'error');
+                return;
+            }
+            
+            this.renderMining();
+            if (this._earnLoaded) {
+                await this.loadTasks();
+                this.renderEarn();
+            }
+            this.updateAdCooldownDisplay();
+            this.showNotification('Reward Claimed!', '20 Power', 'success');
+        } catch (result) {
+            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
+        }
+    }
+    
+    resetTaskButton(btnElement, type, text) {
+        if (btnElement && btnElement.parentNode) {
+            btnElement.innerHTML = text;
+            btnElement.disabled = false;
+            btnElement.classList.remove('check', 'start', 'done');
+            btnElement.classList.add(type);
+        }
+    }
+    
+    async completeTask(taskId, rewardPower, url, verification, btnElement, isMainTask = false, isSocialTask = false, taskData = null) {
+        if (this.userCompletedTasks.has(taskId)) return false;
+        
+        let verificationSucceeded = false;
+        
+        if (verification) {
+            const chatId = this.extractChatId(url);
+            if (chatId) {
+                const isBotAdmin = await this.checkBotAdmin(chatId);
+                if (!isBotAdmin) {
+                    verificationSucceeded = true;
+                } else {
+                    const isMember = await this.checkMembership(chatId);
+                    if (isMember) {
+                        verificationSucceeded = true;
+                    } else {
+                        this.showNotification('Join Required', 'Please join the channel first', 'warning');
+                        this.resetTaskButton(btnElement, 'start', 'Start');
+                        this.isTaskRunning = false;
+                        this.enableAllTaskButtons();
+                        return false;
+                    }
+                }
+            } else {
+                verificationSucceeded = true;
+            }
+        } else {
+            verificationSucceeded = true;
+        }
+        
+        if (!verificationSucceeded) {
+            this.resetTaskButton(btnElement, 'start', 'Start');
+            this.isTaskRunning = false;
+            this.enableAllTaskButtons();
+            return false;
+        }
+        
+        this.userCompletedTasks.add(taskId);
+        if (isMainTask) {
+            this.userCompletedMainTasks.add(taskId);
+        }
+        if (isSocialTask && taskData) {
+            this.userCompletedSocialTasks.add(taskId);
+            this.totalTasksCompleted++;
+            await this.db.ref(`users/${this.tgUser.id}`).update({ totalTasksCompleted: this.totalTasksCompleted });
+            
+            const taskRef = this.db.ref(`userTasks/${taskData.owner}/${taskId}`);
+            const taskSnap = await taskRef.once('value');
+            if (taskSnap.exists()) {
+                const currentTotal = taskSnap.val().total || 0;
+                await taskRef.update({ total: currentTotal + 1 });
+            }
+        }
+        
+        const originalPower = this.powerBalance;
+        this.powerBalance += rewardPower;
+        this._dirtyPower = true;
+        
+        const saved = await this.saveUserData(true);
+        
+        if (!saved) {
+            this.userCompletedTasks.delete(taskId);
+            if (isMainTask) this.userCompletedMainTasks.delete(taskId);
+            if (isSocialTask) this.userCompletedSocialTasks.delete(taskId);
+            this.powerBalance = originalPower;
+            this._dirtyPower = false;
+            this.showNotification('Error', this.t('save_error'), 'error');
+            this.resetTaskButton(btnElement, 'claim', 'Claim');
+            this.isTaskRunning = false;
+            this.enableAllTaskButtons();
+            return false;
+        }
+        
+        if (this.db) {
+            try {
+                if (isMainTask) {
+                    await this.db.ref(`users/${this.tgUser.id}/completedMainTasks`).set(Array.from(this.userCompletedMainTasks));
+                }
+                await this.db.ref(`users/${this.tgUser.id}/completedTasks`).set(Array.from(this.userCompletedTasks));
+                if (isSocialTask) {
+                    await this.db.ref(`users/${this.tgUser.id}/completedSocialTasks`).set(Array.from(this.userCompletedSocialTasks));
+                }
+                localStorage.setItem(`completed_${this.tgUser.id}`, JSON.stringify(Array.from(this.userCompletedTasks)));
+            } catch (error) {
+                console.error('Failed to save task completion to DB:', error);
+            }
+        }
+        
+        await this.updateLevelFromPower();
+        this.renderMining();
+        
+        if (this._earnLoaded) {
+            await this.loadTasks();
+            this.renderEarn();
+        }
+        
+        this.showNotification('Task Completed!', `${rewardPower} ${this.t('power')}`, 'success');
+        this.vibrate('success');
+        this.isTaskRunning = false;
+        this.enableAllTaskButtons();
+        
+        await this.checkReferralReward();
+        return true;
+    }
+    
+    async checkBotAdmin(channel) {
+        const cacheKey = `bot_admin_${channel}`;
+        const cached = this.membershipCache.get(cacheKey);
+        const now = Date.now();
+        
+        if (cached && (now - cached.timestamp) < 3600000) {
+            return cached.isAdmin;
+        }
+        
+        try {
+            const res = await fetch('/api/bot-actions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'check_bot_admin', channel: `@${channel}` })
+            });
+            const data = await res.json();
+            const isAdmin = data.isAdmin === true;
+            this.membershipCache.set(cacheKey, { isAdmin, timestamp: now });
+            return isAdmin;
+        } catch(e) {
+            return false;
+        }
+    }
+    
+    async checkBotAdminByUrl(taskUrl) {
+        try {
+            const res = await fetch('/api/bot-actions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'check_bot_admin_by_url', taskUrl })
+            });
+            const data = await res.json();
+            return data;
+        } catch(e) {
+            return { isAdmin: false, error: e.message };
+        }
+    }
+    
+    disableAllTaskButtons() {
+        document.querySelectorAll('.task-btn.start, .task-btn.check').forEach(btn => {
+            if (!btn.classList.contains('done')) {
+                btn.disabled = true;
+                btn.classList.add('disabled-btn');
+            }
+        });
+    }
+    
+    enableAllTaskButtons() {
+        document.querySelectorAll('.task-btn.start, .task-btn.check').forEach(btn => {
+            if (!btn.classList.contains('done')) {
+                btn.disabled = false;
+                btn.classList.remove('disabled-btn');
+            }
+        });
+    }
+    
+    async addSocialTask(name, url, verification, maxCompletions) {
+        const taskId = `${this.tgUser.id}_${Date.now()}`;
+        const price = (APP_CONFIG.STAR_PRICE_PER_100 * (maxCompletions / 100));
+        
+        try {
+            if (verification === 'true') {
+                const checkResult = await this.checkBotAdminByUrl(url);
+                if (!checkResult.isAdmin) {
+                    this.showNotification('Error', 'Bot must be admin in the channel for verification', 'error');
+                    return false;
+                }
+            }
+            
+            const invoiceLink = await this.createStarInvoice(price, taskId);
+            if (!invoiceLink) {
+                this.showNotification('Error', 'Failed to create payment', 'error');
+                return false;
+            }
+            
+            this.tg.openInvoice(invoiceLink, async (status) => {
+                if (status === 'paid') {
+                    const taskData = {
+                        name: name,
+                        url: url,
+                        category: 'social',
+                        verification: verification === 'true',
+                        max: parseInt(maxCompletions),
+                        status: 'pending',
+                        owner: this.tgUser.id,
+                        createdAt: this.getCurrentTime(),
+                        reward: 10,
+                        total: 0
+                    };
+                    
+                    await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
+                    this.showNotification('Success', 'Task added and pending approval', 'success');
+                    document.getElementById('add-task-modal').style.display = 'none';
+                    await this.loadUserTasks();
+                } else {
+                    this.showNotification('Payment Failed', 'Please try again', 'error');
+                }
+            });
+            
+            return true;
+        } catch (error) {
+            console.error('Add task error:', error);
+            this.showNotification('Error', 'Failed to add task', 'error');
+            return false;
+        }
+    }
+    
+    async createStarInvoice(amount, taskId) {
+        try {
+            const response = await fetch('/api/create-star-invoice', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    amount: amount, 
+                    description: `Add social task: ${taskId}`,
+                    payload: taskId
+                })
+            });
+            const data = await response.json();
+            return data.invoiceLink;
+        } catch (error) {
+            console.error('Failed to create invoice:', error);
+            return null;
+        }
+    }
+    
+    async loadUserTasks() {
+        if (!this.db) return;
+        try {
+            const snap = await this.db.ref(`userTasks/${this.tgUser.id}`).once('value');
+            this.userTasks = [];
+            if (snap.exists()) {
+                snap.forEach(child => {
+                    this.userTasks.push({ id: child.key, ...child.val() });
+                });
+            }
+        } catch (error) {
+            console.warn('Failed to load user tasks:', error);
+            this.userTasks = [];
+        }
+    }
+    
+    async loadActiveSocialTasks() {
+        if (!this.db) return [];
+        const activeTasks = [];
+        try {
+            const usersSnap = await this.db.ref('userTasks').once('value');
+            if (usersSnap.exists()) {
+                usersSnap.forEach(userTasks => {
+                    userTasks.forEach(taskSnap => {
+                        const task = { id: taskSnap.key, ...taskSnap.val() };
+                        if (task.status === 'active' && task.total < task.max) {
+                            if (!this.userCompletedSocialTasks.has(task.id)) {
+                                activeTasks.push(task);
+                            }
+                        }
+                    });
+                });
+            }
+        } catch (error) {
+            console.warn('Failed to load active social tasks:', error);
+        }
+        return activeTasks;
+    }
+    
+    async applyPromoCode(code) {
+        if (!this.db) return false;
+        if (this.userCompletedPromoCodes.has(code)) {
+            this.showNotification('Already Used', 'Code already redeemed', 'warning');
+            return false;
+        }
+        const codeSnap = await this.db.ref(`promoCodes/${code}`).once('value');
+        if (!codeSnap.exists()) {
+            this.showNotification('Invalid Code', 'Promo code not found', 'error');
+            return false;
+        }
+        const promoData = codeSnap.val();
+        
+        const usedRef = this.db.ref(`usedPromoCodes/${this.tgUser.id}/${code}`);
+        const usedSnap = await usedRef.once('value');
+        if (usedSnap.exists()) {
+            this.showNotification('Already Used', 'Code already redeemed', 'warning');
+            return false;
+        }
+        
+        const totalUses = promoData.total || 0;
+        const maxUses = promoData.maxUses;
+        if (maxUses && totalUses >= maxUses) {
+            this.showNotification('Expired', 'Promo code has reached maximum uses', 'warning');
+            return false;
+        }
+        
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+        } catch (result) {
+            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
+            return false;
+        }
+        
+        await usedRef.set(true);
+        this.userCompletedPromoCodes.add(code);
+        
+        let originalPower = this.powerBalance;
+        let originalTon = this.tonBalance;
+        
+        if (promoData.rewardType === 'power') {
+            this.powerBalance += promoData.reward;
+            this._dirtyPower = true;
+            await this.updateLevelFromPower();
+            
+            const saved = await this.saveUserData(true);
+            if (!saved) {
+                this.powerBalance = originalPower;
+                this._dirtyPower = false;
+                this.showNotification('Error', this.t('save_error'), 'error');
+                return false;
+            }
+            
+            this.showNotification('Code Applied!', `You received ${this.formatNumber(promoData.reward)} Power`, 'success');
+        } else if (promoData.rewardType === 'ton') {
+            this.tonBalance += promoData.reward;
+            this._dirtyTon = true;
+            
+            const saved = await this.saveUserData(true);
+            if (!saved) {
+                this.tonBalance = originalTon;
+                this._dirtyTon = false;
+                this.showNotification('Error', this.t('save_error'), 'error');
+                return false;
+            }
+            
+            this.showNotification('Code Applied!', `You received ${promoData.reward} TON`, 'success');
+        } else {
+            this.showNotification('Error', 'Invalid reward type', 'error');
+            return false;
+        }
+        
+        const promoRef = this.db.ref(`promoCodes/${code}/total`);
+        const currentTotal = (await promoRef.once('value')).val() || 0;
+        await promoRef.set(currentTotal + 1);
+        
+        this.renderMining();
+        this.renderEarn();
+        return true;
+    }
+    
+    async withdraw(amount, wallet) {
+        if (this._withdrawLock) {
+            this.showNotification('Please wait', 'You can withdraw again after 10 seconds', 'warning');
+            return false;
+        }
+        
+        if (!wallet || wallet.length < 20) {
+            this.showNotification('Error', 'Invalid wallet address', 'error');
+            return false;
+        }
+        if (amount < APP_CONFIG.MINIMUM_WITHDRAW || amount > this.tonBalance) {
+            this.showNotification('Error', 'Invalid amount', 'error');
+            return false;
+        }
+        
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+        } catch (result) {
+            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
+            return false;
+        }
+        
+        this._withdrawLock = true;
+        setTimeout(() => { this._withdrawLock = false; }, 10000);
+        
+        const originalBalance = this.tonBalance;
+        this.tonBalance -= amount;
+        this._dirtyTon = true;
+        
+        const saved = await this.saveUserData(true);
+        
+        if (!saved) {
+            this.tonBalance = originalBalance;
+            this._dirtyTon = false;
+            this.showNotification('Error', this.t('save_error'), 'error');
+            return false;
+        }
+        
+        const withdrawal = {
+            id: Date.now(),
+            amount: amount,
+            wallet: wallet,
+            status: 'pending',
+            timestamp: this.getCurrentTime()
+        };
+        
+        if (this.db) {
+            try {
+                await this.db.ref(`withdrawals/${this.tgUser.id}/${withdrawal.id}`).set(withdrawal);
+                await this.db.ref('Status/totalWithdrawals').transaction(current => (current || 0) + 1);
+                await this.db.ref('Status/totalTonPaid').transaction(current => (current || 0) + amount);
+                
+                const userWithdrawalsRef = this.db.ref(`withdrawals/${this.tgUser.id}`);
+                const snapshot = await userWithdrawalsRef.once('value');
+                if (snapshot.exists()) {
+                    const allWithdrawals = [];
+                    snapshot.forEach(child => {
+                        allWithdrawals.push({ id: child.key, ...child.val() });
+                    });
+                    allWithdrawals.sort((a, b) => b.timestamp - a.timestamp);
+                    if (allWithdrawals.length > 5) {
+                        const toDelete = allWithdrawals.slice(5);
+                        for (const old of toDelete) {
+                            await userWithdrawalsRef.child(old.id).remove();
+                        }
+                    }
+                }
+                
+                await this.sendNotification(this.tgUser.id, this.t('withdrawal_requested'), `${amount.toFixed(5)} TON`);
+            } catch (error) {
+                console.error('Withdrawal save failed:', error);
+                this.tonBalance += amount;
+                this._dirtyTon = true;
+                await this.saveUserData(true);
+                this.showNotification('Error', 'Failed to submit withdrawal', 'error');
+                return false;
+            }
+        }
+        
+        this.withdrawals.unshift(withdrawal);
+        if (this.withdrawals.length > 5) this.withdrawals = this.withdrawals.slice(0, 5);
+        localStorage.setItem(`withdrawals_${this.tgUser.id}`, JSON.stringify(this.withdrawals));
+        if (this._withdrawLoaded) {
+            this.renderWithdraw();
+        }
+        this.showNotification('Withdrawn!', `${amount.toFixed(5)} TON requested`, 'success');
+        return true;
+    }
+    
+    extractChatId(url) {
+        const match = url.match(/t\.me\/([^\/\?]+)/);
+        return match ? match[1] : null;
+    }
+    
+    async checkMembership(channel) {
+        const cacheKey = `membership_${channel}_${this.tgUser.id}`;
+        const cached = this.membershipCache.get(cacheKey);
+        const now = Date.now();
+        
+        if (cached && (now - cached.timestamp) < 1800000) {
+            return cached.isMember;
+        }
+        
+        try {
+            const res = await fetch('/api/bot-actions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'check_channel', channel: `@${channel}`, userId: this.tgUser.id })
+            });
+            const data = await res.json();
+            
+            if (data.error === 'bot_not_admin') {
+                return true;
+            }
+            
+            const isMember = data.isMember === true;
+            this.membershipCache.set(cacheKey, { isMember, timestamp: now });
+            localStorage.setItem(cacheKey, JSON.stringify({ isMember, timestamp: now }));
+            return isMember;
+        } catch(e) {
+            return false;
+        }
+    }
+    
+    async generateUniqueDeviceId() {
+        const userAgent = navigator.userAgent;
+        const screen = `${window.screen.width}x${window.screen.height}x${window.screen.colorDepth}`;
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const platform = navigator.platform;
+        const language = navigator.language;
+        
+        let seed = `${userAgent}|${screen}|${timezone}|${platform}|${language}`;
+        
+        const cryptoHash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(seed));
+        const hashArray = Array.from(new Uint8Array(cryptoHash));
+        const hexHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 32);
+        
+        return `dev_${hexHash}`;
+    }
+    
+    async checkDevice() {
+        this.deviceId = await this.generateUniqueDeviceId();
+        const savedDevice = localStorage.getItem('device_owner');
+        
+        if (savedDevice && savedDevice !== this.tgUser.id.toString()) {
+            this.showNotification('Device Locked', 'Multiple accounts not allowed', 'error');
+            setTimeout(() => window.Telegram?.WebApp?.close(), 3000);
+            throw new Error('Device already registered with different user');
+        }
+        
+        localStorage.setItem('device_owner', this.tgUser.id);
+        return null;
+    }
+    
+    async checkUserState() {
+        if (!this.db || !this.tgUser) return;
+        try {
+            const stateSnap = await this.db.ref(`users/${this.tgUser.id}/state`).once('value');
+            this.userState = stateSnap.val();
+            
+            if (this.userState === 'ban') {
+                const banMessage = document.createElement('div');
+                banMessage.className = 'ban-message';
+                banMessage.innerHTML = `
+                    <i class="fas fa-ban"></i>
+                    <h2>Account Banned</h2>
+                    <p>${this.t('ban_message')}</p>
+                    <button onclick="window.Telegram.WebApp.close()" style="margin-top:20px;padding:12px 24px;background:#6C63FF;border:none;border-radius:40px;color:white">Close</button>
+                `;
+                document.getElementById('app').innerHTML = '';
+                document.getElementById('app').appendChild(banMessage);
+                document.getElementById('app').style.display = 'block';
+                document.getElementById('app-loader').style.display = 'none';
+                throw new Error('User banned');
+            }
+        } catch (error) {
+            if (error.message === 'User banned') throw error;
+            console.warn('Failed to check user state:', error);
+        }
+    }
+    
+    vibrate(type) {
+        if (!this.vibrationEnabled) return;
+        if (window.Telegram?.WebApp?.HapticFeedback) {
+            if (type === 'success') window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+            else if (type === 'error') window.Telegram.WebApp.HapticFeedback.notificationOccurred('error');
+            else window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+        }
+    }
+    
+    showNotification(title, message, type) {
+        this.vibrate(type);
+        const el = document.createElement('div');
+        el.className = `notif ${type}`;
+        const icon = type === 'success' ? 'fa-check-circle' : (type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle');
+        el.innerHTML = `<i class="fas ${icon}"></i><div><strong>${title}</strong><br><small>${message}</small></div>`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+    }
+    
+    async showInterstitialAd() {
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+            return true;
+        } catch(e) {
+            console.warn('Interstitial ad failed:', e);
+            return false;
+        }
+    }
+    
+    async updateFirebaseUid() {
+        if (!this.db || !this.tgUser) return;
+        const userRef = this.db.ref(`users/${this.tgUser.id}`);
+        const snapshot = await userRef.once('value');
+        
+        if (snapshot.exists()) {
+            const authUid = this.auth.currentUser.uid;
+            await userRef.update({ firebaseUid: authUid });
+        }
+    }
+    
+    scheduleSave() {
+        if (this._saveTimeout) clearTimeout(this._saveTimeout);
+        this._saveTimeout = setTimeout(() => {
+            this.saveUserData(false);
+        }, 30000);
+    }
+    
+    async saveUserData(immediate = false) {
+        if (!this.db || !this.tgUser) return false;
+        
+        if (this._isSaving) {
+            if (immediate) {
+                let waited = 0;
+                while (this._isSaving && waited < 3000) {
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    waited += 50;
+                }
+                if (this._isSaving) return false;
+            } else {
+                return true;
+            }
+        }
+        
+        this._isSaving = true;
+        
+        try {
+            const updates = {};
+            if (this._dirtyPower) updates.powerBalance = this.powerBalance;
+            if (this._dirtyTon) updates.tonBalance = this.tonBalance;
+            if (this._dirtyMining) {
+                updates.miningActive = this.miningActive;
+                updates.miningStartTime = this.miningStartTime;
+                updates.miningEndTime = this.miningEndTime;
+                updates.pendingTonReward = this.pendingTonReward;
+            }
+            
+            if (Object.keys(updates).length === 0) {
+                this._isSaving = false;
+                return true;
+            }
+            
+            await this.db.ref(`users/${this.tgUser.id}`).update(updates);
+            
+            const userDataForCache = {
+                powerBalance: this.powerBalance,
+                tonBalance: this.tonBalance,
+                userLevel: this.userLevel,
+                miningActive: this.miningActive,
+                miningStartTime: this.miningStartTime,
+                miningEndTime: this.miningEndTime,
+                pendingTonReward: this.pendingTonReward,
+                totalReferrals: this.totalReferrals,
+                referralPower: this.referralPower
+            };
+            localStorage.setItem(`user_${this.tgUser.id}`, JSON.stringify(userDataForCache));
+            
+            this._dirtyPower = false;
+            this._dirtyTon = false;
+            this._dirtyMining = false;
+            
+            if (this._saveTimeout) clearTimeout(this._saveTimeout);
+            
+            return true;
+        } catch (error) {
+            console.warn('Failed to save user data:', error);
+            return false;
+        } finally {
+            this._isSaving = false;
+        }
+    }
+    
+    async forceCreateUserData() {
+        const startParam = this.tg.initDataUnsafe?.start_param;
+        let referredBy = (startParam && !isNaN(startParam)) ? parseInt(startParam) : null;
+        if (referredBy === this.tgUser.id || referredBy === this.deviceOwnerId) referredBy = null;
+        
+        const userData = {
+            id: this.tgUser.id,
+            firebaseUid: this.auth.currentUser.uid,
+            username: this.tgUser.username || '',
+            firstName: this.tgUser.first_name || 'User',
+            photoUrl: this.tgUser.photo_url || APP_CONFIG.DEFAULT_USER_AVATAR,
+            referredBy: referredBy,
+            createdAt: await this.syncServerTime(),
+            powerBalance: 1000,
+            tonBalance: 0,
+            level: 1,
+            totalTasksCompleted: 0,
+            totalMiningStarts: 0,
+            referralRewardGiven: false,
+            state: 'active'
+        };
+        
+        await this.db.ref(`users/${this.tgUser.id}`).set(userData);
+        
+        const totalUsersRef = this.db.ref('Status/totalUsers');
+        const currentTotal = (await totalUsersRef.once('value')).val() || 0;
+        await totalUsersRef.set(currentTotal + 1);
+        
+        if (referredBy && referredBy !== this.tgUser.id) {
+            const referrerRef = this.db.ref(`users/${referredBy}`);
+            const referrerSnap = await referrerRef.once('value');
+            if (referrerSnap.exists()) {
+                const currentTotalRef = referrerSnap.val().totalReferrals ?? 0;
+                await referrerRef.update({ totalReferrals: currentTotalRef + 1 });
+                await this.sendNotification(referredBy, this.t('new_referral'), `${this.tgUser.first_name} joined using your link`);
+            }
+        }
+        
+        this.powerBalance = 1000;
+        this.tonBalance = 0;
+        this.userLevel = 1;
+        this.hasStartedMining = false;
+        this.miningActive = false;
+        this.miningStartTime = null;
+        this.miningEndTime = null;
+        this.pendingTonReward = 0;
+        this.totalTasksCompleted = 0;
+        this.totalMiningStarts = 0;
+        this.referralRewardGiven = false;
+        
+        const nameSpan = document.getElementById('user-name');
+        if (nameSpan) nameSpan.innerText = this.tgUser.first_name || 'User';
+        const levelSpan = document.getElementById('user-level');
+        if (levelSpan) levelSpan.innerText = this.userLevel;
+        const levelBadge = document.getElementById('user-level-badge');
+        if (levelBadge) levelBadge.innerText = this.userLevel;
+        const photoImg = document.getElementById('user-photo');
+        if (photoImg) photoImg.src = this.tgUser.photo_url || APP_CONFIG.DEFAULT_USER_AVATAR;
+        
+        this.showNotification('Welcome!', '1000 Power Added', 'success');
+    }
+    
+    async initFirebase() {
+        const config = {
+            apiKey: "AIzaSyCWnfPAgBHr1beeph4OxxmXokY45MgPsFM",
+            authDomain: "vevaia.firebaseapp.com",
+            databaseURL: "https://vevaia-default-rtdb.firebaseio.com",
+            projectId: "vevaia",
+            storageBucket: "vevaia.firebasestorage.app",
+            messagingSenderId: "284687408904",
+            appId: "1:284687408904:web:25e88c5066b5844aefd6bd",
+            measurementId: "G-LPRMK4JY0Z"
+        };
+        
+        let app;
+        try { app = firebase.initializeApp(config); } catch(e) { app = firebase.app(); }
+        this.db = app.database();
+        this.auth = app.auth();
+        await this.auth.signInAnonymously();
+    }
+    
+    async loadUserData() {
+        if (this._userDataLoaded) return;
+        
+        const cachedUser = localStorage.getItem(`user_${this.tgUser.id}`);
+        if (cachedUser) {
+            const data = JSON.parse(cachedUser);
+            this.powerBalance = data.powerBalance ?? 0;
+            this.tonBalance = data.tonBalance ?? 0;
+            this.userLevel = data.userLevel ?? 1;
+            this.miningActive = data.miningActive ?? false;
+            this.miningStartTime = data.miningStartTime ?? null;
+            this.miningEndTime = data.miningEndTime ?? null;
+            this.pendingTonReward = data.pendingTonReward ?? 0;
+            this.totalReferrals = data.totalReferrals ?? 0;
+            this.referralPower = data.referralPower ?? 0;
+        }
+        
+        try {
+            const userRef = this.db.ref(`users/${this.tgUser.id}`);
+            const snap = await userRef.once('value');
+            if (snap.exists()) {
+                const d = snap.val();
+                this.powerBalance = d.powerBalance ?? this.powerBalance;
+                this.tonBalance = d.tonBalance ?? this.tonBalance;
+                this.userLevel = d.level ?? this.userLevel;
+                this.hasStartedMining = d.hasStartedMining ?? false;
+                this.miningActive = d.miningActive ?? this.miningActive;
+                this.miningStartTime = d.miningStartTime ?? this.miningStartTime;
+                this.miningEndTime = d.miningEndTime ?? this.miningEndTime;
+                this.pendingTonReward = d.pendingTonReward ?? this.pendingTonReward;
+                this.referredBy = d.referredBy ?? null;
+                this.totalReferrals = d.totalReferrals ?? this.totalReferrals;
+                this.referralPower = d.referralPower ?? this.referralPower;
+                this.totalTasksCompleted = d.totalTasksCompleted ?? 0;
+                this.totalMiningStarts = d.totalMiningStarts ?? 0;
+                this.referralRewardGiven = d.referralRewardGiven ?? false;
+                this.userState = d.state ?? 'active';
+                
+                const userDataForCache = {
+                    powerBalance: this.powerBalance,
+                    tonBalance: this.tonBalance,
+                    userLevel: this.userLevel,
+                    miningActive: this.miningActive,
+                    miningStartTime: this.miningStartTime,
+                    miningEndTime: this.miningEndTime,
+                    pendingTonReward: this.pendingTonReward,
+                    totalReferrals: this.totalReferrals,
+                    referralPower: this.referralPower
+                };
+                localStorage.setItem(`user_${this.tgUser.id}`, JSON.stringify(userDataForCache));
+            } else {
+                await this.forceCreateUserData();
+                const userRef2 = this.db.ref(`users/${this.tgUser.id}`);
+                const snap2 = await userRef2.once('value');
+                if (snap2.exists()) {
+                    this.referredBy = snap2.val().referredBy ?? null;
+                }
+            }
+        } catch (error) {
+            console.error('loadUserData error:', error);
+            await this.forceCreateUserData();
+        }
+        
+        this._userDataLoaded = true;
+        
+        const nameSpan = document.getElementById('user-name');
+        if (nameSpan) nameSpan.innerText = this.tgUser.first_name || 'User';
+        const levelSpan = document.getElementById('user-level');
+        if (levelSpan) levelSpan.innerText = this.userLevel;
+        const levelBadge = document.getElementById('user-level-badge');
+        if (levelBadge) levelBadge.innerText = this.userLevel;
+        const photoImg = document.getElementById('user-photo');
+        if (photoImg) photoImg.src = this.tgUser.photo_url || APP_CONFIG.DEFAULT_USER_AVATAR;
+        
+        await this.loadDailyTaskStatus();
+        await this.loadCompletedSocialTasks();
+    }
+    
+    async loadCompletedSocialTasks() {
+        if (!this.db) return;
+        try {
+            const snap = await this.db.ref(`users/${this.tgUser.id}/completedSocialTasks`).once('value');
+            this.userCompletedSocialTasks = snap.exists() ? new Set(snap.val()) : new Set();
+        } catch (error) {
+            console.warn('Failed to load completed social tasks:', error);
+            this.userCompletedSocialTasks = new Set();
+        }
+    }
+    
+    async loadDailyTaskStatus() {
+        const today = this.getTodayUTC();
+        const stored = localStorage.getItem(`daily_tasks_${this.tgUser?.id}`);
+        if (stored) {
+            const data = JSON.parse(stored);
+            if (data.date === today) {
+                this.dailyCheckNewsCompleted = data.checkNewsCompleted || false;
+                this.lastDailyCheckNews = data.lastCheckNews || 0;
+                return;
+            }
+        }
+        this.dailyCheckNewsCompleted = false;
+        this.lastDailyCheckNews = 0;
+    }
+    
+    saveDailyTaskStatus() {
+        const today = this.getTodayUTC();
+        const data = {
+            date: today,
+            checkNewsCompleted: this.dailyCheckNewsCompleted,
+            lastCheckNews: this.lastDailyCheckNews
+        };
+        localStorage.setItem(`daily_tasks_${this.tgUser?.id}`, JSON.stringify(data));
+    }
+    
+    getTodayUTC() {
+        const now = new Date();
+        return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())).toISOString().split('T')[0];
+    }
+    
+    getDailyResetTimeUTC() {
+        const now = new Date();
+        const tomorrow = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0));
+        return tomorrow.getTime();
+    }
+    
+    async completeDailyCheckNews(btnElement) {
+        if (this.dailyCheckNewsCompleted) {
+            this.showNotification('Already Completed', 'Daily task already done today', 'warning');
+            return false;
+        }
+        
+        const url = APP_CONFIG.DAILY_CHECK_NEWS_LINK;
+        window.open(url, '_blank');
+        
+        btnElement.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+        btnElement.disabled = true;
+        
+        let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
+        const interval = setInterval(() => {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                btnElement.innerHTML = 'Claim';
+                btnElement.disabled = false;
+                btnElement.classList.remove('start');
+                btnElement.classList.add('check');
+                
+                const newBtn = btnElement.cloneNode(true);
+                btnElement.parentNode.replaceChild(newBtn, btnElement);
+                
+                newBtn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                    newBtn.disabled = true;
+                    
+                    const chatId = this.extractChatId(url);
+                    let isMember = false;
+                    
+                    if (chatId) {
+                        const isBotAdmin = await this.checkBotAdmin(chatId);
+                        if (!isBotAdmin) {
+                            isMember = true;
+                        } else {
+                            isMember = await this.checkMembership(chatId);
+                        }
+                    } else {
+                        isMember = true;
+                    }
+                    
+                    if (isMember) {
+                        const originalPower = this.powerBalance;
+                        this.powerBalance += 10;
+                        this._dirtyPower = true;
+                        
+                        const saved = await this.saveUserData(true);
+                        
+                        if (!saved) {
+                            this.powerBalance = originalPower;
+                            this._dirtyPower = false;
+                            this.showNotification('Error', this.t('save_error'), 'error');
+                            newBtn.innerHTML = 'Claim';
+                            newBtn.disabled = false;
+                            newBtn.classList.remove('check');
+                            newBtn.classList.add('start');
+                            return;
+                        }
+                        
+                        this.dailyCheckNewsCompleted = true;
+                        this.lastDailyCheckNews = this.getCurrentTime();
+                        this.saveDailyTaskStatus();
+                        
+                        await this.updateLevelFromPower();
+                        
+                        newBtn.innerHTML = 'Done';
+                        newBtn.disabled = true;
+                        newBtn.classList.add('done');
+                        newBtn.classList.remove('check');
+                        
+                        this.showNotification('Task Completed!', `10 Power`, 'success');
+                        this.renderEarn();
+                    } else {
+                        this.showNotification('Join Required', 'Please join the channel first', 'warning');
+                        newBtn.innerHTML = 'Start';
+                        newBtn.disabled = false;
+                        newBtn.classList.remove('check');
+                        newBtn.classList.add('start');
+                    }
+                });
+            }
+        }, 1000);
+        
+        return true;
+    }
+    
+    async loadCompletedTasks() {
+        const cached = localStorage.getItem(`completed_${this.tgUser.id}`);
+        if (cached && !this._forceRefreshCompleted) {
+            this.userCompletedTasks = new Set(JSON.parse(cached));
+            return;
+        }
+        
+        if (!this.db) {
+            this.userCompletedTasks = new Set();
+            return;
+        }
+        
+        try {
+            const snap = await this.db.ref(`users/${this.tgUser.id}/completedTasks`).once('value');
+            this.userCompletedTasks = snap.exists() ? new Set(snap.val()) : new Set();
+            localStorage.setItem(`completed_${this.tgUser.id}`, JSON.stringify(Array.from(this.userCompletedTasks)));
+            this._forceRefreshCompleted = false;
+        } catch (error) {
+            console.warn('Failed to load completed tasks:', error);
+            this.userCompletedTasks = new Set();
+        }
+    }
+    
+    async loadCompletedMainTasks() {
+        if (!this.db) return;
+        try {
+            const snap = await this.db.ref(`users/${this.tgUser.id}/completedMainTasks`).once('value');
+            this.userCompletedMainTasks = snap.exists() ? new Set(snap.val()) : new Set();
+        } catch (error) {
+            console.warn('Failed to load completed main tasks:', error);
+            this.userCompletedMainTasks = new Set();
+        }
+    }
+    
+    async loadWithdrawals() {
+        if (this._withdrawLoaded) return;
+        
+        const cached = localStorage.getItem(`withdrawals_${this.tgUser.id}`);
+        if (cached) {
+            this.withdrawals = JSON.parse(cached);
+            if (this.withdrawals.length > 5) this.withdrawals = this.withdrawals.slice(0, 5);
+        }
+        
+        try {
+            const snap = await this.db.ref(`withdrawals/${this.tgUser.id}`).once('value');
+            this.withdrawals = [];
+            if (snap.exists()) {
+                snap.forEach(c => {
+                    this.withdrawals.push({ id: c.key, ...c.val() });
+                });
+                this.withdrawals.sort((a, b) => b.timestamp - a.timestamp);
+                if (this.withdrawals.length > 5) this.withdrawals = this.withdrawals.slice(0, 5);
+                localStorage.setItem(`withdrawals_${this.tgUser.id}`, JSON.stringify(this.withdrawals));
+            }
+        } catch (error) {
+            console.warn('Failed to load withdrawals:', error);
+        }
+        
+        this._withdrawLoaded = true;
+    }
+    
+    async loadReferralStats() {
+        if (!this.db) return;
+        try {
+            const totalRef = this.db.ref(`users/${this.tgUser.id}/totalReferrals`);
+            const totalSnap = await totalRef.once('value');
+            this.totalReferrals = totalSnap.val() ?? 0;
+            
+            const powerRef = this.db.ref(`users/${this.tgUser.id}/referralPower`);
+            const powerSnap = await powerRef.once('value');
+            this.referralPower = powerSnap.val() ?? 0;
+        } catch (error) {
+            console.warn('Failed to load referral stats:', error);
+        }
+    }
+    
+    async loadTasks() {
+        if (!this.db) {
+            this.partnerTasks = [];
+            return;
+        }
+        
+        const now = Date.now();
+        if (this.cache.tasks && (now - this.cache.tasksTime) < 3600000) {
+            this.partnerTasks = this.cache.tasks.partner || [];
+            return;
+        }
+        
+        try {
+            const snap = await this.db.ref('tasks').once('value');
+            this.partnerTasks = [];
+            if (snap.exists()) {
+                snap.forEach(c => {
+                    const task = { id: c.key, ...c.val() };
+                    const total = task.total || 0;
+                    const max = task.max;
+                    
+                    if (max !== undefined && max !== null && total >= max) {
+                        return;
+                    }
+                    
+                    if (task.category === 'partner') this.partnerTasks.push(task);
+                });
+            }
+            this.cache.tasks = {
+                main: APP_CONFIG.MAIN_TASKS,
+                partner: this.partnerTasks
+            };
+            this.cache.tasksTime = now;
+        } catch (error) {
+            console.warn('Failed to load tasks:', error);
+            this.partnerTasks = [];
+        }
+    }
+    
+    async loadEarnData() {
+        await this.loadTasks();
+        await this.loadCompletedTasks();
+        await this.loadCompletedMainTasks();
+        await this.loadDailyTaskStatus();
+        await this.loadUserTasks();
+    }
+    
+    renderMining() {
+        const el = document.getElementById('mining-page');
+        if (!el) return;
+        const requiredPower = this.getRequiredPowerForLevel(this.userLevel + 1);
+        const hourlyRate = this.getHourlyTonRate();
+        const dailyRate = this.getDailyTonRate();
+        const monthlyRate = this.getMonthlyTonRate();
+        const progressPercent = this.getMiningProgressPercent();
+        const radius = 70;
+        const circumference = 2 * Math.PI * radius;
+        const dashOffset = circumference - (progressPercent / 100) * circumference;
+        
+        const showStartButton = !this.miningActive && this.pendingTonReward <= 0;
+        const showClaimButton = !this.miningActive && this.pendingTonReward > 0;
+        const showMiningActive = this.miningActive;
+        
+        el.innerHTML = `
+            <div class="balance-cards">
+                <div class="balance-card"><div class="icon power"><i class="fas fa-bolt"></i></div><span class="label">${this.t('power')}</span><span class="value">${this.formatNumber(Math.floor(this.powerBalance))}</span></div>
+                <div class="balance-card"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" class="ton-icon-img"><span class="label">${this.t('ton')}</span><span class="value">${this.tonBalance.toFixed(6)}</span></div>
+            </div>
+            <div class="mining-card">
+                <div class="mining-icon-container">
+                    <img src="https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg" class="mining-icon">
+                    <svg class="progress-ring" width="150" height="150" viewBox="0 0 150 150">
+                        <circle cx="75" cy="75" r="${radius}" fill="none" stroke="rgba(92,107,192,0.2)" stroke-width="6"/>
+                        <circle class="progress-ring-circle" cx="75" cy="75" r="${radius}" fill="none" stroke="var(--primary)" stroke-width="6" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" stroke-linecap="round" transform="rotate(-90 75 75)"/>
+                    </svg>
+                </div>
+                <h3>${this.t('mining_rig')}${this.userLevel}</h3>
+                <div class="rate-stats">
+                    <div class="rate-stat"><div class="stat-label">${this.t('hourly')}</div><div class="stat-value">${hourlyRate.toFixed(6)}</div></div>
+                    <div class="rate-stat"><div class="stat-label">${this.t('daily')}</div><div class="stat-value">${dailyRate.toFixed(6)}</div></div>
+                    <div class="rate-stat"><div class="stat-label">${this.t('monthly')}</div><div class="stat-value">${monthlyRate.toFixed(6)}</div></div>
+                </div>
+                ${showMiningActive ? `<div class="mining-timer"><i class="fas fa-hourglass-half"></i> 00:00:00</div><div class="mining-note">${this.t('mining_note')}</div>` : ''}
+                ${showStartButton ? `<button id="start-mining-btn" class="mining-action-btn"><i class="fas fa-play"></i> ${this.t('start_mining')}</button>` : ''}
+                ${showClaimButton ? `<button id="claim-mining-btn" class="mining-claim-btn"><i class="fas fa-gift"></i> ${this.t('claim_reward')}</button>` : ''}
+                ${showMiningActive ? `<div class="mining-note mining-active-note"><i class="fas fa-circle" style="color:#2ecc71;font-size:0.6rem"></i> ${this.t('mining_active')}</div>` : ''}
+            </div>
+            
+            <div class="earn-more-title"><i class="fas fa-chart-line"></i> ${this.t('earn_more')}</div>
+            <div class="earn-cards">
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('watch_ad')}</h4><p>20 ${this.t('power')}</p></div><button id="mining-reward-ad" class="earn-card-btn">${this.t('watch')}</button></div>
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('complete_tasks')}</h4><p>${this.t('power_earnings')}</p></div><button id="go-tasks-btn" class="earn-card-btn">${this.t('go')}</button></div>
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('invite_frens')}</h4><p>${this.t('power_earnings')}</p></div><button id="go-team-btn" class="earn-card-btn">${this.t('go')}</button></div>
+            </div>
+        `;
+        
+        const ringCircle = document.querySelector('.progress-ring-circle');
+        if (ringCircle) {
+            ringCircle.style.strokeDashoffset = dashOffset;
+        }
+        
+        document.getElementById('start-mining-btn')?.addEventListener('click', () => this.startMining());
+        document.getElementById('claim-mining-btn')?.addEventListener('click', () => this.claimMiningRewards());
+        document.getElementById('mining-reward-ad')?.addEventListener('click', () => this.watchRewardAd());
+        document.getElementById('go-tasks-btn')?.addEventListener('click', () => {
+            document.querySelector('.nav-btn[data-page="earn-page"]').click();
+        });
+        document.getElementById('go-team-btn')?.addEventListener('click', () => {
+            document.querySelector('.nav-btn[data-page="team-page"]').click();
+        });
+        
+        if (this.miningActive) this.updateMiningTimerDisplay();
+        this.updateAdCooldownDisplay();
+    }
+    
+    renderEarn() {
+        const el = document.getElementById('earn-page');
+        if (!el) return;
+        
+        const resetTime = this.getDailyResetTimeUTC();
+        const now = Date.now();
+        const timeRemaining = Math.max(0, resetTime - now);
+        const hoursRemaining = Math.floor(timeRemaining / 3600000);
+        const minutesRemaining = Math.floor((timeRemaining % 3600000) / 60000);
+        
+        const dailyCheckNewsBtnClass = this.dailyCheckNewsCompleted ? 'done' : 'start';
+        const dailyCheckNewsBtnText = this.dailyCheckNewsCompleted ? 'Done' : this.t('start');
+        const dailyCheckNewsBtnDisabled = this.dailyCheckNewsCompleted;
+        
+        const availableMainTasks = APP_CONFIG.MAIN_TASKS.filter(t => !this.userCompletedMainTasks.has(t.id));
+        
+        const availableMainTasksHtml = availableMainTasks.length > 0 ? availableMainTasks.map(t => `
+            <div class="task-item">
+                <img class="task-img" src="${t.img}">
+                <div class="task-info">
+                    <h4>${t.name}</h4>
+                    <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                </div>
+                <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verify}">Start</button>
+            </div>
+        `).join('') : '<div class="no-data"><i class="fas fa-check-circle"></i><p>' + this.t('all_tasks_completed') + '</p><small>' + this.t('check_later') + '</small></div>';
+        
+        el.innerHTML = `
+            <div class="promo-card">
+                <div class="promo-header">
+                    <div class="promo-title"><i class="fas fa-gift"></i> ${this.t('promo_code')}</div>
+                    <button id="promo-info-btn" class="info-icon-btn"><i class="fas fa-question-circle"></i></button>
+                </div>
+                <div class="promo-input-group">
+                    <input type="text" id="promo-input" class="form-input" placeholder="${this.t('enter_code')}" autocomplete="off">
+                    <button id="promo-submit" class="promo-submit-btn" disabled>${this.t('claim')}</button>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h3><i class="fas fa-calendar-day"></i> ${this.t('daily_tasks')}</h3>
+                <p>${this.t('refresh_in')}: ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}</p>
+            </div>
+            
+            <div class="daily-tasks-container">
+                <div class="daily-task-card">
+                    <div class="daily-task-header">
+                        <div class="daily-task-icon"><i class="fas fa-newspaper"></i></div>
+                        <div class="daily-task-info">
+                            <h4>${this.t('daily_check_news')}</h4>
+                            <div class="daily-task-reward"><i class="fas fa-bolt"></i> 10 ${this.t('power')}</div>
+                        </div>
+                        <button class="task-btn ${dailyCheckNewsBtnClass}" id="daily-check-news-btn" ${dailyCheckNewsBtnDisabled ? 'disabled' : ''}>${dailyCheckNewsBtnText}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h3><i class="fas fa-star"></i> ${this.t('main_tasks')}</h3>
+                <p>${this.t('available_tasks')}: ${availableMainTasks.length}</p>
+            </div>
+            <div class="tasks-list" id="main-tasks-list">
+                ${availableMainTasksHtml}
+            </div>
+            
+            <div class="section-header">
+                <h3><i class="fas fa-globe"></i> ${this.t('partner_tasks')} <button id="tasks-info-btn" class="info-icon-btn"><i class="fas fa-question-circle"></i></button></h3>
+                <p>${this.t('available_tasks')}: 0</p>
+            </div>
+            <div class="tasks-list" id="social-tasks-list-container">
+                <div class="task-loading"><i class="fas fa-spinner fa-pulse"></i><p>${this.t('loading')}...</p></div>
+            </div>
+        `;
+        
+        const promoInput = document.getElementById('promo-input');
+        const promoSubmit = document.getElementById('promo-submit');
+        if (promoInput && promoSubmit) {
+            promoInput.addEventListener('input', () => {
+                promoSubmit.disabled = promoInput.value.trim() === '';
+                promoSubmit.classList.toggle('active', !promoSubmit.disabled);
+            });
+            promoSubmit.addEventListener('click', () => {
+                const code = promoInput.value.trim();
+                if (code) this.applyPromoCode(code);
+                promoInput.value = '';
+                promoSubmit.disabled = true;
+                promoSubmit.classList.remove('active');
+            });
+        }
+        
+        document.getElementById('tasks-info-btn')?.addEventListener('click', async () => {
+            await this.loadUserTasks();
+            const activeTasks = await this.loadActiveSocialTasks();
+            const socialTasksList = document.getElementById('social-tasks-list');
+            if (socialTasksList) {
+                if (activeTasks.length > 0) {
+                    socialTasksList.innerHTML = activeTasks.map(t => `
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4>${t.name}</h4>
+                                <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                                <small>Completions: ${t.total}/${t.max}</small>
+                            </div>
+                            <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
+                        </div>
+                    `).join('');
+                    
+                    document.querySelectorAll('#social-tasks-list .task-btn.start').forEach(btn => {
+                        btn.addEventListener('click', async () => {
+                            if (this.isTaskRunning) {
+                                this.showNotification('Busy', 'Complete current task first', 'warning');
+                                return;
+                            }
+                            const id = btn.dataset.id;
+                            const reward = parseInt(btn.dataset.reward);
+                            const url = btn.dataset.url;
+                            const verify = btn.dataset.verify === 'true';
+                            
+                            const taskData = activeTasks.find(t => t.id === id);
+                            
+                            window.open(url, '_blank');
+                            this.isTaskRunning = true;
+                            this.disableAllTaskButtons();
+                            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                            btn.disabled = true;
+                            
+                            let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
+                            const interval = setInterval(() => {
+                                seconds--;
+                                if (seconds <= 0) {
+                                    clearInterval(interval);
+                                    btn.innerHTML = 'Claim';
+                                    btn.disabled = false;
+                                    btn.classList.remove('start');
+                                    btn.classList.add('check');
+                                    
+                                    const newBtn = btn.cloneNode(true);
+                                    btn.parentNode.replaceChild(newBtn, btn);
+                                    
+                                    newBtn.addEventListener('click', async (e) => {
+                                        e.stopPropagation();
+                                        newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                                        newBtn.disabled = true;
+                                        await this.completeTask(id, reward, url, verify, newBtn, false, true, taskData);
+                                    });
+                                }
+                            }, 1000);
+                        });
+                    });
+                } else {
+                    socialTasksList.innerHTML = '<div class="no-data"><i class="fas fa-globe"></i><p>' + this.t('no_tasks') + '</p></div>';
+                }
+            }
+            document.getElementById('tasks-info-modal').style.display = 'flex';
+            this.updateModalTranslations();
+        });
+        
+        document.getElementById('promo-info-btn')?.addEventListener('click', () => {
+            document.getElementById('promo-info-modal').style.display = 'flex';
+            this.updateModalTranslations();
+        });
+        
+        document.getElementById('daily-check-news-btn')?.addEventListener('click', (e) => {
+            if (!this.dailyCheckNewsCompleted) {
+                this.completeDailyCheckNews(e.target);
+            }
+        });
+        
+        document.querySelectorAll('#main-tasks-list .task-btn.start').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                if (this.isTaskRunning) {
+                    this.showNotification('Busy', 'Complete current task first', 'warning');
+                    return;
+                }
+                const id = btn.dataset.id;
+                const reward = parseInt(btn.dataset.reward);
+                const url = btn.dataset.url;
+                const verify = btn.dataset.verify === 'true';
+                const isMainTask = true;
+                
+                window.open(url, '_blank');
+                this.isTaskRunning = true;
+                this.disableAllTaskButtons();
+                btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                btn.disabled = true;
+                
+                let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
+                const interval = setInterval(() => {
+                    seconds--;
+                    if (seconds <= 0) {
+                        clearInterval(interval);
+                        btn.innerHTML = 'Claim';
+                        btn.disabled = false;
+                        btn.classList.remove('start');
+                        btn.classList.add('check');
+                        
+                        const newBtn = btn.cloneNode(true);
+                        btn.parentNode.replaceChild(newBtn, btn);
+                        
+                        newBtn.addEventListener('click', async (e) => {
+                            e.stopPropagation();
+                            newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                            newBtn.disabled = true;
+                            await this.completeTask(id, reward, url, verify, newBtn, isMainTask);
+                        });
+                    }
+                }, 1000);
+            });
+        });
+        
+        this.loadActiveSocialTasks().then(activeTasks => {
+            const container = document.getElementById('social-tasks-list-container');
+            if (container) {
+                if (activeTasks.length > 0) {
+                    container.innerHTML = activeTasks.map(t => `
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4>${t.name}</h4>
+                                <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                                <small>Completions: ${t.total}/${t.max}</small>
+                            </div>
+                            <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
+                        </div>
+                    `).join('');
+                    
+                    document.querySelectorAll('#social-tasks-list-container .task-btn.start').forEach(btn => {
+                        btn.addEventListener('click', async () => {
+                            if (this.isTaskRunning) {
+                                this.showNotification('Busy', 'Complete current task first', 'warning');
+                                return;
+                            }
+                            const id = btn.dataset.id;
+                            const reward = parseInt(btn.dataset.reward);
+                            const url = btn.dataset.url;
+                            const verify = btn.dataset.verify === 'true';
+                            const taskData = activeTasks.find(t => t.id === id);
+                            
+                            window.open(url, '_blank');
+                            this.isTaskRunning = true;
+                            this.disableAllTaskButtons();
+                            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                            btn.disabled = true;
+                            
+                            let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
+                            const interval = setInterval(() => {
+                                seconds--;
+                                if (seconds <= 0) {
+                                    clearInterval(interval);
+                                    btn.innerHTML = 'Claim';
+                                    btn.disabled = false;
+                                    btn.classList.remove('start');
+                                    btn.classList.add('check');
+                                    
+                                    const newBtn = btn.cloneNode(true);
+                                    btn.parentNode.replaceChild(newBtn, btn);
+                                    
+                                    newBtn.addEventListener('click', async (e) => {
+                                        e.stopPropagation();
+                                        newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                                        newBtn.disabled = true;
+                                        await this.completeTask(id, reward, url, verify, newBtn, false, true, taskData);
+                                    });
+                                }
+                            }, 1000);
+                        });
+                    });
+                } else {
+                    container.innerHTML = '<div class="no-data"><i class="fas fa-globe"></i><p>' + this.t('no_tasks') + '</p><small>' + this.t('check_later') + '</small></div>';
+                }
+            }
+        });
+        
+        const sectionHeader = document.querySelector('#earn-page .section-header:last-child');
+        if (sectionHeader) {
+            const p = sectionHeader.querySelector('p');
+            if (p) this.loadActiveSocialTasks().then(tasks => {
+                p.innerText = `${this.t('available_tasks')}: ${tasks.length}`;
+            });
+        }
+    }
+    
+    renderTeam() {
+        const el = document.getElementById('team-page');
+        if (!el) return;
+        const link = APP_CONFIG.BOT_LINK + this.tgUser.id;
+        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on ZENTRIX and start mining TON!')}`;
+        const requiredTasks = APP_CONFIG.REFERRAL_REQUIRED_TASKS;
+        const requiredMines = APP_CONFIG.REFERRAL_REQUIRED_MINES;
+        
+        el.innerHTML = `
+            <div class="team-benefits">
+                <h3><i class="fas fa-gift"></i> ${this.t('team_benefits')}</h3>
+                <div class="benefits-list">
+                    <div class="benefit-item"><i class="fas fa-coins"></i><div class="benefit-text">${this.t('team_earnings')}</div></div>
+                    <div class="benefit-item"><i class="fas fa-star"></i><div class="benefit-text">${this.t('referral_bonus')}: ${APP_CONFIG.REFERRAL_PERCENTAGE}% of friend's earnings + 500 Power after verification</div></div>
+                </div>
+                <div class="referral-reward">
+                    <i class="fas fa-info-circle"></i> Friend must complete ${requiredTasks} tasks or ${requiredMines} mining sessions to activate your bonus!
+                </div>
+            </div>
+            <div class="referral-card">
+                <h4><i class="fas fa-share-alt"></i> ${this.t('share_earn')}</h4>
+                <div class="link-display">${link}</div>
+                <div class="referral-buttons">
+                    <button id="copyLink"><i class="fas fa-copy"></i> ${this.t('copy')}</button>
+                    <button id="shareLink"><i class="fab fa-telegram"></i> ${this.t('share')}</button>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-mini"><span class="stat-label">${this.t('total_members')}</span><span class="stat-number">${this.totalReferrals}</span></div>
+                <div class="stat-mini"><span class="stat-label">${this.t('power_earnings')}</span><span class="stat-number">${this.formatNumber(Math.floor(this.referralPower))}</span></div>
+            </div>
+            <div class="friend-task-progress">
+                <i class="fas fa-chart-line"></i> Your referral progress: ${this.totalTasksCompleted}/${requiredTasks} tasks | ${this.totalMiningStarts}/${requiredMines} mines
+            </div>
+        `;
+        document.getElementById('copyLink')?.addEventListener('click', () => {
+            navigator.clipboard.writeText(link);
+            this.showNotification(this.t('copy_success'), this.t('link_copied'), 'success');
+        });
+        document.getElementById('shareLink')?.addEventListener('click', () => {
+            window.open(shareUrl, '_blank');
+        });
+    }
+    
+    renderWithdraw() {
+        const el = document.getElementById('withdraw-page');
+        if (!el) return;
+        const historyHtml = this.withdrawals && this.withdrawals.length ? this.withdrawals.map(w => `
+            <div class="history-item">
+                <div class="history-amount"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:16px;height:16px"> ${w.amount.toFixed(5)} TON</div>
+                <div class="history-status ${w.status}">${w.status === 'pending' ? this.t('pending') : this.t('completed')}</div>
+            </div>
+        `).join('') : '<div class="no-data">' + this.t('no_withdrawals') + '</div>';
+        
+        el.innerHTML = `
+            <div class="withdraw-card"><h3><i class="fas fa-wallet"></i> ${this.t('withdraw')}</h3><div class="withdraw-balance"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:28px;height:28px"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} TON</div>
+            <div class="form-group"><label class="form-label">${this.t('ton_wallet')}</label><div class="input-wrapper"><input type="text" id="wallet-addr" class="form-input" placeholder="UQ..."></div></div>
+            <div class="form-group"><label class="form-label">${this.t('amount')}</label><div class="input-wrapper"><input type="number" id="withdraw-amount" class="form-input" placeholder="${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON" step="0.00001"><button id="max-amount" class="action-btn">MAX</button></div></div>
+            <div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON</div>
+            <button id="withdraw-btn" class="withdraw-confirm-btn disabled">${this.t('confirm_withdrawal')}</button></div>
+            <div class="history-list"><h4><i class="fas fa-history"></i> ${this.t('withdrawal_history')}</h4>${historyHtml}</div>
+        `;
+        
+        const walletInput = document.getElementById('wallet-addr');
+        const amountInput = document.getElementById('withdraw-amount');
+        const withdrawBtn = document.getElementById('withdraw-btn');
+        const maxBtn = document.getElementById('max-amount');
+        
+        const checkWithdrawReady = () => {
+            const wallet = walletInput?.value.trim();
+            const amount = parseFloat(amountInput?.value);
+            const isValid = wallet && wallet.length >= 20 && amount >= APP_CONFIG.MINIMUM_WITHDRAW && amount <= this.tonBalance;
+            if (withdrawBtn) {
+                if (isValid) withdrawBtn.classList.remove('disabled');
+                else withdrawBtn.classList.add('disabled');
+            }
+        };
+        
+        maxBtn?.addEventListener('click', () => {
+            if (amountInput) {
+                let maxAmount = this.tonBalance - 0.00001;
+                if (maxAmount < 0) maxAmount = 0;
+                amountInput.value = maxAmount.toFixed(6);
+                checkWithdrawReady();
+            }
+        });
+        
+        walletInput?.addEventListener('input', checkWithdrawReady);
+        amountInput?.addEventListener('input', checkWithdrawReady);
+        
+        withdrawBtn?.addEventListener('click', () => {
+            if (withdrawBtn.classList.contains('disabled')) return;
+            const amount = parseFloat(amountInput.value);
+            const wallet = walletInput.value.trim();
+            this.withdraw(amount, wallet);
+        });
+    }
+    
+    updateModalTranslations() {
+        const claimTitle = document.getElementById('claim-title');
+        if (claimTitle) claimTitle.innerHTML = `<i class="fas fa-gift"></i> ${this.t('claim_mining_title')}`;
+        const claimBtn = document.getElementById('confirm-claim-btn');
+        if (claimBtn) claimBtn.innerText = this.t('claim_btn');
+        
+        const promoTitle = document.querySelector('#promo-info-modal .modal-header h3');
+        if (promoTitle) promoTitle.innerHTML = `<i class="fas fa-ticket-alt"></i> ${this.t('promo_info_title')}`;
+        const promoText = document.getElementById('promo-info-text');
+        if (promoText) promoText.innerHTML = `<i class="fas fa-telegram"></i> ${this.t('promo_info_text')}`;
+        const getPromoBtn = document.getElementById('get-promo-codes-btn');
+        if (getPromoBtn) getPromoBtn.innerHTML = `<i class="fas fa-hand-holding-heart"></i> ${this.t('get_promo_codes')}`;
+        const stepsTitle = document.getElementById('promo-steps-title');
+        if (stepsTitle) stepsTitle.innerText = this.t('how_it_works');
+        const step1 = document.getElementById('promo-step-1');
+        if (step1) step1.innerText = this.t('step1');
+        const step2 = document.getElementById('promo-step-2');
+        if (step2) step2.innerText = this.t('step2');
+        const step3 = document.getElementById('promo-step-3');
+        if (step3) step3.innerText = this.t('step3');
+        
+        document.getElementById('nav-mining').innerText = this.t('mining');
+        document.getElementById('nav-earn').innerText = this.t('earn');
+        document.getElementById('nav-team').innerText = this.t('team');
+        document.getElementById('nav-withdraw').innerText = this.t('withdraw');
+        document.getElementById('user-level-text').innerText = this.t('level');
+        
+        const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
+        document.getElementById('current-flag').innerText = currentFlag;
+    }
+    
+    setupEventListeners() {
+        document.getElementById('support-btn').onclick = () => window.open(APP_CONFIG.SUPPORT_LINK, '_blank');
+        
+        document.getElementById('close-tasks-info')?.addEventListener('click', () => {
+            document.getElementById('tasks-info-modal').style.display = 'none';
+        });
+        document.getElementById('close-promo-info')?.addEventListener('click', () => {
+            document.getElementById('promo-info-modal').style.display = 'none';
+        });
+        document.getElementById('close-add-task-modal')?.addEventListener('click', () => {
+            document.getElementById('add-task-modal').style.display = 'none';
+        });
+        document.getElementById('close-my-tasks-modal')?.addEventListener('click', () => {
+            document.getElementById('my-tasks-modal').style.display = 'none';
+        });
+        
+        document.getElementById('my-tasks-btn')?.addEventListener('click', async () => {
+            await this.loadUserTasks();
+            const myTasksList = document.getElementById('my-tasks-list');
+            if (myTasksList) {
+                if (this.userTasks.length > 0) {
+                    myTasksList.innerHTML = this.userTasks.map(t => `
+                        <div class="task-item">
+                            <div class="task-info">
+                                <h4>${t.name}</h4>
+                                <div class="task-reward">Status: ${t.status}</div>
+                                <small>Completions: ${t.total}/${t.max}</small>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    myTasksList.innerHTML = '<div class="no-data">No tasks added yet</div>';
+                }
+            }
+            document.getElementById('my-tasks-modal').style.display = 'flex';
+        });
+        
+        document.getElementById('add-task-btn')?.addEventListener('click', () => {
+            const nameInput = document.getElementById('task-name-input');
+            const urlInput = document.getElementById('task-url-input');
+            const verifySelect = document.getElementById('task-verify-select');
+            const maxSelect = document.getElementById('task-max-select');
+            const priceSpan = document.getElementById('task-price');
+            
+            if (nameInput && urlInput && verifySelect && maxSelect && priceSpan) {
+                nameInput.value = '';
+                urlInput.value = '';
+                verifySelect.value = 'true';
+                maxSelect.value = '100';
+                
+                const updatePrice = () => {
+                    const max = parseInt(maxSelect.value);
+                    const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
+                    priceSpan.innerText = price;
+                };
+                
+                maxSelect.onchange = updatePrice;
+                updatePrice();
+                
+                const payBtn = document.getElementById('pay-task-btn');
+                const newPayBtn = payBtn.cloneNode(true);
+                if (payBtn) payBtn.parentNode.replaceChild(newPayBtn, payBtn);
+                
+                document.getElementById('pay-task-btn')?.addEventListener('click', async () => {
+                    const name = nameInput.value.trim();
+                    const url = urlInput.value.trim();
+                    const verification = verifySelect.value;
+                    const maxCompletions = maxSelect.value;
+                    
+                    if (!name || name.length > 15 || !/^[a-zA-Z0-9\s]+$/.test(name)) {
+                        this.showNotification('Error', 'Name must be max 15 chars, English only', 'error');
+                        return;
+                    }
+                    if (!url || !url.startsWith('https://')) {
+                        this.showNotification('Error', 'URL must start with https://', 'error');
+                        return;
+                    }
+                    if (verification === 'true' && !url.includes('t.me/')) {
+                        this.showNotification('Error', 'Verification requires a Telegram channel URL (t.me/...)', 'error');
+                        return;
+                    }
+                    
+                    await this.addSocialTask(name, url, verification, maxCompletions);
+                });
+            }
+            document.getElementById('add-task-modal').style.display = 'flex';
+        });
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.saveUserData(true);
+            }
+        });
+        
+        window.addEventListener('beforeunload', () => {
+            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyMining) {
+                this.saveUserData(true);
+            }
+        });
+        
+        const langBtn = document.getElementById('lang-btn');
+        const langMenu = document.getElementById('lang-menu');
+        langBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.style.display = langMenu.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                this.lang = opt.dataset.lang;
+                localStorage.setItem('star_farmer_lang', this.lang);
+                const settings = JSON.parse(localStorage.getItem('star_farmer_settings') || '{}');
+                settings.lang = this.lang;
+                localStorage.setItem('star_farmer_settings', JSON.stringify(settings));
+                langMenu.style.display = 'none';
+                this.renderUI();
+                this.updateModalTranslations();
+                this.updateAdCooldownDisplay();
+                this.showNotification('Language', `Changed to ${opt.innerText}`, 'success');
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
+                if (langMenu) langMenu.style.display = 'none';
+            }
+        });
+    }
+    
+    saveSettings() {
+        localStorage.setItem('star_farmer_settings', JSON.stringify({ vibration: this.vibrationEnabled, lang: this.lang }));
+    }
+    
+    loadSettings() {
+        const saved = localStorage.getItem('star_farmer_settings');
+        if (saved) {
+            const s = JSON.parse(saved);
+            this.vibrationEnabled = s.vibration !== false;
+            this.lang = s.lang || this.getDeviceLanguage();
+        } else {
+            this.lang = this.getDeviceLanguage();
+        }
+        const savedLang = localStorage.getItem('star_farmer_lang');
+        if (savedLang) this.lang = savedLang;
+        const savedAdTime = localStorage.getItem('last_reward_ad_time');
+        if (savedAdTime) this.lastRewardAdTime = parseInt(savedAdTime);
+    }
+    
+    getDeviceLanguage() {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('ru')) return 'ru';
+        if (userLang.startsWith('tr')) return 'tr';
+        if (userLang.startsWith('ar')) return 'ar';
+        return 'en';
+    }
+    
+    setupNavigation() {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const id = btn.dataset.page;
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+                
+                if (id === 'mining-page') {
+                    this.renderMining();
+                } else if (id === 'earn-page') {
+                    this.showPageLoader('earn-page');
+                    if (!this._earnLoaded) {
+                        await this.loadEarnData();
+                        this._earnLoaded = true;
+                    }
+                    this.renderEarn();
+                    this.hidePageLoader();
+                } else if (id === 'team-page') {
+                    this.showPageLoader('team-page');
+                    if (!this._teamLoaded) {
+                        await this.loadReferralStats();
+                        this._teamLoaded = true;
+                    }
+                    this.renderTeam();
+                    this.hidePageLoader();
+                } else if (id === 'withdraw-page') {
+                    this.showPageLoader('withdraw-page');
+                    if (!this._withdrawLoaded) {
+                        await this.loadWithdrawals();
+                    }
+                    this.renderWithdraw();
+                    this.hidePageLoader();
+                }
+            });
+        });
+    }
+    
+    showPageLoader(pageId) {
+        const page = document.getElementById(pageId);
+        if (page && page.children.length === 0) {
+            page.innerHTML = `<div class="task-loading"><i class="fas fa-spinner fa-pulse"></i><p>${this.t('loading')}...</p></div>`;
+        }
+    }
+    
+    hidePageLoader() {}
+    
+    renderUI() {
+        this.renderMining();
+        if (this._earnLoaded) this.renderEarn();
+        if (this._teamLoaded) this.renderTeam();
+        if (this._withdrawLoaded) this.renderWithdraw();
+        this.updateModalTranslations();
+    }
+    
+    async initialize() {
+        const progressBar = document.getElementById('loader-progress-bar');
+        const loaderPercent = document.getElementById('loader-percent');
+        
+        const updateProgress = (percent) => {
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (loaderPercent) loaderPercent.innerText = Math.floor(percent) + '%';
+        };
+        
+        try {
+            updateProgress(10);
+            if (!window.Telegram?.WebApp) throw new Error('Open from Telegram');
+            this.tg = window.Telegram.WebApp;
+            this.tgUser = this.tg.initDataUnsafe.user;
+            if (!this.tgUser) throw new Error('No user data');
+            this.tg.ready();
+            this.tg.expand();
+            
+            updateProgress(30);
+            await this.initFirebase();
+            
+            updateProgress(40);
+            await this.checkUserState();
+            
+            updateProgress(50);
+            await this.checkDevice();
+            await this.updateFirebaseUid();
+            
+            updateProgress(70);
+            await this.syncServerTime();
+            
+            updateProgress(80);
+            await this.loadUserData();
+            
+            updateProgress(90);
+            const savedAdTime = localStorage.getItem('last_reward_ad_time');
+            if (savedAdTime) this.lastRewardAdTime = parseInt(savedAdTime);
+            
+            if (this.miningActive && this.miningEndTime) {
+                const currentTime = this.getCurrentTime();
+                if (currentTime >= this.miningEndTime) {
+                    const elapsedSeconds = (currentTime - this.miningStartTime) / 1000;
+                    const elapsedHours = elapsedSeconds / 3600;
+                    this.pendingTonReward = this.calculateRewardForHours(Math.min(elapsedHours, this.miningSessionHours));
+                    this.miningActive = false;
+                    this.miningStartTime = null;
+                    this.miningEndTime = null;
+                    this._dirtyMining = true;
+                    await this.saveUserData(true);
+                } else {
+                    this.startMiningLoop();
+                }
+            }
+            
+            this.setupEventListeners();
+            this.renderUI();
+            this.setupNavigation();
+            this.startCooldownTimer();
+            
+            setInterval(() => {
+                const resetTime = this.getDailyResetTimeUTC();
+                const now = Date.now();
+                if (now >= resetTime) {
+                    this.dailyCheckNewsCompleted = false;
+                    this.saveDailyTaskStatus();
+                    if (this._earnLoaded) this.renderEarn();
+                }
+            }, 60000);
+            
+            setInterval(() => {
+                if (this._dirtyPower || this._dirtyTon || this._dirtyMining) {
+                    this.scheduleSave();
+                }
+            }, 60000);
+            
+            updateProgress(100);
+            
+            setTimeout(() => {
+                const loader = document.getElementById('app-loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        document.getElementById('app').style.display = 'block';
+                        this.updateAdCooldownDisplay();
+                        this.updateMiningRing();
+                    }, 500);
+                } else {
+                    document.getElementById('app').style.display = 'block';
+                    this.updateAdCooldownDisplay();
+                }
+            }, 500);
+            this.isInitialized = true;
+            
+        } catch(err) {
+            console.error('Initialization error:', err);
+            if (err.message === 'User banned') return;
+            const errorEl = document.getElementById('loader-error');
+            if (errorEl) {
+                errorEl.textContent = err.message;
+                errorEl.style.display = 'block';
+            }
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.Telegram?.WebApp) {
+        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0a0a0a;color:#6C63FF">Open from Telegram Mini App</div>';
+        return;
+    }
+    window.app = new App();
+    window.app.initialize();
+});
