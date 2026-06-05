@@ -66,7 +66,7 @@ body {
 .loader-logo {
     width: 80px;
     height: 80px;
-    border-radius: 20px;
+    border-radius: 50%;
     animation: float 3s ease-in-out infinite;
     position: relative;
     z-index: 2;
@@ -459,6 +459,27 @@ body {
     position: relative;
     z-index: 2;
     pointer-events: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.mining-icon.pulse-logo {
+    animation: pulse-logo 1.5s infinite;
+    box-shadow: 0 0 20px var(--primary);
+}
+
+@keyframes pulse-logo {
+    0% {
+        box-shadow: 0 0 0 0 var(--primary-glow);
+        transform: scale(0.98);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(92, 107, 192, 0);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(92, 107, 192, 0);
+        transform: scale(0.98);
+    }
 }
 
 .progress-ring {
@@ -1467,4 +1488,108 @@ body {
 .ban-message h2 {
     color: var(--error);
     margin-bottom: 10px;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 10px;
+    background: rgba(0,0,0,0.3);
+    padding: 6px;
+    border-radius: 60px;
+}
+
+.toggle-option {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    padding: 8px 12px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.toggle-option.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.my-tasks-section {
+    margin-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.my-tasks-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.my-task-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.my-task-card .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.my-task-card .task-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.my-task-card .task-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.my-task-card .task-status {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.my-task-card .task-status.active {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.my-task-card .task-status.pending {
+    background: rgba(243, 156, 18, 0.2);
+    color: var(--warning);
+}
+
+.task-progress {
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--primary);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.progress-text {
+    font-size: 0.6rem;
+    color: #888;
+    margin-top: 4px;
+    text-align: right;
 }
