@@ -2,7 +2,7 @@ import { APP_CONFIG } from './data.js';
 
 const translations = {
     ru: {
-        level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "8 часов", daily: "Ежедневно", monthly: "Ежемесячно",
+        level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "5 часов", daily: "Ежедневно", monthly: "Ежемесячно",
         start_mining: "НАЧАТЬ МАЙНИНГ", claim_reward: "ПОЛУЧИТЬ НАГРАДУ", mining_note: "Награды можно получить после окончания сеанса майнинга",
         next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", promo_code: "Промокод",
         enter_code: "Введите код", claim: "Получить", main_tasks: "Основные задания", partner_tasks: "Социальные задания",
@@ -32,7 +32,7 @@ const translations = {
         task_payment_failed: "Ошибка оплаты задачи"
     },
     en: {
-        level: "Level", mining_rig: "Mining Rig Lv.", hourly: "8 Hours", daily: "Daily", monthly: "Monthly",
+        level: "Level", mining_rig: "Mining Rig Lv.", hourly: "5 Hours", daily: "Daily", monthly: "Monthly",
         start_mining: "START MINING", claim_reward: "CLAIM REWARD", mining_note: "Rewards can be collected after mining session ends",
         next_level_reward: "Next level reward", power: "Power", ton: "TON", promo_code: "Promo Code",
         enter_code: "Enter code", claim: "Claim", main_tasks: "Main Tasks", partner_tasks: "Social Tasks",
@@ -62,7 +62,7 @@ const translations = {
         task_payment_failed: "Task Payment Failed"
     },
     tr: {
-        level: "Seviye", mining_rig: "Madenci Seviye", hourly: "8 saat", daily: "Günlük", monthly: "Aylık",
+        level: "Seviye", mining_rig: "Madenci Seviye", hourly: "5 saat", daily: "Günlük", monthly: "Aylık",
         start_mining: "MADENCİLİĞE BAŞLA", claim_reward: "ÖDÜLÜ AL", mining_note: "Ödüller madencilik oturumu bittikten sonra toplanabilir",
         next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", promo_code: "Promosyon Kodu",
         enter_code: "Kodu girin", claim: "Al", main_tasks: "Ana Görevler", partner_tasks: "Sosyal Görevler",
@@ -92,7 +92,7 @@ const translations = {
         task_payment_failed: "Görev Ödemesi Başarısız"
     },
     ar: {
-        level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 8 ساعات", daily: "يومي", monthly: "شهري",
+        level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 5 ساعات", daily: "يومي", monthly: "شهري",
         start_mining: "بدء التعدين", claim_reward: "استلام المكافأة", mining_note: "يمكن جمع المكافآت بعد انتهاء جلسة التعدين",
         next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", promo_code: "رمز ترويجي",
         enter_code: "أدخل الرمز", claim: "استلام", main_tasks: "المهام الرئيسية", partner_tasks: "المهام الاجتماعية",
@@ -206,7 +206,7 @@ class App {
     }
     
     getHourlyTonRate() {
-        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_TON_RATE * 8;
+        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_TON_RATE * 5;
     }
     
     getDailyTonRate() {
@@ -218,7 +218,7 @@ class App {
     }
     
     calculateRewardForHours(hours) {
-        return this.getHourlyTonRate() * (hours / 8);
+        return this.getHourlyTonRate() * (hours / 5);
     }
     
     updateLevelFromPower() {
@@ -287,7 +287,7 @@ class App {
         
         if (conditionsMet) {
             this.referralRewardGiven = true;
-            const rewardPower = 500;
+            const rewardPower = APP_CONFIG.REFERRAL_POWER_REWARD;
             
             try {
                 const referrerRef = this.db.ref(`users/${this.referredBy}`);
@@ -346,6 +346,15 @@ class App {
             const circumference = 2 * Math.PI * radius;
             const offset = circumference - (percent / 100) * circumference;
             circle.style.strokeDashoffset = offset;
+        }
+        
+        const miningIcon = document.querySelector('.mining-icon');
+        if (miningIcon) {
+            if (this.miningActive) {
+                miningIcon.classList.add('pulse-logo');
+            } else {
+                miningIcon.classList.remove('pulse-logo');
+            }
         }
     }
     
@@ -413,6 +422,14 @@ class App {
         }
         
         await this.syncServerTime();
+        
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+        } catch (result) {
+            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
+            return;
+        }
         
         const modal = document.getElementById('claim-modal');
         const rewardEl = document.getElementById('claim-reward-amount');
@@ -777,7 +794,7 @@ class App {
                         category: 'social',
                         verification: verification === 'true',
                         max: parseInt(maxCompletions),
-                        status: 'pending',
+                        status: 'active',
                         owner: this.tgUser.id,
                         createdAt: this.getCurrentTime(),
                         reward: 10,
@@ -785,9 +802,10 @@ class App {
                     };
                     
                     await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
-                    this.showNotification('Success', 'Task added and pending approval', 'success');
+                    this.showNotification('Success', 'Task added successfully', 'success');
                     document.getElementById('add-task-modal').style.display = 'none';
                     await this.loadUserTasks();
+                    this.renderAddTaskModal();
                 } else {
                     this.showNotification('Payment Failed', 'Please try again', 'error');
                 }
@@ -1685,7 +1703,7 @@ class App {
             </div>
             <div class="mining-card">
                 <div class="mining-icon-container">
-                    <img src="https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg" class="mining-icon">
+                    <img src="https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg" class="mining-icon ${this.miningActive ? 'pulse-logo' : ''}">
                     <svg class="progress-ring" width="150" height="150" viewBox="0 0 150 150">
                         <circle cx="75" cy="75" r="${radius}" fill="none" stroke="rgba(92,107,192,0.2)" stroke-width="6"/>
                         <circle class="progress-ring-circle" cx="75" cy="75" r="${radius}" fill="none" stroke="var(--primary)" stroke-width="6" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" stroke-linecap="round" transform="rotate(-90 75 75)"/>
@@ -1728,6 +1746,40 @@ class App {
         
         if (this.miningActive) this.updateMiningTimerDisplay();
         this.updateAdCooldownDisplay();
+    }
+    
+    renderAddTaskModal() {
+        const container = document.getElementById('my-tasks-list-modal');
+        if (!container) return;
+        
+        if (this.userTasks.length === 0) {
+            container.innerHTML = '<div class="no-data">No tasks created<br>Create your first task now!</div>';
+            return;
+        }
+        
+        container.innerHTML = this.userTasks.map(task => {
+            const statusClass = task.status === 'active' ? 'active' : 'pending';
+            const statusText = task.status === 'active' ? 'Active' : 'Pending';
+            const progressPercent = (task.total / task.max) * 100;
+            
+            return `
+                <div class="my-task-card">
+                    <div class="task-header">
+                        <div class="task-left">
+                            <i class="fas fa-tasks"></i>
+                            <span class="task-name">${task.name}</span>
+                        </div>
+                        <div class="task-status ${statusClass}">${statusText}</div>
+                    </div>
+                    ${task.status === 'active' ? `
+                        <div class="task-progress">
+                            <div class="progress-bar" style="width: ${progressPercent}%"></div>
+                            <div class="progress-text">${task.total}/${task.max} completions</div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }).join('');
     }
     
     renderEarn() {
@@ -2015,19 +2067,14 @@ class App {
         const el = document.getElementById('team-page');
         if (!el) return;
         const link = APP_CONFIG.BOT_LINK + this.tgUser.id;
-        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on ZENTRIX and start mining TON!')}`;
-        const requiredTasks = APP_CONFIG.REFERRAL_REQUIRED_TASKS;
-        const requiredMines = APP_CONFIG.REFERRAL_REQUIRED_MINES;
+        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on Z MINER and start mining TON!')}`;
         
         el.innerHTML = `
             <div class="team-benefits">
                 <h3><i class="fas fa-gift"></i> ${this.t('team_benefits')}</h3>
                 <div class="benefits-list">
-                    <div class="benefit-item"><i class="fas fa-coins"></i><div class="benefit-text">${this.t('team_earnings')}</div></div>
-                    <div class="benefit-item"><i class="fas fa-star"></i><div class="benefit-text">${this.t('referral_bonus')}: ${APP_CONFIG.REFERRAL_PERCENTAGE}% of friend's earnings + 500 Power after verification</div></div>
-                </div>
-                <div class="referral-reward">
-                    <i class="fas fa-info-circle"></i> Friend must complete ${requiredTasks} tasks or ${requiredMines} mining sessions to activate your bonus!
+                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">Earn ${APP_CONFIG.REFERRAL_POWER_REWARD} Power Per Verified Referral</div></div>
+                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">Earn ${APP_CONFIG.REFERRAL_PERCENTAGE}% From Friends Earnings</div></div>
                 </div>
             </div>
             <div class="referral-card">
@@ -2041,9 +2088,6 @@ class App {
             <div class="stats-grid">
                 <div class="stat-mini"><span class="stat-label">${this.t('total_members')}</span><span class="stat-number">${this.totalReferrals}</span></div>
                 <div class="stat-mini"><span class="stat-label">${this.t('power_earnings')}</span><span class="stat-number">${this.formatNumber(Math.floor(this.referralPower))}</span></div>
-            </div>
-            <div class="friend-task-progress">
-                <i class="fas fa-chart-line"></i> Your referral progress: ${this.totalTasksCompleted}/${requiredTasks} tasks | ${this.totalMiningStarts}/${requiredMines} mines
             </div>
         `;
         document.getElementById('copyLink')?.addEventListener('click', () => {
@@ -2152,80 +2196,27 @@ class App {
         document.getElementById('close-add-task-modal')?.addEventListener('click', () => {
             document.getElementById('add-task-modal').style.display = 'none';
         });
-        document.getElementById('close-my-tasks-modal')?.addEventListener('click', () => {
-            document.getElementById('my-tasks-modal').style.display = 'none';
-        });
-        
-        document.getElementById('my-tasks-btn')?.addEventListener('click', async () => {
-            await this.loadUserTasks();
-            const myTasksList = document.getElementById('my-tasks-list');
-            if (myTasksList) {
-                if (this.userTasks.length > 0) {
-                    myTasksList.innerHTML = this.userTasks.map(t => `
-                        <div class="task-item">
-                            <div class="task-info">
-                                <h4>${t.name}</h4>
-                                <div class="task-reward">Status: ${t.status}</div>
-                                <small>Completions: ${t.total}/${t.max}</small>
-                            </div>
-                        </div>
-                    `).join('');
-                } else {
-                    myTasksList.innerHTML = '<div class="no-data">No tasks added yet</div>';
-                }
-            }
-            document.getElementById('my-tasks-modal').style.display = 'flex';
-        });
         
         document.getElementById('add-task-btn')?.addEventListener('click', () => {
             const nameInput = document.getElementById('task-name-input');
             const urlInput = document.getElementById('task-url-input');
             const verifySelect = document.getElementById('task-verify-select');
             const maxSelect = document.getElementById('task-max-select');
-            const priceSpan = document.getElementById('task-price');
             
-            if (nameInput && urlInput && verifySelect && maxSelect && priceSpan) {
+            if (nameInput && urlInput && verifySelect && maxSelect) {
                 nameInput.value = '';
                 urlInput.value = '';
                 verifySelect.value = 'true';
-                maxSelect.value = '100';
-                
-                const updatePrice = () => {
-                    const max = parseInt(maxSelect.value);
-                    const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
-                    priceSpan.innerText = price;
-                };
-                
-                maxSelect.onchange = updatePrice;
-                updatePrice();
+                maxSelect.value = '1000';
                 
                 const payBtn = document.getElementById('pay-task-btn');
                 const newPayBtn = payBtn.cloneNode(true);
                 if (payBtn) payBtn.parentNode.replaceChild(newPayBtn, payBtn);
                 
-                document.getElementById('pay-task-btn')?.addEventListener('click', async () => {
-                    const name = nameInput.value.trim();
-                    const url = urlInput.value.trim();
-                    const verification = verifySelect.value;
-                    const maxCompletions = maxSelect.value;
-                    
-                    if (!name || name.length > 15 || !/^[a-zA-Z0-9\s]+$/.test(name)) {
-                        this.showNotification('Error', 'Name must be max 15 chars, English only', 'error');
-                        return;
-                    }
-                    if (!url || !url.startsWith('https://')) {
-                        this.showNotification('Error', 'URL must start with https://', 'error');
-                        return;
-                    }
-                    if (verification === 'true' && !url.includes('t.me/')) {
-                        this.showNotification('Error', 'Verification requires a Telegram channel URL (t.me/...)', 'error');
-                        return;
-                    }
-                    
-                    await this.addSocialTask(name, url, verification, maxCompletions);
-                });
+                this.setupAddTaskModalListeners();
             }
             document.getElementById('add-task-modal').style.display = 'flex';
+            this.renderAddTaskModal();
         });
         
         document.addEventListener('visibilitychange', () => {
@@ -2267,6 +2258,75 @@ class App {
                 if (langMenu) langMenu.style.display = 'none';
             }
         });
+    }
+    
+    setupAddTaskModalListeners() {
+        const verifyOptions = document.querySelectorAll('#add-task-modal .toggle-option[data-value="true"], #add-task-modal .toggle-option[data-value="false"]');
+        verifyOptions.forEach(opt => {
+            opt.removeEventListener('click', this.handleVerifyToggle);
+            opt.addEventListener('click', this.handleVerifyToggle.bind(this));
+        });
+        
+        const completionsOptions = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
+        completionsOptions.forEach(opt => {
+            opt.removeEventListener('click', this.handleCompletionsToggle);
+            opt.addEventListener('click', this.handleCompletionsToggle.bind(this));
+        });
+        
+        const payBtn = document.getElementById('pay-task-btn');
+        if (payBtn) {
+            const newPayBtn = payBtn.cloneNode(true);
+            payBtn.parentNode.replaceChild(newPayBtn, payBtn);
+            newPayBtn.addEventListener('click', async () => {
+                const name = document.getElementById('task-name-input').value.trim();
+                const url = document.getElementById('task-url-input').value.trim();
+                const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'true';
+                const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
+                
+                if (!name || name.length > 15 || !/^[a-zA-Z0-9\s]+$/.test(name)) {
+                    this.showNotification('Error', 'Name must be max 15 chars, English only', 'error');
+                    return;
+                }
+                if (!url || !url.startsWith('https://')) {
+                    this.showNotification('Error', 'URL must start with https://', 'error');
+                    return;
+                }
+                if (verification === 'true' && !url.includes('t.me/')) {
+                    this.showNotification('Error', 'Verification requires a Telegram channel URL (t.me/...)', 'error');
+                    return;
+                }
+                
+                await this.addSocialTask(name, url, verification, maxCompletions);
+            });
+        }
+    }
+    
+    handleVerifyToggle(e) {
+        const btn = e.currentTarget;
+        const parent = btn.parentElement;
+        parent.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const verifyNote = document.getElementById('verify-note');
+        if (verifyNote) {
+            verifyNote.style.display = btn.dataset.value === 'true' ? 'block' : 'none';
+        }
+    }
+    
+    handleCompletionsToggle(e) {
+        const btn = e.currentTarget;
+        const parent = btn.parentElement;
+        parent.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const priceSpan = document.getElementById('task-price');
+        if (priceSpan) {
+            const max = parseInt(btn.dataset.value);
+            const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
+            priceSpan.innerText = price;
+            const payBtn = document.getElementById('pay-task-btn');
+            if (payBtn) payBtn.innerHTML = `PAY ${price} STAR`;
+        }
     }
     
     saveSettings() {
