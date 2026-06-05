@@ -350,9 +350,6 @@ class App {
     }
     
     async startMining() {
-        const adWatched = await this.showInterstitialAd();
-        if (!adWatched) return;
-        
         const serverTime = await this.syncServerTime();
         
         this.miningActive = true;
