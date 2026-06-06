@@ -29,7 +29,25 @@ const translations = {
         ban_message: "Ваш аккаунт заблокирован. Обратитесь в поддержку.",
         withdrawal_requested: "Запрос на вывод",
         new_referral: "Новый реферал",
-        task_payment_failed: "Ошибка оплаты задачи"
+        task_payment_failed: "Ошибка оплаты задачи",
+        earn_power_referral: "Заработайте 300 энергии за подтвержденного реферала",
+        earn_percent_friends: "Зарабатывайте 20% от дохода друзей",
+        task_name_placeholder: "Введите название задачи",
+        task_url_placeholder: "Введите URL задачи (https://t.me/..)",
+        add_admin_note: "Добавьте @Zentrxbot администратором",
+        verification_yes: "ДА",
+        verification_no: "НЕТ",
+        completions_100: "100 выполнений",
+        completions_250: "250 выполнений",
+        completions_500: "500 выполнений",
+        completions_1000: "1000 выполнений",
+        pay_stars: "ОПЛАТИТЬ {stars} ЗВЕЗД",
+        no_tasks_created: "Нет созданных задач\nСоздайте свою первую задачу!",
+        pending_status: "НА РАССМОТРЕНИИ",
+        active_status: "АКТИВНА",
+        completions_count: "выполнений",
+        add_task_title: "Добавить социальное задание",
+        my_tasks_title: "Мои задания"
     },
     en: {
         level: "Level", mining_rig: "Mining Rig Lv.", hourly: "5 Hours", daily: "Daily", monthly: "Monthly",
@@ -59,7 +77,25 @@ const translations = {
         ban_message: "Your account has been banned. Please contact support.",
         withdrawal_requested: "Withdrawal Requested",
         new_referral: "New Referral",
-        task_payment_failed: "Task Payment Failed"
+        task_payment_failed: "Task Payment Failed",
+        earn_power_referral: "Earn 300 Power Per Verified Referral",
+        earn_percent_friends: "Earn 20% From Friends Earnings",
+        task_name_placeholder: "Enter Task Name",
+        task_url_placeholder: "Enter Task URL (https://t.me/..)",
+        add_admin_note: "Add @Zentrxbot as admin",
+        verification_yes: "YES",
+        verification_no: "NO",
+        completions_100: "100 completions",
+        completions_250: "250 completions",
+        completions_500: "500 completions",
+        completions_1000: "1000 completions",
+        pay_stars: "PAY {stars} STAR",
+        no_tasks_created: "No tasks created\nCreate your first task now!",
+        pending_status: "PENDING",
+        active_status: "ACTIVE",
+        completions_count: "completions",
+        add_task_title: "Add Social Task",
+        my_tasks_title: "My Tasks"
     },
     tr: {
         level: "Seviye", mining_rig: "Madenci Seviye", hourly: "5 saat", daily: "Günlük", monthly: "Aylık",
@@ -89,7 +125,25 @@ const translations = {
         ban_message: "Hesabınız yasaklandı. Lütfen desteğe başvurun.",
         withdrawal_requested: "Çekim Talebi",
         new_referral: "Yeni Referans",
-        task_payment_failed: "Görev Ödemesi Başarısız"
+        task_payment_failed: "Görev Ödemesi Başarısız",
+        earn_power_referral: "Doğrulanmış Referans Başına 300 Güç Kazanın",
+        earn_percent_friends: "Arkadaş Kazançlarından %20 Kazanın",
+        task_name_placeholder: "Görev Adını Girin",
+        task_url_placeholder: "Görev URL'sini Girin (https://t.me/..)",
+        add_admin_note: "@Zentrxbot'u yönetici olarak ekleyin",
+        verification_yes: "EVET",
+        verification_no: "HAYIR",
+        completions_100: "100 tamamlama",
+        completions_250: "250 tamamlama",
+        completions_500: "500 tamamlama",
+        completions_1000: "1000 tamamlama",
+        pay_stars: "{stars} YILDIZ ÖDE",
+        no_tasks_created: "Görev oluşturulmadı\nŞimdi ilk görevinizi oluşturun!",
+        pending_status: "BEKLEMEDE",
+        active_status: "AKTİF",
+        completions_count: "tamamlama",
+        add_task_title: "Sosyal Görev Ekle",
+        my_tasks_title: "Görevlerim"
     },
     ar: {
         level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 5 ساعات", daily: "يومي", monthly: "شهري",
@@ -119,7 +173,25 @@ const translations = {
         ban_message: "تم حظر حسابك. يرجى الاتصال بالدعم.",
         withdrawal_requested: "طلب السحب",
         new_referral: "إحالة جديدة",
-        task_payment_failed: "فشل دفع المهمة"
+        task_payment_failed: "فشل دفع المهمة",
+        earn_power_referral: "اربح 300 طاقة لكل إحالة مؤكدة",
+        earn_percent_friends: "اربح 20% من أرباح الأصدقاء",
+        task_name_placeholder: "أدخل اسم المهمة",
+        task_url_placeholder: "أدخل رابط المهمة (https://t.me/..)",
+        add_admin_note: "أضف @Zentrxbot كمدير",
+        verification_yes: "نعم",
+        verification_no: "لا",
+        completions_100: "100 إكمال",
+        completions_250: "250 إكمال",
+        completions_500: "500 إكمال",
+        completions_1000: "1000 إكمال",
+        pay_stars: "ادفع {stars} نجمة",
+        no_tasks_created: "لا توجد مهام منشأة\nأنشئ مهمتك الأولى الآن!",
+        pending_status: "قيد المراجعة",
+        active_status: "نشطة",
+        completions_count: "إكمال",
+        add_task_title: "إضافة مهمة اجتماعية",
+        my_tasks_title: "مهامي"
     }
 };
 
@@ -193,8 +265,11 @@ class App {
         this.membershipCache = new Map();
     }
     
-    t(key) {
+    t(key, params = {}) {
         let text = translations[this.lang]?.[key] || translations.en[key] || key;
+        for (const [k, v] of Object.entries(params)) {
+            text = text.replace(`{${k}}`, v);
+        }
         if (key === 'team_earnings') {
             text = text.replace('%from%', APP_CONFIG.REFERRAL_PERCENTAGE);
         }
@@ -1753,13 +1828,13 @@ class App {
         if (!container) return;
         
         if (this.userTasks.length === 0) {
-            container.innerHTML = '<div class="no-data">No tasks created<br>Create your first task now!</div>';
+            container.innerHTML = `<div class="no-data">${this.t('no_tasks_created')}</div>`;
             return;
         }
         
         container.innerHTML = this.userTasks.map(task => {
             const statusClass = task.status === 'active' ? 'active' : 'pending';
-            const statusText = task.status === 'active' ? 'Active' : 'Pending';
+            const statusText = task.status === 'active' ? this.t('active_status') : this.t('pending_status');
             const progressPercent = (task.total / task.max) * 100;
             
             return `
@@ -1774,7 +1849,7 @@ class App {
                     ${task.status === 'active' ? `
                         <div class="task-progress">
                             <div class="progress-bar" style="width: ${progressPercent}%"></div>
-                            <div class="progress-text">${task.total}/${task.max} completions</div>
+                            <div class="progress-text">${task.total}/${task.max} ${this.t('completions_count')}</div>
                         </div>
                     ` : ''}
                 </div>
@@ -1874,69 +1949,7 @@ class App {
         
         document.getElementById('tasks-info-btn')?.addEventListener('click', async () => {
             await this.loadUserTasks();
-            const activeTasks = await this.loadActiveSocialTasks();
-            const socialTasksList = document.getElementById('social-tasks-list');
-            if (socialTasksList) {
-                if (activeTasks.length > 0) {
-                    socialTasksList.innerHTML = activeTasks.map(t => `
-                        <div class="task-item">
-                            <div class="task-info">
-                                <h4>${t.name}</h4>
-                                <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
-                                <small>Completions: ${t.total}/${t.max}</small>
-                            </div>
-                            <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
-                        </div>
-                    `).join('');
-                    
-                    document.querySelectorAll('#social-tasks-list .task-btn.start').forEach(btn => {
-                        btn.addEventListener('click', async () => {
-                            if (this.isTaskRunning) {
-                                this.showNotification('Busy', 'Complete current task first', 'warning');
-                                return;
-                            }
-                            const id = btn.dataset.id;
-                            const reward = parseInt(btn.dataset.reward);
-                            const url = btn.dataset.url;
-                            const verify = btn.dataset.verify === 'true';
-                            
-                            const taskData = activeTasks.find(t => t.id === id);
-                            
-                            window.open(url, '_blank');
-                            this.isTaskRunning = true;
-                            this.disableAllTaskButtons();
-                            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                            btn.disabled = true;
-                            
-                            let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
-                            const interval = setInterval(() => {
-                                seconds--;
-                                if (seconds <= 0) {
-                                    clearInterval(interval);
-                                    btn.innerHTML = 'Claim';
-                                    btn.disabled = false;
-                                    btn.classList.remove('start');
-                                    btn.classList.add('check');
-                                    
-                                    const newBtn = btn.cloneNode(true);
-                                    btn.parentNode.replaceChild(newBtn, btn);
-                                    
-                                    newBtn.addEventListener('click', async (e) => {
-                                        e.stopPropagation();
-                                        newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                                        newBtn.disabled = true;
-                                        await this.completeTask(id, reward, url, verify, newBtn, false, true, taskData);
-                                    });
-                                }
-                            }, 1000);
-                        });
-                    });
-                } else {
-                    socialTasksList.innerHTML = '<div class="no-data"><i class="fas fa-globe"></i><p>' + this.t('no_tasks') + '</p></div>';
-                }
-            }
-            document.getElementById('tasks-info-modal').style.display = 'flex';
-            this.updateModalTranslations();
+            this.openAddTaskModal();
         });
         
         document.getElementById('promo-info-btn')?.addEventListener('click', () => {
@@ -2073,8 +2086,8 @@ class App {
             <div class="team-benefits">
                 <h3><i class="fas fa-gift"></i> ${this.t('team_benefits')}</h3>
                 <div class="benefits-list">
-                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">Earn ${APP_CONFIG.REFERRAL_POWER_REWARD} Power Per Verified Referral</div></div>
-                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">Earn ${APP_CONFIG.REFERRAL_PERCENTAGE}% From Friends Earnings</div></div>
+                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">${this.t('earn_power_referral')}</div></div>
+                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">${this.t('earn_percent_friends')}</div></div>
                 </div>
             </div>
             <div class="referral-card">
@@ -2180,84 +2193,82 @@ class App {
         document.getElementById('nav-withdraw').innerText = this.t('withdraw');
         document.getElementById('user-level-text').innerText = this.t('level');
         
+        const addTaskTitle = document.getElementById('add-task-title');
+        if (addTaskTitle) addTaskTitle.innerText = this.t('add_task_title');
+        const myTasksTitle = document.getElementById('my-tasks-title');
+        if (myTasksTitle) myTasksTitle.innerText = this.t('my_tasks_title');
+        const taskNameLabel = document.getElementById('task-name-label');
+        if (taskNameLabel) taskNameLabel.innerText = this.t('task_name');
+        const taskUrlLabel = document.getElementById('task-url-label');
+        if (taskUrlLabel) taskUrlLabel.innerText = this.t('task_url');
+        const verificationLabel = document.getElementById('verification-label');
+        if (verificationLabel) verificationLabel.innerText = this.t('verification');
+        const completionsLabel = document.getElementById('completions-label');
+        if (completionsLabel) completionsLabel.innerText = this.t('max_completions');
+        
+        const taskNameInput = document.getElementById('task-name-input');
+        if (taskNameInput) taskNameInput.placeholder = this.t('task_name_placeholder');
+        const taskUrlInput = document.getElementById('task-url-input');
+        if (taskUrlInput) taskUrlInput.placeholder = this.t('task_url_placeholder');
+        const verifyNote = document.getElementById('verify-note');
+        if (verifyNote) verifyNote.innerText = this.t('add_admin_note');
+        
+        const verifyYesBtn = document.getElementById('verify-yes-btn');
+        if (verifyYesBtn) verifyYesBtn.innerText = this.t('verification_yes');
+        const verifyNoBtn = document.getElementById('verify-no-btn');
+        if (verifyNoBtn) verifyNoBtn.innerText = this.t('verification_no');
+        
+        const completionsBtns = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
+        if (completionsBtns.length >= 4) {
+            completionsBtns[0].innerText = this.t('completions_100');
+            completionsBtns[1].innerText = this.t('completions_250');
+            completionsBtns[2].innerText = this.t('completions_500');
+            completionsBtns[3].innerText = this.t('completions_1000');
+        }
+        
+        const payBtn = document.getElementById('pay-task-btn');
+        if (payBtn) {
+            const max = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
+            const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
+            payBtn.innerHTML = this.t('pay_stars', { stars: price });
+        }
+        
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
         document.getElementById('current-flag').innerText = currentFlag;
     }
     
-    setupEventListeners() {
-        document.getElementById('support-btn').onclick = () => window.open(APP_CONFIG.SUPPORT_LINK, '_blank');
+    openAddTaskModal() {
+        const nameInput = document.getElementById('task-name-input');
+        const urlInput = document.getElementById('task-url-input');
+        const verifyNote = document.getElementById('verify-note');
         
-        document.getElementById('close-tasks-info')?.addEventListener('click', () => {
-            document.getElementById('tasks-info-modal').style.display = 'none';
-        });
-        document.getElementById('close-promo-info')?.addEventListener('click', () => {
-            document.getElementById('promo-info-modal').style.display = 'none';
-        });
-        document.getElementById('close-add-task-modal')?.addEventListener('click', () => {
-            document.getElementById('add-task-modal').style.display = 'none';
-        });
+        if (nameInput) nameInput.value = '';
+        if (urlInput) urlInput.value = '';
+        if (verifyNote) verifyNote.style.display = 'none';
         
-        document.getElementById('add-task-btn')?.addEventListener('click', () => {
-            const nameInput = document.getElementById('task-name-input');
-            const urlInput = document.getElementById('task-url-input');
-            const verifySelect = document.getElementById('task-verify-select');
-            const maxSelect = document.getElementById('task-max-select');
-            
-            if (nameInput && urlInput && verifySelect && maxSelect) {
-                nameInput.value = '';
-                urlInput.value = '';
-                verifySelect.value = 'true';
-                maxSelect.value = '1000';
-                
-                const payBtn = document.getElementById('pay-task-btn');
-                const newPayBtn = payBtn.cloneNode(true);
-                if (payBtn) payBtn.parentNode.replaceChild(newPayBtn, payBtn);
-                
-                this.setupAddTaskModalListeners();
-            }
-            document.getElementById('add-task-modal').style.display = 'flex';
-            this.renderAddTaskModal();
+        const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
+        verifyButtons.forEach(btn => {
+            if (btn.dataset.value === 'true') btn.classList.add('active');
+            else btn.classList.remove('active');
         });
         
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                this.saveUserData(true);
-            }
+        const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
+        completionsButtons.forEach(btn => {
+            if (btn.dataset.value === '1000') btn.classList.add('active');
+            else btn.classList.remove('active');
         });
         
-        window.addEventListener('beforeunload', () => {
-            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyMining) {
-                this.saveUserData(true);
-            }
-        });
+        const priceSpan = document.getElementById('task-price');
+        if (priceSpan) {
+            priceSpan.innerText = '50';
+            const payBtn = document.getElementById('pay-task-btn');
+            if (payBtn) payBtn.innerHTML = this.t('pay_stars', { stars: 50 });
+        }
         
-        const langBtn = document.getElementById('lang-btn');
-        const langMenu = document.getElementById('lang-menu');
-        langBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.style.display = langMenu.style.display === 'none' ? 'block' : 'none';
-        });
-        
-        document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.addEventListener('click', () => {
-                this.lang = opt.dataset.lang;
-                localStorage.setItem('star_farmer_lang', this.lang);
-                const settings = JSON.parse(localStorage.getItem('star_farmer_settings') || '{}');
-                settings.lang = this.lang;
-                localStorage.setItem('star_farmer_settings', JSON.stringify(settings));
-                langMenu.style.display = 'none';
-                this.renderUI();
-                this.updateModalTranslations();
-                this.updateAdCooldownDisplay();
-                this.showNotification('Language', `Changed to ${opt.innerText}`, 'success');
-            });
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
-                if (langMenu) langMenu.style.display = 'none';
-            }
-        });
+        this.setupAddTaskModalListeners();
+        this.renderAddTaskModal();
+        this.updateModalTranslations();
+        document.getElementById('add-task-modal').style.display = 'flex';
     }
     
     setupAddTaskModalListeners() {
@@ -2319,14 +2330,61 @@ class App {
         parent.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
         btn.classList.add('active');
         
-        const priceSpan = document.getElementById('task-price');
-        if (priceSpan) {
-            const max = parseInt(btn.dataset.value);
-            const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
-            priceSpan.innerText = price;
-            const payBtn = document.getElementById('pay-task-btn');
-            if (payBtn) payBtn.innerHTML = `PAY ${price} STAR`;
-        }
+        const max = parseInt(btn.dataset.value);
+        const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
+        const payBtn = document.getElementById('pay-task-btn');
+        if (payBtn) payBtn.innerHTML = this.t('pay_stars', { stars: price });
+    }
+    
+    setupEventListeners() {
+        document.getElementById('support-btn').onclick = () => window.open(APP_CONFIG.SUPPORT_LINK, '_blank');
+        
+        document.getElementById('close-promo-info')?.addEventListener('click', () => {
+            document.getElementById('promo-info-modal').style.display = 'none';
+        });
+        document.getElementById('close-add-task-modal')?.addEventListener('click', () => {
+            document.getElementById('add-task-modal').style.display = 'none';
+        });
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.saveUserData(true);
+            }
+        });
+        
+        window.addEventListener('beforeunload', () => {
+            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyMining) {
+                this.saveUserData(true);
+            }
+        });
+        
+        const langBtn = document.getElementById('lang-btn');
+        const langMenu = document.getElementById('lang-menu');
+        langBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.style.display = langMenu.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                this.lang = opt.dataset.lang;
+                localStorage.setItem('star_farmer_lang', this.lang);
+                const settings = JSON.parse(localStorage.getItem('star_farmer_settings') || '{}');
+                settings.lang = this.lang;
+                localStorage.setItem('star_farmer_settings', JSON.stringify(settings));
+                langMenu.style.display = 'none';
+                this.renderUI();
+                this.updateModalTranslations();
+                this.updateAdCooldownDisplay();
+                this.showNotification('Language', `Changed to ${opt.innerText}`, 'success');
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!langBtn?.contains(e.target) && !langMenu?.contains(e.target)) {
+                if (langMenu) langMenu.style.display = 'none';
+            }
+        });
     }
     
     saveSettings() {
