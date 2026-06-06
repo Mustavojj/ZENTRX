@@ -14,7 +14,7 @@ export const APP_CONFIG = {
     INTERSTITIAL_AD_BLOCK_ID: "int-32206",
     BOT_LINK: "https://t.me/Zentrxbot/mine?startapp=",
     DAILY_CHECK_NEWS_LINK: "https://t.me/Zentrxb",
-    STAR_PRICE_PER_100: 50,
+    STAR_PRICE_PER_100: 25,
     REFERRAL_REQUIRED_TASKS: 5,
     REFERRAL_REQUIRED_MINES: 2,
     BOT_TOKEN: "",
