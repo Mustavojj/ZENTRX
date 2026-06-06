@@ -98,28 +98,28 @@
 <div id="add-task-modal" class="modal" style="display:none;">
     <div class="modal-content glass-modal modern-modal">
         <div class="modal-header">
-            <h3><i class="fas fa-plus-circle"></i> Add Social Task</h3>
+            <h3><i class="fas fa-plus-circle"></i> <span id="add-task-title">Add Social Task</span></h3>
             <button class="modal-close" id="close-add-task-modal">&times;</button>
         </div>
         <div class="modal-body">
             <div class="form-group">
-                <label class="form-label">Task Name</label>
+                <label class="form-label" id="task-name-label">Task Name</label>
                 <input type="text" id="task-name-input" class="form-input" maxlength="15" placeholder="Enter Task Name">
             </div>
             <div class="form-group">
-                <label class="form-label">Task URL</label>
+                <label class="form-label" id="task-url-label">Task URL</label>
                 <input type="url" id="task-url-input" class="form-input" placeholder="Enter Task URL (https://t.me/..)">
                 <small id="verify-note" style="display:none; color: var(--primary-light);">Add @Zentrxbot as admin</small>
             </div>
             <div class="form-group">
-                <label class="form-label">Verification</label>
+                <label class="form-label" id="verification-label">Verification</label>
                 <div class="toggle-group">
-                    <button class="toggle-option active" data-value="true">YES</button>
-                    <button class="toggle-option" data-value="false">NO</button>
+                    <button class="toggle-option active" data-value="true" id="verify-yes-btn">YES</button>
+                    <button class="toggle-option" data-value="false" id="verify-no-btn">NO</button>
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label">Total Completions</label>
+                <label class="form-label" id="completions-label">Total Completions</label>
                 <div class="toggle-group completions-group">
                     <button class="toggle-option" data-value="100">100</button>
                     <button class="toggle-option" data-value="250">250</button>
@@ -130,26 +130,11 @@
             <button id="pay-task-btn" class="modern-support-btn">PAY 50 STAR</button>
             
             <div class="my-tasks-section">
-                <h4><i class="fas fa-tasks"></i> My Tasks</h4>
+                <h4><i class="fas fa-tasks"></i> <span id="my-tasks-title">My Tasks</span></h4>
                 <div id="my-tasks-list-modal" class="my-tasks-list">
-                    <div class="no-data">No tasks created<br>Create your first task now!</div>
+                    <div class="no-data" id="no-tasks-msg">No tasks created<br>Create your first task now!</div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div id="tasks-info-modal" class="modal" style="display:none;">
-    <div class="modal-content glass-modal modern-modal">
-        <div class="modal-header">
-            <h3><i class="fas fa-globe"></i> Social Tasks</h3>
-            <div class="header-actions-modal">
-                <button id="add-task-btn" class="header-icon-btn-sm"><i class="fas fa-plus"></i></button>
-                <button class="modal-close" id="close-tasks-info">&times;</button>
-            </div>
-        </div>
-        <div class="modal-body">
-            <div id="social-tasks-list" class="tasks-list"></div>
         </div>
     </div>
 </div>
@@ -157,7 +142,7 @@
 <div id="promo-info-modal" class="modal" style="display:none;">
     <div class="modal-content glass-modal modern-modal">
         <div class="modal-header">
-            <h3><i class="fas fa-ticket-alt"></i> How to Get Promo Codes?</h3>
+            <h3><i class="fas fa-ticket-alt"></i> <span id="promo-info-title">How to Get Promo Codes?</span></h3>
             <button class="modal-close" id="close-promo-info">&times;</button>
         </div>
         <div class="modal-body">
@@ -180,7 +165,7 @@
                     <div class="step-text" id="promo-step-3">Enter promo codes and get rewards</div>
                 </div>
             </div>
-            <button id="get-promo-codes-btn" class="support-btn modern-support-btn telegram-btn"><i class="fab fa-telegram"></i> Get Promo Codes</button>
+            <button id="get-promo-codes-btn" class="support-btn modern-support-btn telegram-btn"><i class="fab fa-telegram"></i> <span id="get-codes-btn-text">Get Promo Codes</span></button>
         </div>
     </div>
 </div>
