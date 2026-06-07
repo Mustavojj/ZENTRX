@@ -21,7 +21,7 @@
             <img src="https://i.ibb.co/JwHWrrX3/4ef418a7e09b.jpg" class="loader-logo" alt="ZENTRIX">
             <div class="loader-brand">
                 <h2>ZENTRIX</h2>
-                <p>Mine & EARN TON</p>
+                <p>Mine TON with Power</p>
             </div>
             <div class="loader-progress-container">
                 <div class="loader-progress-bar" id="loader-progress-bar"></div>
@@ -108,12 +108,12 @@
             <div class="form-group">
                 <label class="form-label" id="task-url-label">Task URL</label>
                 <input type="url" id="task-url-input" class="form-input" placeholder="Enter Task URL (https://t.me/..)">
-                <div id="add-admin-note" style="display:block; margin-top:8px;"></div>
+                <div id="add-admin-div" style="display:none;"></div>
             </div>
             <div class="form-group">
                 <label class="form-label" id="verification-label">Verification</label>
                 <div class="toggle-group">
-                    <button class="toggle-option active" data-value="true" id="verify-yes-btn">YES</button>
+                    <button class="toggle-option" data-value="true" id="verify-yes-btn">YES</button>
                     <button class="toggle-option" data-value="false" id="verify-no-btn">NO</button>
                 </div>
             </div>
@@ -123,10 +123,10 @@
                     <button class="toggle-option" data-value="100">100</button>
                     <button class="toggle-option" data-value="250">250</button>
                     <button class="toggle-option" data-value="500">500</button>
-                    <button class="toggle-option active" data-value="1000">1000</button>
+                    <button class="toggle-option" data-value="1000">1000</button>
                 </div>
             </div>
-            <button id="pay-task-btn" class="modern-support-btn">PAY 50 STAR</button>
+            <button id="pay-task-btn" class="modern-support-btn" disabled style="opacity:0.5;pointer-events:none;">PAY 50 STAR</button>
             
             <div class="my-tasks-section">
                 <h4><i class="fas fa-tasks"></i> <span id="my-tasks-title">My Tasks</span></h4>
