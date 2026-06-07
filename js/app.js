@@ -2367,9 +2367,7 @@ class App {
     const enablePayBtn = () => {
         const name = document.getElementById('task-name-input')?.value.trim();
         const url = document.getElementById('task-url-input')?.value.trim();
-        const verify = document.querySelector('#add-task-modal .toggle-option.active[data-value]');
-        const completions = document.querySelector('#add-task-modal .completions-group .toggle-option.active');
-        const isValid = name && url && verify && completions;
+        const isValid = name && url;
         if (payBtn) {
             payBtn.disabled = !isValid;
             payBtn.style.opacity = isValid ? '1' : '0.5';
