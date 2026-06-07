@@ -2335,52 +2335,55 @@ class App {
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
         document.getElementById('current-flag').innerText = currentFlag;
     }
-    
+
     openAddTaskModal() {
-        const nameInput = document.getElementById('task-name-input');
-        const urlInput = document.getElementById('task-url-input');
-        
-        if (nameInput) nameInput.value = '';
-        if (urlInput) urlInput.value = '';
-        
-        const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
-        verifyButtons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
-        completionsButtons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        const addAdminDiv = document.getElementById('add-admin-div');
-        if (addAdminDiv) addAdminDiv.style.display = 'none';
-        
-        const payBtn = document.getElementById('pay-task-btn');
+    const nameInput = document.getElementById('task-name-input');
+    const urlInput = document.getElementById('task-url-input');
+    
+    if (nameInput) nameInput.value = '';
+    if (urlInput) urlInput.value = '';
+    
+    const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
+    verifyButtons.forEach(btn => btn.classList.remove('active'));
+    
+    const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
+    completionsButtons.forEach(btn => btn.classList.remove('active'));
+    
+    const addAdminDiv = document.getElementById('add-admin-div');
+    if (addAdminDiv) addAdminDiv.style.display = 'none';
+    
+    const payBtn = document.getElementById('pay-task-btn');
+    if (payBtn) {
+        payBtn.disabled = true;
+        payBtn.style.opacity = '0.5';
+        payBtn.style.pointerEvents = 'none';
+    }
+    
+    this.setupAddTaskModalListeners();
+    this.renderAddTaskModal();
+    this.updateModalTranslations();
+    document.getElementById('add-task-modal').style.display = 'flex';
+    
+    const enablePayBtn = () => {
+        const name = document.getElementById('task-name-input')?.value.trim();
+        const url = document.getElementById('task-url-input')?.value.trim();
+        const verify = document.querySelector('#add-task-modal .toggle-option.active[data-value]');
+        const completions = document.querySelector('#add-task-modal .completions-group .toggle-option.active');
+        const isValid = name && url && verify && completions;
         if (payBtn) {
-            payBtn.disabled = true;
-            payBtn.style.opacity = '0.5';
-            payBtn.style.pointerEvents = 'none';
+            payBtn.disabled = !isValid;
+            payBtn.style.opacity = isValid ? '1' : '0.5';
+            payBtn.style.pointerEvents = isValid ? 'auto' : 'none';
         }
-        
-        this.setupAddTaskModalListeners();
-        this.renderAddTaskModal();
-        this.updateModalTranslations();
-        document.getElementById('add-task-modal').style.display = 'flex';
-        
-        const checkInputs = () => {
-            const name = document.getElementById('task-name-input').value.trim();
-            const url = document.getElementById('task-url-input').value.trim();
-            const isValid = name && url;
-            if (payBtn) {
-                payBtn.disabled = !isValid;
-                payBtn.style.opacity = isValid ? '1' : '0.5';
-                payBtn.style.pointerEvents = isValid ? 'auto' : 'none';
-            }
-        };
-        
-        nameInput?.addEventListener('input', checkInputs);
-        urlInput?.addEventListener('input', checkInputs);
+    };
+    
+    nameInput?.addEventListener('input', enablePayBtn);
+    urlInput?.addEventListener('input', enablePayBtn);
+    
+    document.querySelectorAll('#add-task-modal .toggle-option').forEach(btn => {
+        btn.removeEventListener('click', enablePayBtn);
+        btn.addEventListener('click', enablePayBtn);
+    });
     }
     
     setupAddTaskModalListeners() {
