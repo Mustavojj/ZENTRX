@@ -1,3 +1,4 @@
+
 :root {
     --primary: #5C6BC0;
     --primary-dark: #3F51B5;
@@ -1497,4 +1498,88 @@ body {
     font-size: 0.65rem;
     margin-top: 6px;
     margin-left: 8px;
+}
+
+.header-balances {
+    display: flex;
+    gap: 12px;
+    margin-right: 12px;
+}
+
+.header-balance {
+    background: rgba(92, 107, 192, 0.15);
+    border-radius: 40px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-light);
+}
+
+.header-balance i, .header-balance img {
+    font-size: 0.7rem;
+}
+
+.add-bot-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 0.75rem;
+}
+
+.modal-body .form-group {
+    margin-bottom: 16px;
+}
+
+.modal-body .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.toggle-option {
+    flex: 1;
+    min-width: 60px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+}
+
+#add-admin-div {
+    margin-top: 8px;
+}
+
+.task-img {
+    pointer-events: none;
+    user-select: none;
+}
+
+.link-display {
+    user-select: text;
+    cursor: text;
+}
+
+.promo-input-group .form-input {
+    pointer-events: auto;
+}
+
+.withdraw-confirm-btn, .modern-support-btn, .earn-card-btn, .referral-buttons button, .promo-submit-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.mining-claim-btn {
+    background: linear-gradient(135deg, var(--success), #27ae60);
 }
