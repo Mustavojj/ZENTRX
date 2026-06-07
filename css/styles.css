@@ -1,10 +1,8 @@
-
 :root {
-    --primary: #5C6BC0;
-    --primary-dark: #3F51B5;
-    --primary-light: #7986CB;
-    --primary-glow: rgba(92, 107, 192, 0.4);
-    --accent: #B0BEC5;
+    --primary: #7C93FF;
+    --primary-dark: #5C6BC0;
+    --primary-light: #A5B9FF;
+    --primary-glow: rgba(124, 147, 255, 0.4);   --accent: #B0BEC5;
     --success: #2ecc71;
     --warning: #f39c12;
     --error: #e74c3c;
@@ -1583,3 +1581,7 @@ body {
 .mining-claim-btn {
     background: linear-gradient(135deg, var(--success), #27ae60);
 }
+
+.bg-dark, .mining-card, .team-benefits, .promo-card {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+} 
