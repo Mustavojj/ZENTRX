@@ -2336,9 +2336,12 @@ class App {
         document.getElementById('current-flag').innerText = currentFlag;
     }
 
-    openAddTaskModal() {
+
+
+openAddTaskModal() {
     const nameInput = document.getElementById('task-name-input');
     const urlInput = document.getElementById('task-url-input');
+    const payBtn = document.getElementById('pay-task-btn');
     
     if (nameInput) nameInput.value = '';
     if (urlInput) urlInput.value = '';
@@ -2352,21 +2355,15 @@ class App {
     const addAdminDiv = document.getElementById('add-admin-div');
     if (addAdminDiv) addAdminDiv.style.display = 'none';
     
-    const payBtn = document.getElementById('pay-task-btn');
     if (payBtn) {
         payBtn.disabled = true;
         payBtn.style.opacity = '0.5';
         payBtn.style.pointerEvents = 'none';
     }
     
-    this.setupAddTaskModalListeners();
-    this.renderAddTaskModal();
-    this.updateModalTranslations();
-    document.getElementById('add-task-modal').style.display = 'flex';
-    
     const enablePayBtn = () => {
-        const name = document.getElementById('task-name-input')?.value.trim();
-        const url = document.getElementById('task-url-input')?.value.trim();
+        const name = nameInput?.value.trim();
+        const url = urlInput?.value.trim();
         const isValid = name && url;
         if (payBtn) {
             payBtn.disabled = !isValid;
@@ -2375,14 +2372,14 @@ class App {
         }
     };
     
-    nameInput?.addEventListener('input', enablePayBtn);
-    urlInput?.addEventListener('input', enablePayBtn);
+    if (nameInput) nameInput.addEventListener('input', enablePayBtn);
+    if (urlInput) urlInput.addEventListener('input', enablePayBtn);
     
-    document.querySelectorAll('#add-task-modal .toggle-option').forEach(btn => {
-        btn.removeEventListener('click', enablePayBtn);
-        btn.addEventListener('click', enablePayBtn);
-    });
-    }
+    this.setupAddTaskModalListeners();
+    this.renderAddTaskModal();
+    this.updateModalTranslations();
+    document.getElementById('add-task-modal').style.display = 'flex';
+}
     
     setupAddTaskModalListeners() {
         const verifyOptions = document.querySelectorAll('#add-task-modal .toggle-option[data-value="true"], #add-task-modal .toggle-option[data-value="false"]');
