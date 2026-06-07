@@ -1,17 +1,18 @@
+// app.js
 import { APP_CONFIG } from './data.js';
 
 const translations = {
     ru: {
         level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "5 часов", daily: "Ежедневно", monthly: "Ежемесячно",
         start_mining: "НАЧАТЬ МАЙНИНГ", claim_reward: "ПОЛУЧИТЬ НАГРАДУ", mining_note: "Награды можно получить после окончания сеанса майнинга",
-        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", promo_code: "Промокод",
+        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", stars: "Stars", promo_code: "Промокод",
         enter_code: "Введите код", claim: "Получить", main_tasks: "Основные задания", partner_tasks: "Социальные задания",
         watch_ad: "Смотреть рекламу", reward_amount: "Награда", available_in: "Доступно через", hours: "ч",
         watch: "Смотреть", all_tasks_completed: "Все задания выполнены!", check_later: "Заходите позже за новыми",
         no_tasks: "Нет доступных заданий", team_benefits: "Преимущества команды", share_earn: "ДЕЛИСЬ И ЗАРАБАТЫВАЙ",
         copy: "Копировать", share: "Поделиться", total_members: "Всего участников",
         power_earnings: "Заработок энергии", withdraw: "Вывести",
-        available: "Доступно", ton_wallet: "TON кошелек", amount: "Сумма", min_withdraw: "Мин. вывод",
+        available: "Доступно", faucet_email: "Faucet Email", amount: "Сумма", min_withdraw: "Мин. вывод",
         confirm_withdrawal: "Подтвердить вывод", withdrawal_history: "История выводов", no_withdrawals: "Пока нет выводов",
         pending: "В ОЖИДАНИИ", completed: "ВЫПЛАЧЕНО", claim_mining_title: "Получить награды майнинга", claim_btn: "Получить награды",
         partner_info_title: "Социальные задания", mining: "Майнинг", earn: "Заработок", team: "Команда",
@@ -24,17 +25,18 @@ const translations = {
         how_it_works: "Как это работает", step1: "1. Подпишитесь на наш новостной канал", step2: "2. Следите за новыми публикациями", step3: "3. Вводите промокоды и получайте награды",
         available_tasks: "Доступные задания", completed_tasks: "Выполненные задания", no_tasks_available: "Нет доступных заданий", my_tasks: "Мои задания",
         add_task: "Добавить задание", task_name: "Название задачи", task_url: "Ссылка", verification: "Проверка", max_completions: "Макс. выполнений",
-        price: "Цена", pay_with_stars: "Оплатить Stars", stars: "Stars", referral_bonus: "Бонус за реферала",
+        price: "Цена", pay_with_stars: "Оплатить Stars", referral_bonus: "Бонус за реферала",
         referrer_reward_notification: "Вы получили бонус! Ваш реферал выполнил условия",
         ban_message: "Ваш аккаунт заблокирован. Обратитесь в поддержку.",
         withdrawal_requested: "Запрос на вывод",
         new_referral: "Новый реферал",
         task_payment_failed: "Ошибка оплаты задачи",
-        earn_power_referral: "Заработайте 300 энергии за подтвержденного реферала",
-        earn_percent_friends: "Зарабатывайте 20% от дохода друзей",
+        earn_power_referral: "Заработайте {reward} энергии за подтвержденного реферала",
+        earn_percent_friends: "Зарабатывайте {percent}% от дохода друзей",
         task_name_placeholder: "Введите название задачи",
         task_url_placeholder: "Введите URL задачи (https://t.me/..)",
         add_admin_note: "Добавьте @Zentrxbot администратором",
+        add_admin_btn: "Добавить бота",
         verification_yes: "ДА",
         verification_no: "НЕТ",
         completions_100: "100",
@@ -42,24 +44,33 @@ const translations = {
         completions_500: "500",
         completions_1000: "1000",
         pay_stars: "ОПЛАТИТЬ {stars} ЗВЕЗД",
-        no_tasks_created: "Нет созданных задач\nСоздайте свою первую задачу!",
+        no_tasks_created: "Нет созданных задач",
+        no_tasks_created_sub: "Создайте свою первую задачу!",
         pending_status: "НА РАССМОТРЕНИИ",
         active_status: "АКТИВНА",
         completions_count: "выполнений",
         add_task_title: "Добавить социальное задание",
-        my_tasks_title: "Мои задания"
+        my_tasks_title: "Мои задания",
+        withdrawal_fees_note: "Комиссия за вывод: {fees} TON",
+        faucetpay_info: "Вывод средств осуществляется через платформу Faucet Pay",
+        register_faucetpay: "Зарегистрироваться в FaucetPay",
+        all_fields_required: "Пожалуйста, заполните все поля",
+        add_bot_as_admin: "Добавить @Zentrxbot администратором",
+        team_benefits_title: "Преимущества команды",
+        team_benefit_referral_power: "Заработайте {reward} энергии за подтвержденного реферала",
+        team_benefit_referral_percent: "Зарабатывайте {percent}% от дохода друзей"
     },
     en: {
         level: "Level", mining_rig: "Mining Rig Lv.", hourly: "5 Hours", daily: "Daily", monthly: "Monthly",
         start_mining: "START MINING", claim_reward: "CLAIM REWARD", mining_note: "Rewards can be collected after mining session ends",
-        next_level_reward: "Next level reward", power: "Power", ton: "TON", promo_code: "Promo Code",
+        next_level_reward: "Next level reward", power: "Power", ton: "TON", stars: "Stars", promo_code: "Promo Code",
         enter_code: "Enter code", claim: "Claim", main_tasks: "Main Tasks", partner_tasks: "Social Tasks",
         watch_ad: "Watch Reward AD", reward_amount: "Reward", available_in: "Available in", hours: "h",
         watch: "Watch", all_tasks_completed: "All tasks completed!", check_later: "Check back later for more",
         no_tasks: "No tasks available", team_benefits: "Team Benefits", share_earn: "SHARE & EARN",
         copy: "Copy", share: "Share", total_members: "Total Members",
         power_earnings: "Power Earnings", withdraw: "Withdraw",
-        available: "Available", ton_wallet: "TON Wallet", amount: "Amount", min_withdraw: "Minimum withdrawal",
+        available: "Available", faucet_email: "Faucet Email", amount: "Amount", min_withdraw: "Minimum withdrawal",
         confirm_withdrawal: "Confirm Withdrawal", withdrawal_history: "Withdrawal History", no_withdrawals: "No withdrawals yet",
         pending: "PENDING", completed: "PAID", claim_mining_title: "Claim Mining Rewards", claim_btn: "Claim Rewards",
         partner_info_title: "Social Tasks", mining: "Mining", earn: "Earn", team: "Team",
@@ -72,17 +83,18 @@ const translations = {
         how_it_works: "How it works", step1: "1. Subscribe to our news channel", step2: "2. Follow new posts", step3: "3. Enter promo codes and get rewards",
         available_tasks: "Available Tasks", completed_tasks: "Completed Tasks", no_tasks_available: "No tasks available", my_tasks: "My Tasks",
         add_task: "Add Task", task_name: "Task Name", task_url: "URL", verification: "Verification", max_completions: "Max Completions",
-        price: "Price", pay_with_stars: "Pay with Stars", stars: "Stars", referral_bonus: "Referral Bonus",
+        price: "Price", pay_with_stars: "Pay with Stars", referral_bonus: "Referral Bonus",
         referrer_reward_notification: "You received a bonus! Your referral completed the requirements",
         ban_message: "Your account has been banned. Please contact support.",
         withdrawal_requested: "Withdrawal Requested",
         new_referral: "New Referral",
         task_payment_failed: "Task Payment Failed",
-        earn_power_referral: "Earn 300 Power Per Verified Referral",
-        earn_percent_friends: "Earn 20% From Friends Earnings",
+        earn_power_referral: "Earn {reward} Power Per Verified Referral",
+        earn_percent_friends: "Earn {percent}% From Friends Earnings",
         task_name_placeholder: "Enter Task Name",
         task_url_placeholder: "Enter Task URL (https://t.me/..)",
         add_admin_note: "Add @Zentrxbot as admin",
+        add_admin_btn: "Add Bot",
         verification_yes: "YES",
         verification_no: "NO",
         completions_100: "100",
@@ -90,24 +102,33 @@ const translations = {
         completions_500: "500",
         completions_1000: "1000",
         pay_stars: "PAY {stars} STAR",
-        no_tasks_created: "No tasks created\nCreate your first task now!",
+        no_tasks_created: "No tasks created",
+        no_tasks_created_sub: "Create your first task now!",
         pending_status: "PENDING",
         active_status: "ACTIVE",
         completions_count: "completions",
         add_task_title: "Add Social Task",
-        my_tasks_title: "My Tasks"
+        my_tasks_title: "My Tasks",
+        withdrawal_fees_note: "Withdrawal fees: {fees} TON",
+        faucetpay_info: "Withdrawals are processed through Faucet Pay platform",
+        register_faucetpay: "Register on FaucetPay",
+        all_fields_required: "Please fill all fields",
+        add_bot_as_admin: "Add @Zentrxbot as admin",
+        team_benefits_title: "Team Benefits",
+        team_benefit_referral_power: "Earn {reward} Power per verified referral",
+        team_benefit_referral_percent: "Earn {percent}% from friends earnings"
     },
     tr: {
         level: "Seviye", mining_rig: "Madenci Seviye", hourly: "5 saat", daily: "Günlük", monthly: "Aylık",
         start_mining: "MADENCİLİĞE BAŞLA", claim_reward: "ÖDÜLÜ AL", mining_note: "Ödüller madencilik oturumu bittikten sonra toplanabilir",
-        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", promo_code: "Promosyon Kodu",
+        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", stars: "Yıldız", promo_code: "Promosyon Kodu",
         enter_code: "Kodu girin", claim: "Al", main_tasks: "Ana Görevler", partner_tasks: "Sosyal Görevler",
         watch_ad: "Ödüllü Reklam İzle", reward_amount: "Ödül", available_in: "Kalan süre", hours: "sa",
         watch: "İzle", all_tasks_completed: "Tüm görevler tamamlandı!", check_later: "Daha fazlası için daha sonra kontrol edin",
         no_tasks: "Görev yok", team_benefits: "Takım Avantajları", share_earn: "PAYLAŞ VE KAZAN",
         copy: "Kopyala", share: "Paylaş", total_members: "Toplam Üye",
         power_earnings: "Güç Kazancı", withdraw: "Çek",
-        available: "Mevcut", ton_wallet: "TON Cüzdanı", amount: "Miktar", min_withdraw: "Minimum çekim",
+        available: "Mevcut", faucet_email: "Faucet Email", amount: "Miktar", min_withdraw: "Minimum çekim",
         confirm_withdrawal: "Çekimi Onayla", withdrawal_history: "Çekim Geçmişi", no_withdrawals: "Henüz çekim yok",
         pending: "beklemede", completed: "tamamlandı", claim_mining_title: "Madencilik Ödüllerini Al", claim_btn: "Ödülleri Al",
         partner_info_title: "Sosyal Görevler", mining: "Madencilik", earn: "Kazan", team: "Takım",
@@ -120,17 +141,18 @@ const translations = {
         how_it_works: "Nasıl çalışır", step1: "1. Haber kanalımıza abone olun", step2: "2. Yeni gönderileri takip edin", step3: "3. Promosyon kodlarını girin ve ödülleri alın",
         available_tasks: "Mevcut Görevler", completed_tasks: "Tamamlanan Görevler", no_tasks_available: "Görev yok", my_tasks: "Görevlerim",
         add_task: "Görev Ekle", task_name: "Görev Adı", task_url: "Bağlantı", verification: "Doğrulama", max_completions: "Maks. Tamamlama",
-        price: "Fiyat", pay_with_stars: "Yıldız ile Öde", stars: "Yıldız", referral_bonus: "Referans Bonusu",
+        price: "Fiyat", pay_with_stars: "Yıldız ile Öde", referral_bonus: "Referans Bonusu",
         referrer_reward_notification: "Bonus kazandınız! Referansınız koşulları tamamladı",
         ban_message: "Hesabınız yasaklandı. Lütfen desteğe başvurun.",
         withdrawal_requested: "Çekim Talebi",
         new_referral: "Yeni Referans",
         task_payment_failed: "Görev Ödemesi Başarısız",
-        earn_power_referral: "Doğrulanmış Referans Başına 300 Güç Kazanın",
-        earn_percent_friends: "Arkadaş Kazançlarından %20 Kazanın",
+        earn_power_referral: "Doğrulanmış Referans Başına {reward} Güç Kazanın",
+        earn_percent_friends: "Arkadaş Kazançlarından {percent}% Kazanın",
         task_name_placeholder: "Görev Adını Girin",
         task_url_placeholder: "Görev URL'sini Girin (https://t.me/..)",
         add_admin_note: "@Zentrxbot'u yönetici olarak ekleyin",
+        add_admin_btn: "Botu Ekle",
         verification_yes: "EVET",
         verification_no: "HAYIR",
         completions_100: "100",
@@ -138,24 +160,33 @@ const translations = {
         completions_500: "500",
         completions_1000: "1000",
         pay_stars: "{stars} YILDIZ ÖDE",
-        no_tasks_created: "Görev oluşturulmadı\nŞimdi ilk görevinizi oluşturun!",
+        no_tasks_created: "Görev oluşturulmadı",
+        no_tasks_created_sub: "Şimdi ilk görevinizi oluşturun!",
         pending_status: "BEKLEMEDE",
         active_status: "AKTİF",
         completions_count: "tamamlama",
         add_task_title: "Sosyal Görev Ekle",
-        my_tasks_title: "Görevlerim"
+        my_tasks_title: "Görevlerim",
+        withdrawal_fees_note: "Çekim ücreti: {fees} TON",
+        faucetpay_info: "Ödemeler Faucet Pay platformu üzerinden işlenir",
+        register_faucetpay: "FaucetPay'e Kaydol",
+        all_fields_required: "Lütfen tüm alanları doldurun",
+        add_bot_as_admin: "@Zentrxbot'u yönetici olarak ekle",
+        team_benefits_title: "Takım Avantajları",
+        team_benefit_referral_power: "Doğrulanmış referans başına {reward} Güç kazanın",
+        team_benefit_referral_percent: "Arkadaş kazançlarından %{percent} kazanın"
     },
     ar: {
         level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 5 ساعات", daily: "يومي", monthly: "شهري",
         start_mining: "بدء التعدين", claim_reward: "استلام المكافأة", mining_note: "يمكن جمع المكافآت بعد انتهاء جلسة التعدين",
-        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", promo_code: "رمز ترويجي",
+        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", stars: "نجوم", promo_code: "رمز ترويجي",
         enter_code: "أدخل الرمز", claim: "استلام", main_tasks: "المهام الرئيسية", partner_tasks: "المهام الاجتماعية",
         watch_ad: "مشاهدة إعلان مكافأة", reward_amount: "المكافأة", available_in: "متاح بعد", hours: "ساعة",
         watch: "مشاهدة", all_tasks_completed: "جميع المهام مكتملة!", check_later: "تحقق لاحقاً للمزيد",
         no_tasks: "لا توجد مهام متاحة", team_benefits: "مزايا الفريق", share_earn: "شارك واربح",
         copy: "نسخ", share: "مشاركة", total_members: "إجمالي الأعضاء",
         power_earnings: "أرباح الطاقة", withdraw: "سحب",
-        available: "الرصيد المتوفر", ton_wallet: "محفظة تون", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
+        available: "الرصيد المتوفر", faucet_email: "البريد الإلكتروني Faucet", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
         confirm_withdrawal: "تأكيد السحب", withdrawal_history: "سجل السحوبات", no_withdrawals: "لا توجد سحوبات بعد",
         pending: "قيد الانتظار", completed: "مكتمل", claim_mining_title: "استلام مكافآت التعدين", claim_btn: "استلام المكافآت",
         partner_info_title: "المهام الاجتماعية", mining: "التعدين", earn: "الأرباح", team: "الفريق",
@@ -168,17 +199,18 @@ const translations = {
         how_it_works: "كيف يعمل", step1: "1. اشترك في قناة الأخبار", step2: "2. تابع المنشورات الجديدة", step3: "3. أدخل الرموز الترويجية واحصل على المكافآت",
         available_tasks: "المهام المتاحة", completed_tasks: "المهام المكتملة", no_tasks_available: "لا توجد مهام متاحة", my_tasks: "مهامي",
         add_task: "إضافة مهمة", task_name: "اسم المهمة", task_url: "الرابط", verification: "التحقق", max_completions: "الحد الأقصى للإكمال",
-        price: "السعر", pay_with_stars: "الدفع بالنجوم", stars: "نجوم", referral_bonus: "مكافأة الإحالة",
+        price: "السعر", pay_with_stars: "الدفع بالنجوم", referral_bonus: "مكافأة الإحالة",
         referrer_reward_notification: "لقد تلقيت مكافأة! قام المحال الخاص بك بإكمال المتطلبات",
         ban_message: "تم حظر حسابك. يرجى الاتصال بالدعم.",
         withdrawal_requested: "طلب السحب",
         new_referral: "إحالة جديدة",
         task_payment_failed: "فشل دفع المهمة",
-        earn_power_referral: "اربح 300 طاقة لكل إحالة مؤكدة",
-        earn_percent_friends: "اربح 20% من أرباح الأصدقاء",
+        earn_power_referral: "اربح {reward} طاقة لكل إحالة مؤكدة",
+        earn_percent_friends: "اربح {percent}% من أرباح الأصدقاء",
         task_name_placeholder: "أدخل اسم المهمة",
         task_url_placeholder: "أدخل رابط المهمة (https://t.me/..)",
         add_admin_note: "أضف @Zentrxbot كمدير",
+        add_admin_btn: "إضافة البوت",
         verification_yes: "نعم",
         verification_no: "لا",
         completions_100: "100",
@@ -186,12 +218,21 @@ const translations = {
         completions_500: "500",
         completions_1000: "1000",
         pay_stars: "ادفع {stars} نجمة",
-        no_tasks_created: "لا توجد مهام منشأة\nأنشئ مهمتك الأولى الآن!",
+        no_tasks_created: "لا توجد مهام منشأة",
+        no_tasks_created_sub: "أنشئ مهمتك الأولى الآن!",
         pending_status: "قيد المراجعة",
         active_status: "نشطة",
         completions_count: "إكمال",
         add_task_title: "إضافة مهمة اجتماعية",
-        my_tasks_title: "مهامي"
+        my_tasks_title: "مهامي",
+        withdrawal_fees_note: "رسوم السحب: {fees} TON",
+        faucetpay_info: "تتم المدفوعات عبر منصة Faucet Pay",
+        register_faucetpay: "التسجيل في FaucetPay",
+        all_fields_required: "الرجاء ملء جميع الحقول",
+        add_bot_as_admin: "أضف @Zentrxbot كمدير",
+        team_benefits_title: "مزايا الفريق",
+        team_benefit_referral_power: "اربح {reward} طاقة لكل إحالة مؤكدة",
+        team_benefit_referral_percent: "اربح {percent}% من أرباح الأصدقاء"
     }
 };
 
@@ -207,6 +248,7 @@ class App {
         
         this.powerBalance = 0;
         this.tonBalance = 0;
+        this.starsBalance = 0;
         this.userLevel = 1;
         this.hasStartedMining = false;
         this.userCompletedTasks = new Set();
@@ -244,6 +286,7 @@ class App {
         
         this._dirtyPower = false;
         this._dirtyTon = false;
+        this._dirtyStars = false;
         this._dirtyMining = false;
         this._saveTimeout = null;
         this._isSaving = false;
@@ -285,7 +328,7 @@ class App {
     }
     
     getDailyTonRate() {
-        return this.getHourlyTonRate() * 3;
+        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_DAY_RATE;
     }
     
     getMonthlyTonRate() {
@@ -843,6 +886,11 @@ class App {
     }
     
     async addSocialTask(name, url, verification, maxCompletions) {
+        if (!name || !url) {
+            this.showNotification('Error', this.t('all_fields_required'), 'error');
+            return false;
+        }
+        
         const taskId = `${this.tgUser.id}_${Date.now()}`;
         const price = (APP_CONFIG.STAR_PRICE_PER_100 * (maxCompletions / 100));
         
@@ -1034,18 +1082,21 @@ class App {
         return true;
     }
     
-    async withdraw(amount, wallet) {
+    async withdraw(amount, email) {
         if (this._withdrawLock) {
             this.showNotification('Please wait', 'You can withdraw again after 10 seconds', 'warning');
             return false;
         }
         
-        if (!wallet || wallet.length < 20) {
-            this.showNotification('Error', 'Invalid wallet address', 'error');
+        if (!email || email.length < 5) {
+            this.showNotification('Error', 'Invalid email address', 'error');
             return false;
         }
-        if (amount < APP_CONFIG.MINIMUM_WITHDRAW || amount > this.tonBalance) {
-            this.showNotification('Error', 'Invalid amount', 'error');
+        
+        const totalRequired = amount + (APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0);
+        
+        if (amount < APP_CONFIG.MINIMUM_WITHDRAW || totalRequired > this.tonBalance) {
+            this.showNotification('Error', 'Invalid amount or insufficient balance (including fees)', 'error');
             return false;
         }
         
@@ -1060,8 +1111,9 @@ class App {
         this._withdrawLock = true;
         setTimeout(() => { this._withdrawLock = false; }, 10000);
         
+        const actualDeduct = amount + (APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0);
         const originalBalance = this.tonBalance;
-        this.tonBalance -= amount;
+        this.tonBalance -= actualDeduct;
         this._dirtyTon = true;
         
         const saved = await this.saveUserData(true);
@@ -1076,7 +1128,8 @@ class App {
         const withdrawal = {
             id: Date.now(),
             amount: amount,
-            wallet: wallet,
+            fees: APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0,
+            email: email,
             status: 'pending',
             timestamp: this.getCurrentTime()
         };
@@ -1106,7 +1159,7 @@ class App {
                 await this.sendNotification(this.tgUser.id, this.t('withdrawal_requested'), `${amount.toFixed(5)} TON`);
             } catch (error) {
                 console.error('Withdrawal save failed:', error);
-                this.tonBalance += amount;
+                this.tonBalance += actualDeduct;
                 this._dirtyTon = true;
                 await this.saveUserData(true);
                 this.showNotification('Error', 'Failed to submit withdrawal', 'error');
@@ -1286,6 +1339,7 @@ class App {
             const updates = {};
             if (this._dirtyPower) updates.powerBalance = this.powerBalance;
             if (this._dirtyTon) updates.tonBalance = this.tonBalance;
+            if (this._dirtyStars) updates.starsBalance = this.starsBalance;
             if (this._dirtyMining) {
                 updates.miningActive = this.miningActive;
                 updates.miningStartTime = this.miningStartTime;
@@ -1303,6 +1357,7 @@ class App {
             const userDataForCache = {
                 powerBalance: this.powerBalance,
                 tonBalance: this.tonBalance,
+                starsBalance: this.starsBalance,
                 userLevel: this.userLevel,
                 miningActive: this.miningActive,
                 miningStartTime: this.miningStartTime,
@@ -1315,6 +1370,7 @@ class App {
             
             this._dirtyPower = false;
             this._dirtyTon = false;
+            this._dirtyStars = false;
             this._dirtyMining = false;
             
             if (this._saveTimeout) clearTimeout(this._saveTimeout);
@@ -1343,6 +1399,7 @@ class App {
             createdAt: await this.syncServerTime(),
             powerBalance: 1000,
             tonBalance: 0,
+            starsBalance: 0,
             level: 1,
             totalTasksCompleted: 0,
             totalMiningStarts: 0,
@@ -1368,6 +1425,7 @@ class App {
         
         this.powerBalance = 1000;
         this.tonBalance = 0;
+        this.starsBalance = 0;
         this.userLevel = 1;
         this.hasStartedMining = false;
         this.miningActive = false;
@@ -1426,6 +1484,7 @@ class App {
             const data = JSON.parse(cachedUser);
             this.powerBalance = data.powerBalance ?? 0;
             this.tonBalance = data.tonBalance ?? 0;
+            this.starsBalance = data.starsBalance ?? 0;
             this.userLevel = data.userLevel ?? 1;
             this.miningActive = data.miningActive ?? false;
             this.miningStartTime = data.miningStartTime ?? null;
@@ -1442,6 +1501,7 @@ class App {
                 const d = snap.val();
                 this.powerBalance = d.powerBalance ?? this.powerBalance;
                 this.tonBalance = d.tonBalance ?? this.tonBalance;
+                this.starsBalance = d.starsBalance ?? this.starsBalance;
                 this.userLevel = d.level ?? this.userLevel;
                 this.hasStartedMining = d.hasStartedMining ?? false;
                 this.miningActive = d.miningActive ?? this.miningActive;
@@ -1459,6 +1519,7 @@ class App {
                 const userDataForCache = {
                     powerBalance: this.powerBalance,
                     tonBalance: this.tonBalance,
+                    starsBalance: this.starsBalance,
                     userLevel: this.userLevel,
                     miningActive: this.miningActive,
                     miningStartTime: this.miningStartTime,
@@ -1774,6 +1835,7 @@ class App {
         el.innerHTML = `
             <div class="balance-cards">
                 <div class="balance-card"><div class="icon power"><i class="fas fa-bolt"></i></div><span class="label">${this.t('power')}</span><span class="value">${this.formatNumber(Math.floor(this.powerBalance))}</span></div>
+                <div class="balance-card"><i class="fas fa-star" style="color:#FFD93D; font-size:1.8rem; margin-bottom:8px;"></i><span class="label">${this.t('stars')}</span><span class="value">${this.formatNumber(Math.floor(this.starsBalance))}</span></div>
                 <div class="balance-card"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" class="ton-icon-img"><span class="label">${this.t('ton')}</span><span class="value">${this.tonBalance.toFixed(6)}</span></div>
             </div>
             <div class="mining-card">
@@ -1828,7 +1890,7 @@ class App {
         if (!container) return;
         
         if (this.userTasks.length === 0) {
-            container.innerHTML = `<div class="no-data">${this.t('no_tasks_created')}</div>`;
+            container.innerHTML = `<div class="no-data"><i class="fas fa-tasks"></i><p>${this.t('no_tasks_created')}</p><small>${this.t('no_tasks_created_sub')}</small></div>`;
             return;
         }
         
@@ -1867,6 +1929,7 @@ class App {
         const hoursRemaining = Math.floor(timeRemaining / 3600000);
         const minutesRemaining = Math.floor((timeRemaining % 3600000) / 60000);
         
+        const dailyTask = APP_CONFIG.DAILY_TASKS[0];
         const dailyCheckNewsBtnClass = this.dailyCheckNewsCompleted ? 'done' : 'start';
         const dailyCheckNewsBtnText = this.dailyCheckNewsCompleted ? 'Done' : this.t('start');
         const dailyCheckNewsBtnDisabled = this.dailyCheckNewsCompleted;
@@ -1874,13 +1937,15 @@ class App {
         const availableMainTasks = APP_CONFIG.MAIN_TASKS.filter(t => !this.userCompletedMainTasks.has(t.id));
         
         const availableMainTasksHtml = availableMainTasks.length > 0 ? availableMainTasks.map(t => `
-            <div class="task-item">
-                <img class="task-img" src="${t.img}">
-                <div class="task-info">
-                    <h4>${t.name}</h4>
-                    <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+            <div class="task-item daily-task-card">
+                <div class="daily-task-header">
+                    <div class="daily-task-icon"><img src="${t.img}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
+                    <div class="daily-task-info">
+                        <h4>${t.name}</h4>
+                        <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                    </div>
+                    <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verify}">${this.t('start')}</button>
                 </div>
-                <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verify}">Start</button>
             </div>
         `).join('') : '<div class="no-data"><i class="fas fa-check-circle"></i><p>' + this.t('all_tasks_completed') + '</p><small>' + this.t('check_later') + '</small></div>';
         
@@ -1906,8 +1971,8 @@ class App {
                     <div class="daily-task-header">
                         <div class="daily-task-icon"><i class="fas fa-newspaper"></i></div>
                         <div class="daily-task-info">
-                            <h4>${this.t('daily_check_news')}</h4>
-                            <div class="daily-task-reward"><i class="fas fa-bolt"></i> 10 ${this.t('power')}</div>
+                            <h4>${dailyTask.name}</h4>
+                            <div class="daily-task-reward"><i class="fas fa-bolt"></i> ${dailyTask.reward} ${this.t('power')}</div>
                         </div>
                         <button class="task-btn ${dailyCheckNewsBtnClass}" id="daily-check-news-btn" ${dailyCheckNewsBtnDisabled ? 'disabled' : ''}>${dailyCheckNewsBtnText}</button>
                     </div>
@@ -2010,13 +2075,16 @@ class App {
             if (container) {
                 if (activeTasks.length > 0) {
                     container.innerHTML = activeTasks.map(t => `
-                        <div class="task-item">
-                            <div class="task-info">
-                                <h4>${t.name}</h4>
-                                <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
-                                <small>Completions: ${t.total}/${t.max}</small>
+                        <div class="task-item daily-task-card">
+                            <div class="daily-task-header">
+                                <div class="daily-task-icon"><i class="fas fa-tasks"></i></div>
+                                <div class="daily-task-info">
+                                    <h4>${t.name}</h4>
+                                    <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                                    <small>Completions: ${t.total}/${t.max}</small>
+                                </div>
+                                <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
                             </div>
-                            <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
                         </div>
                     `).join('');
                     
@@ -2080,14 +2148,14 @@ class App {
         const el = document.getElementById('team-page');
         if (!el) return;
         const link = APP_CONFIG.BOT_LINK + this.tgUser.id;
-        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on Z MINER and start mining TON!')}`;
+        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on ZENTRIX and start mining TON!')}`;
         
         el.innerHTML = `
             <div class="team-benefits">
-                <h3><i class="fas fa-gift"></i> ${this.t('team_benefits')}</h3>
+                <h3><i class="fas fa-gift"></i> ${this.t('team_benefits_title')}</h3>
                 <div class="benefits-list">
-                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">${this.t('earn_power_referral')}</div></div>
-                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">${this.t('earn_percent_friends')}</div></div>
+                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">${this.t('team_benefit_referral_power', { reward: APP_CONFIG.REFERRAL_POWER_REWARD })}</div></div>
+                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">${this.t('team_benefit_referral_percent', { percent: APP_CONFIG.REFERRAL_PERCENTAGE })}</div></div>
                 </div>
             </div>
             <div class="referral-card">
@@ -2117,18 +2185,37 @@ class App {
         if (!el) return;
         const historyHtml = this.withdrawals && this.withdrawals.length ? this.withdrawals.map(w => `
             <div class="history-item">
-                <div class="history-amount"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:16px;height:16px"> ${w.amount.toFixed(5)} TON</div>
+                <div class="history-amount"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:16px;height:16px"> ${w.amount.toFixed(5)} TON ${w.fees > 0 ? `(+${w.fees.toFixed(5)} fee)` : ''}</div>
                 <div class="history-status ${w.status}">${w.status === 'pending' ? this.t('pending') : this.t('completed')}</div>
             </div>
         `).join('') : '<div class="no-data">' + this.t('no_withdrawals') + '</div>';
         
+        const feesNote = APP_CONFIG.WITHDRAWAL_FEES > 0 ? `<div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('withdrawal_fees_note', { fees: APP_CONFIG.WITHDRAWAL_FEES })}</div>` : '';
+        
         el.innerHTML = `
-            <div class="withdraw-card"><h3><i class="fas fa-wallet"></i> ${this.t('withdraw')}</h3><div class="withdraw-balance"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:28px;height:28px"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} TON</div>
-            <div class="form-group"><label class="form-label">${this.t('ton_wallet')}</label><div class="input-wrapper"><input type="text" id="wallet-addr" class="form-input" placeholder="UQ..."></div></div>
-            <div class="form-group"><label class="form-label">${this.t('amount')}</label><div class="input-wrapper"><input type="number" id="withdraw-amount" class="form-input" placeholder="${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON" step="0.00001"><button id="max-amount" class="action-btn">MAX</button></div></div>
-            <div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON</div>
-            <button id="withdraw-btn" class="withdraw-confirm-btn disabled">${this.t('confirm_withdrawal')}</button></div>
-            <div class="history-list"><h4><i class="fas fa-history"></i> ${this.t('withdrawal_history')}</h4>${historyHtml}</div>
+            <div class="withdraw-card">
+                <div class="withdraw-balance"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:28px;height:28px"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} TON</div>
+                <div class="form-group">
+                    <div class="form-label" style="display:flex; align-items:center; gap:6px;">${this.t('faucet_email')} <button id="faucet-info-btn" class="info-icon-btn" style="width:24px;height:24px;font-size:0.7rem;"><i class="fas fa-question-circle"></i></button></div>
+                    <div class="input-wrapper">
+                        <input type="email" id="wallet-addr" class="form-input" placeholder="email@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">${this.t('amount')}</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="withdraw-amount" class="form-input" placeholder="${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON" step="0.00001">
+                        <button id="max-amount" class="action-btn">MAX</button>
+                    </div>
+                </div>
+                <div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON</div>
+                ${feesNote}
+                <button id="withdraw-btn" class="withdraw-confirm-btn disabled">${this.t('confirm_withdrawal')}</button>
+            </div>
+            <div class="history-list">
+                <h4><i class="fas fa-history"></i> ${this.t('withdrawal_history')}</h4>
+                ${historyHtml}
+            </div>
         `;
         
         const walletInput = document.getElementById('wallet-addr');
@@ -2139,7 +2226,8 @@ class App {
         const checkWithdrawReady = () => {
             const wallet = walletInput?.value.trim();
             const amount = parseFloat(amountInput?.value);
-            const isValid = wallet && wallet.length >= 20 && amount >= APP_CONFIG.MINIMUM_WITHDRAW && amount <= this.tonBalance;
+            const totalRequired = amount + (APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0);
+            const isValid = wallet && wallet.length >= 5 && amount >= APP_CONFIG.MINIMUM_WITHDRAW && totalRequired <= this.tonBalance;
             if (withdrawBtn) {
                 if (isValid) withdrawBtn.classList.remove('disabled');
                 else withdrawBtn.classList.add('disabled');
@@ -2148,7 +2236,7 @@ class App {
         
         maxBtn?.addEventListener('click', () => {
             if (amountInput) {
-                let maxAmount = this.tonBalance - 0.00001;
+                let maxAmount = this.tonBalance - (APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0) - 0.00001;
                 if (maxAmount < 0) maxAmount = 0;
                 amountInput.value = maxAmount.toFixed(6);
                 checkWithdrawReady();
@@ -2161,9 +2249,37 @@ class App {
         withdrawBtn?.addEventListener('click', () => {
             if (withdrawBtn.classList.contains('disabled')) return;
             const amount = parseFloat(amountInput.value);
-            const wallet = walletInput.value.trim();
-            this.withdraw(amount, wallet);
+            const email = walletInput.value.trim();
+            this.withdraw(amount, email);
         });
+        
+        document.getElementById('faucet-info-btn')?.addEventListener('click', () => {
+            this.showFaucetInfoModal();
+        });
+    }
+    
+    showFaucetInfoModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.style.display = 'flex';
+        modal.innerHTML = `
+            <div class="modal-content glass-modal modern-modal" style="max-width:320px;">
+                <div class="modal-header">
+                    <h3><i class="fas fa-info-circle"></i> ${this.t('faucetpay_info')}</h3>
+                    <button class="modal-close" onclick="this.closest('.modal').remove()">&times;</button>
+                </div>
+                <div class="modal-body" style="text-align:center;">
+                    <p style="margin-bottom:20px;">${this.t('faucetpay_info')}</p>
+                    <button id="register-faucetpay-btn" class="modern-support-btn telegram-btn" style="background:linear-gradient(135deg,#0088cc,#006699);"><i class="fab fa-telegram"></i> ${this.t('register_faucetpay')}</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('register-faucetpay-btn')?.addEventListener('click', () => {
+            window.open('https://t.me/faucetpay/FaucetPay?startapp=5942798', '_blank');
+            modal.remove();
+        });
+        modal.querySelector('.modal-close')?.addEventListener('click', () => modal.remove());
     }
     
     updateModalTranslations() {
@@ -2177,7 +2293,7 @@ class App {
         const promoText = document.getElementById('promo-info-text');
         if (promoText) promoText.innerHTML = `<i class="fas fa-telegram"></i> ${this.t('promo_info_text')}`;
         const getPromoBtn = document.getElementById('get-promo-codes-btn');
-        if (getPromoBtn) getPromoBtn.innerHTML = `<i class="fas fa-hand-holding-heart"></i> ${this.t('get_promo_codes')}`;
+        if (getPromoBtn) getPromoBtn.innerHTML = `<i class="fab fa-telegram"></i> ${this.t('get_promo_codes')}`;
         const stepsTitle = document.getElementById('promo-steps-title');
         if (stepsTitle) stepsTitle.innerText = this.t('how_it_works');
         const step1 = document.getElementById('promo-step-1');
@@ -2210,8 +2326,6 @@ class App {
         if (taskNameInput) taskNameInput.placeholder = this.t('task_name_placeholder');
         const taskUrlInput = document.getElementById('task-url-input');
         if (taskUrlInput) taskUrlInput.placeholder = this.t('task_url_placeholder');
-        const verifyNote = document.getElementById('verify-note');
-        if (verifyNote) verifyNote.innerText = this.t('add_admin_note');
         
         const verifyYesBtn = document.getElementById('verify-yes-btn');
         if (verifyYesBtn) verifyYesBtn.innerText = this.t('verification_yes');
@@ -2233,6 +2347,12 @@ class App {
             payBtn.innerHTML = this.t('pay_stars', { stars: price });
         }
         
+        const addAdminNote = document.getElementById('add-admin-note');
+        if (addAdminNote) {
+            const botLink = `https://t.me/${APP_CONFIG.BOT_USERNAME}?startchannel=m&admin=invite_users`;
+            addAdminNote.innerHTML = `<i class="fas fa-info-circle"></i> ${this.t('add_bot_as_admin')} <a href="${botLink}" target="_blank" style="color:var(--primary);text-decoration:none;"><i class="fas fa-external-link-alt"></i> ${this.t('add_admin_btn')}</a>`;
+        }
+        
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
         document.getElementById('current-flag').innerText = currentFlag;
     }
@@ -2240,11 +2360,9 @@ class App {
     openAddTaskModal() {
         const nameInput = document.getElementById('task-name-input');
         const urlInput = document.getElementById('task-url-input');
-        const verifyNote = document.getElementById('verify-note');
         
         if (nameInput) nameInput.value = '';
         if (urlInput) urlInput.value = '';
-        if (verifyNote) verifyNote.style.display = 'none';
         
         const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
         verifyButtons.forEach(btn => {
@@ -2302,6 +2420,10 @@ class App {
                     this.showNotification('Error', 'URL must start with https://', 'error');
                     return;
                 }
+                if (!name || !url) {
+                    this.showNotification('Error', this.t('all_fields_required'), 'error');
+                    return;
+                }
                 if (verification === 'true' && !url.includes('t.me/')) {
                     this.showNotification('Error', 'Verification requires a Telegram channel URL (t.me/...)', 'error');
                     return;
@@ -2317,11 +2439,6 @@ class App {
         const parent = btn.parentElement;
         parent.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
         btn.classList.add('active');
-        
-        const verifyNote = document.getElementById('verify-note');
-        if (verifyNote) {
-            verifyNote.style.display = btn.dataset.value === 'true' ? 'block' : 'none';
-        }
     }
     
     handleCompletionsToggle(e) {
@@ -2337,8 +2454,6 @@ class App {
     }
     
     setupEventListeners() {
-        document.getElementById('support-btn').onclick = () => window.open(APP_CONFIG.SUPPORT_LINK, '_blank');
-        
         document.getElementById('close-promo-info')?.addEventListener('click', () => {
             document.getElementById('promo-info-modal').style.display = 'none';
         });
@@ -2353,7 +2468,7 @@ class App {
         });
         
         window.addEventListener('beforeunload', () => {
-            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyMining) {
+            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyStars || this._dirtyMining) {
                 this.saveUserData(true);
             }
         });
@@ -2548,7 +2663,7 @@ class App {
             }, 60000);
             
             setInterval(() => {
-                if (this._dirtyPower || this._dirtyTon || this._dirtyMining) {
+                if (this._dirtyPower || this._dirtyTon || this._dirtyStars || this._dirtyMining) {
                     this.scheduleSave();
                 }
             }, 60000);
