@@ -2337,7 +2337,6 @@ class App {
     }
 
 
-
 openAddTaskModal() {
     const nameInput = document.getElementById('task-name-input');
     const urlInput = document.getElementById('task-url-input');
@@ -2356,24 +2355,10 @@ openAddTaskModal() {
     if (addAdminDiv) addAdminDiv.style.display = 'none';
     
     if (payBtn) {
-        payBtn.disabled = true;
-        payBtn.style.opacity = '0.5';
-        payBtn.style.pointerEvents = 'none';
+        payBtn.disabled = false;
+        payBtn.style.opacity = '1';
+        payBtn.style.pointerEvents = 'auto';
     }
-    
-    const enablePayBtn = () => {
-        const name = nameInput?.value.trim();
-        const url = urlInput?.value.trim();
-        const isValid = name && url;
-        if (payBtn) {
-            payBtn.disabled = !isValid;
-            payBtn.style.opacity = isValid ? '1' : '0.5';
-            payBtn.style.pointerEvents = isValid ? 'auto' : 'none';
-        }
-    };
-    
-    if (nameInput) nameInput.addEventListener('input', enablePayBtn);
-    if (urlInput) urlInput.addEventListener('input', enablePayBtn);
     
     this.setupAddTaskModalListeners();
     this.renderAddTaskModal();
