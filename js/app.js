@@ -334,15 +334,13 @@ class App {
     }
     
     getHourlyTonRate() {
-        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_TON_RATE * 5;
+        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_TON_RATE;
     }
-    
     getDailyTonRate() {
-        return (this.powerBalance / 1000) * APP_CONFIG.POWER_PER_DAY_RATE;
+        return this.getHourlyTonRate() * 24;
     }
-    
     getMonthlyTonRate() {
-        return this.getDailyTonRate() * 15;
+        return this.getDailyTonRate() * 30;
     }
     
     calculateRewardForHours(hours) {
