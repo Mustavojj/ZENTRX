@@ -1,12 +1,14 @@
 export const APP_CONFIG = {
-    APP_NAME: "Z MINER",
+    APP_NAME: "ZENTRIX",
     BOT_USERNAME: "Zentrxbot",
-    SUPPORT_LINK: "https://t.me/Zentrxb",
+    SUPPORT_LINK: "",
     MINIMUM_WITHDRAW: 0.01,
+    WITHDRAWAL_FEES: 0.0005,
     REFERRAL_PERCENTAGE: 20,
     REFERRAL_POWER_REWARD: 300,
     MINING_SESSION_HOURS: 5,
     POWER_PER_TON_RATE: 0.00002,
+    POWER_PER_DAY_RATE: 0.0001,
     TASK_VERIFICATION_DELAY: 10,
     DEFAULT_USER_AVATAR: "https://i.ibb.co/B5z8x1vJ/afb301036766.jpg",
     AD_COOLDOWN_HOURS: 6,
@@ -18,6 +20,9 @@ export const APP_CONFIG = {
     REFERRAL_REQUIRED_TASKS: 5,
     REFERRAL_REQUIRED_MINES: 2,
     BOT_TOKEN: "",
+    DAILY_TASKS: [
+        { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 10, verify: true }
+    ],
     MAIN_TASKS: [
         { id: "money_hub", name: "MONEY HUB", url: "https://t.me/MONEYHUB9_69", reward: 10, verify: true, img: "https://i.ibb.co/B5z8x1vJ/afb301036766.jpg" },
         { id: "ton_labs", name: "TON LABS", url: "https://t.me/TonLabstg", reward: 10, verify: true, img: "https://i.ibb.co/B5z8x1vJ/afb301036766.jpg" },
