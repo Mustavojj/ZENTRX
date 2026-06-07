@@ -1,17 +1,18 @@
+// app.js
 import { APP_CONFIG } from './data.js';
 
 const translations = {
     ru: {
         level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "5 часов", daily: "Ежедневно", monthly: "Ежемесячно",
         start_mining: "НАЧАТЬ МАЙНИНГ", claim_reward: "ПОЛУЧИТЬ НАГРАДУ", mining_note: "Награды можно получить после окончания сеанса майнинга",
-        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", stars: "Stars", promo_code: "Промокод",
+        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", promo_code: "Промокод",
         enter_code: "Введите код", claim: "Получить", main_tasks: "Основные задания", partner_tasks: "Социальные задания",
         watch_ad: "Смотреть рекламу", reward_amount: "Награда", available_in: "Доступно через", hours: "ч",
         watch: "Смотреть", all_tasks_completed: "Все задания выполнены!", check_later: "Заходите позже за новыми",
         no_tasks: "Нет доступных заданий", team_benefits: "Преимущества команды", share_earn: "ДЕЛИСЬ И ЗАРАБАТЫВАЙ",
         copy: "Копировать", share: "Поделиться", total_members: "Всего участников",
         power_earnings: "Заработок энергии", withdraw: "Вывести",
-        available: "Доступно", faucet_email: "Faucet Email", amount: "Сумма", min_withdraw: "Мин. вывод",
+        available: "Доступно", faucet_email: "Faucet PAY", amount: "Сумма", min_withdraw: "Мин. вывод",
         confirm_withdrawal: "Подтвердить вывод", withdrawal_history: "История выводов", no_withdrawals: "Пока нет выводов",
         pending: "В ОЖИДАНИИ", completed: "ВЫПЛАЧЕНО", claim_mining_title: "Получить награды майнинга", claim_btn: "Получить награды",
         partner_info_title: "Социальные задания", mining: "Майнинг", earn: "Заработок", team: "Команда",
@@ -34,8 +35,6 @@ const translations = {
         earn_percent_friends: "Зарабатывайте {percent}% от дохода друзей",
         task_name_placeholder: "Введите название задачи",
         task_url_placeholder: "Введите URL задачи (https://t.me/..)",
-        add_admin_note: "Добавьте @Zentrxbot администратором",
-        add_admin_btn: "Добавить бота",
         verification_yes: "ДА",
         verification_no: "НЕТ",
         completions_100: "100",
@@ -51,25 +50,30 @@ const translations = {
         add_task_title: "Добавить социальное задание",
         my_tasks_title: "Мои задания",
         withdrawal_fees_note: "Комиссия за вывод: {fees} TON",
-        faucetpay_info: "Вывод средств осуществляется через платформу Faucet Pay",
-        register_faucetpay: "Зарегистрироваться в FaucetPay",
+        faucetpay_title: "Faucet PAY",
+        faucetpay_desc: "Payments are processed via the FaucetPay wallet.",
+        faucetpay_step1: "1. Register a new account",
+        faucetpay_step2: "2. Link it to your email address",
+        faucetpay_step3: "3. Receive your payments easily",
+        register_now: "Register Now",
         all_fields_required: "Пожалуйста, заполните все поля",
-        add_bot_as_admin: "Добавить @Zentrxbot администратором",
+        add_bot_as_admin: "Add The Bot As Admin",
         team_benefits_title: "Преимущества команды",
         team_benefit_referral_power: "Заработайте {reward} энергии за подтвержденного реферала",
-        team_benefit_referral_percent: "Зарабатывайте {percent}% от дохода друзей"
+        team_benefit_referral_percent: "Зарабатывайте {percent}% от дохода друзей",
+        reward_added: "Награда добавлена! +{reward} Power"
     },
     en: {
         level: "Level", mining_rig: "Mining Rig Lv.", hourly: "5 Hours", daily: "Daily", monthly: "Monthly",
         start_mining: "START MINING", claim_reward: "CLAIM REWARD", mining_note: "Rewards can be collected after mining session ends",
-        next_level_reward: "Next level reward", power: "Power", ton: "TON", stars: "Stars", promo_code: "Promo Code",
+        next_level_reward: "Next level reward", power: "Power", ton: "TON", promo_code: "Promo Code",
         enter_code: "Enter code", claim: "Claim", main_tasks: "Main Tasks", partner_tasks: "Social Tasks",
         watch_ad: "Watch Reward AD", reward_amount: "Reward", available_in: "Available in", hours: "h",
         watch: "Watch", all_tasks_completed: "All tasks completed!", check_later: "Check back later for more",
         no_tasks: "No tasks available", team_benefits: "Team Benefits", share_earn: "SHARE & EARN",
         copy: "Copy", share: "Share", total_members: "Total Members",
         power_earnings: "Power Earnings", withdraw: "Withdraw",
-        available: "Available", faucet_email: "Faucet Email", amount: "Amount", min_withdraw: "Minimum withdrawal",
+        available: "Available", faucet_email: "Faucet PAY", amount: "Amount", min_withdraw: "Minimum withdrawal",
         confirm_withdrawal: "Confirm Withdrawal", withdrawal_history: "Withdrawal History", no_withdrawals: "No withdrawals yet",
         pending: "PENDING", completed: "PAID", claim_mining_title: "Claim Mining Rewards", claim_btn: "Claim Rewards",
         partner_info_title: "Social Tasks", mining: "Mining", earn: "Earn", team: "Team",
@@ -92,8 +96,6 @@ const translations = {
         earn_percent_friends: "Earn {percent}% From Friends Earnings",
         task_name_placeholder: "Enter Task Name",
         task_url_placeholder: "Enter Task URL (https://t.me/..)",
-        add_admin_note: "Add @Zentrxbot as admin",
-        add_admin_btn: "Add Bot",
         verification_yes: "YES",
         verification_no: "NO",
         completions_100: "100",
@@ -109,25 +111,30 @@ const translations = {
         add_task_title: "Add Social Task",
         my_tasks_title: "My Tasks",
         withdrawal_fees_note: "Withdrawal fees: {fees} TON",
-        faucetpay_info: "Withdrawals are processed through Faucet Pay platform",
-        register_faucetpay: "Register on FaucetPay",
+        faucetpay_title: "Faucet PAY",
+        faucetpay_desc: "Payments are processed via the FaucetPay wallet.",
+        faucetpay_step1: "1. Register a new account",
+        faucetpay_step2: "2. Link it to your email address",
+        faucetpay_step3: "3. Receive your payments easily",
+        register_now: "Register Now",
         all_fields_required: "Please fill all fields",
-        add_bot_as_admin: "Add @Zentrxbot as admin",
+        add_bot_as_admin: "Add The Bot As Admin",
         team_benefits_title: "Team Benefits",
         team_benefit_referral_power: "Earn {reward} Power per verified referral",
-        team_benefit_referral_percent: "Earn {percent}% from friends earnings"
+        team_benefit_referral_percent: "Earn {percent}% from friends earnings",
+        reward_added: "Reward Added! +{reward} Power"
     },
     tr: {
         level: "Seviye", mining_rig: "Madenci Seviye", hourly: "5 saat", daily: "Günlük", monthly: "Aylık",
         start_mining: "MADENCİLİĞE BAŞLA", claim_reward: "ÖDÜLÜ AL", mining_note: "Ödüller madencilik oturumu bittikten sonra toplanabilir",
-        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", stars: "Yıldız", promo_code: "Promosyon Kodu",
+        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", promo_code: "Promosyon Kodu",
         enter_code: "Kodu girin", claim: "Al", main_tasks: "Ana Görevler", partner_tasks: "Sosyal Görevler",
         watch_ad: "Ödüllü Reklam İzle", reward_amount: "Ödül", available_in: "Kalan süre", hours: "sa",
         watch: "İzle", all_tasks_completed: "Tüm görevler tamamlandı!", check_later: "Daha fazlası için daha sonra kontrol edin",
         no_tasks: "Görev yok", team_benefits: "Takım Avantajları", share_earn: "PAYLAŞ VE KAZAN",
         copy: "Kopyala", share: "Paylaş", total_members: "Toplam Üye",
         power_earnings: "Güç Kazancı", withdraw: "Çek",
-        available: "Mevcut", faucet_email: "Faucet Email", amount: "Miktar", min_withdraw: "Minimum çekim",
+        available: "Mevcut", faucet_email: "Faucet PAY", amount: "Miktar", min_withdraw: "Minimum çekim",
         confirm_withdrawal: "Çekimi Onayla", withdrawal_history: "Çekim Geçmişi", no_withdrawals: "Henüz çekim yok",
         pending: "beklemede", completed: "tamamlandı", claim_mining_title: "Madencilik Ödüllerini Al", claim_btn: "Ödülleri Al",
         partner_info_title: "Sosyal Görevler", mining: "Madencilik", earn: "Kazan", team: "Takım",
@@ -150,8 +157,6 @@ const translations = {
         earn_percent_friends: "Arkadaş Kazançlarından {percent}% Kazanın",
         task_name_placeholder: "Görev Adını Girin",
         task_url_placeholder: "Görev URL'sini Girin (https://t.me/..)",
-        add_admin_note: "@Zentrxbot'u yönetici olarak ekleyin",
-        add_admin_btn: "Botu Ekle",
         verification_yes: "EVET",
         verification_no: "HAYIR",
         completions_100: "100",
@@ -167,25 +172,30 @@ const translations = {
         add_task_title: "Sosyal Görev Ekle",
         my_tasks_title: "Görevlerim",
         withdrawal_fees_note: "Çekim ücreti: {fees} TON",
-        faucetpay_info: "Ödemeler Faucet Pay platformu üzerinden işlenir",
-        register_faucetpay: "FaucetPay'e Kaydol",
+        faucetpay_title: "Faucet PAY",
+        faucetpay_desc: "Ödemeler FaucetPay cüzdanı üzerinden işlenir.",
+        faucetpay_step1: "1. Yeni hesap oluşturun",
+        faucetpay_step2: "2. E-posta adresinize bağlayın",
+        faucetpay_step3: "3. Ödemelerinizi kolayca alın",
+        register_now: "Şimdi Kaydol",
         all_fields_required: "Lütfen tüm alanları doldurun",
-        add_bot_as_admin: "@Zentrxbot'u yönetici olarak ekle",
+        add_bot_as_admin: "Botu Yönetici Olarak Ekle",
         team_benefits_title: "Takım Avantajları",
         team_benefit_referral_power: "Doğrulanmış referans başına {reward} Güç kazanın",
-        team_benefit_referral_percent: "Arkadaş kazançlarından %{percent} kazanın"
+        team_benefit_referral_percent: "Arkadaş kazançlarından %{percent} kazanın",
+        reward_added: "Ödül Eklendi! +{reward} Power"
     },
     ar: {
         level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 5 ساعات", daily: "يومي", monthly: "شهري",
         start_mining: "بدء التعدين", claim_reward: "استلام المكافأة", mining_note: "يمكن جمع المكافآت بعد انتهاء جلسة التعدين",
-        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", stars: "نجوم", promo_code: "رمز ترويجي",
+        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", promo_code: "رمز ترويجي",
         enter_code: "أدخل الرمز", claim: "استلام", main_tasks: "المهام الرئيسية", partner_tasks: "المهام الاجتماعية",
         watch_ad: "مشاهدة إعلان مكافأة", reward_amount: "المكافأة", available_in: "متاح بعد", hours: "ساعة",
         watch: "مشاهدة", all_tasks_completed: "جميع المهام مكتملة!", check_later: "تحقق لاحقاً للمزيد",
         no_tasks: "لا توجد مهام متاحة", team_benefits: "مزايا الفريق", share_earn: "شارك واربح",
         copy: "نسخ", share: "مشاركة", total_members: "إجمالي الأعضاء",
         power_earnings: "أرباح الطاقة", withdraw: "سحب",
-        available: "الرصيد المتوفر", faucet_email: "البريد الإلكتروني Faucet", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
+        available: "الرصيد المتوفر", faucet_email: "Faucet PAY", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
         confirm_withdrawal: "تأكيد السحب", withdrawal_history: "سجل السحوبات", no_withdrawals: "لا توجد سحوبات بعد",
         pending: "قيد الانتظار", completed: "مكتمل", claim_mining_title: "استلام مكافآت التعدين", claim_btn: "استلام المكافآت",
         partner_info_title: "المهام الاجتماعية", mining: "التعدين", earn: "الأرباح", team: "الفريق",
@@ -208,8 +218,6 @@ const translations = {
         earn_percent_friends: "اربح {percent}% من أرباح الأصدقاء",
         task_name_placeholder: "أدخل اسم المهمة",
         task_url_placeholder: "أدخل رابط المهمة (https://t.me/..)",
-        add_admin_note: "أضف @Zentrxbot كمدير",
-        add_admin_btn: "إضافة البوت",
         verification_yes: "نعم",
         verification_no: "لا",
         completions_100: "100",
@@ -225,13 +233,18 @@ const translations = {
         add_task_title: "إضافة مهمة اجتماعية",
         my_tasks_title: "مهامي",
         withdrawal_fees_note: "رسوم السحب: {fees} TON",
-        faucetpay_info: "تتم المدفوعات عبر منصة Faucet Pay",
-        register_faucetpay: "التسجيل في FaucetPay",
+        faucetpay_title: "Faucet PAY",
+        faucetpay_desc: "تتم المدفوعات عبر محفظة FaucetPay.",
+        faucetpay_step1: "1. إنشاء حساب جديد",
+        faucetpay_step2: "2. ربطه بعنوان بريدك الإلكتروني",
+        faucetpay_step3: "3. استلام مدفوعاتك بسهولة",
+        register_now: "سجل الآن",
         all_fields_required: "الرجاء ملء جميع الحقول",
-        add_bot_as_admin: "أضف @Zentrxbot كمدير",
+        add_bot_as_admin: "إضافة البوت كمدير",
         team_benefits_title: "مزايا الفريق",
         team_benefit_referral_power: "اربح {reward} طاقة لكل إحالة مؤكدة",
-        team_benefit_referral_percent: "اربح {percent}% من أرباح الأصدقاء"
+        team_benefit_referral_percent: "اربح {percent}% من أرباح الأصدقاء",
+        reward_added: "تمت إضافة المكافأة! +{reward} طاقة"
     }
 };
 
@@ -247,7 +260,6 @@ class App {
         
         this.powerBalance = 0;
         this.tonBalance = 0;
-        this.starsBalance = 0;
         this.userLevel = 1;
         this.hasStartedMining = false;
         this.userCompletedTasks = new Set();
@@ -285,7 +297,6 @@ class App {
         
         this._dirtyPower = false;
         this._dirtyTon = false;
-        this._dirtyStars = false;
         this._dirtyMining = false;
         this._saveTimeout = null;
         this._isSaving = false;
@@ -319,7 +330,8 @@ class App {
     }
     
     formatNumber(num) {
-        return num.toLocaleString('en');
+        if (num >= 1000) return (num / 1000).toFixed(2) + 'K';
+        return num.toString();
     }
     
     getHourlyTonRate() {
@@ -365,6 +377,14 @@ class App {
         if (levelBadge) levelBadge.innerText = this.userLevel;
         
         localStorage.setItem(`user_level_${this.tgUser?.id}`, this.userLevel.toString());
+        this.updateHeaderBalances();
+    }
+    
+    updateHeaderBalances() {
+        const powerHeader = document.getElementById('header-power');
+        const tonHeader = document.getElementById('header-ton');
+        if (powerHeader) powerHeader.innerHTML = `<i class="fas fa-bolt"></i> ${this.formatNumber(Math.floor(this.powerBalance))}`;
+        if (tonHeader) tonHeader.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(4)}`;
     }
     
     getRequiredPowerForLevel(level) {
@@ -525,7 +545,6 @@ class App {
         this.renderMining();
         if (this.miningInterval) clearInterval(this.miningInterval);
         if (this.uiUpdateInterval) clearInterval(this.uiUpdateInterval);
-        this.showNotification('Mining Stopped', `${this.pendingTonReward.toFixed(8)} TON ready to claim!`, 'success');
     }
     
     async claimMiningRewards() {
@@ -548,53 +567,27 @@ class App {
             return;
         }
         
-        const modal = document.getElementById('claim-modal');
-        const rewardEl = document.getElementById('claim-reward-amount');
-        rewardEl.innerText = this.pendingTonReward.toFixed(6) + ' TON';
-        modal.style.display = 'flex';
+        const earnedAmount = this.pendingTonReward;
+        const originalTon = this.tonBalance;
+        this.tonBalance += earnedAmount;
+        this._dirtyTon = true;
+        this.pendingTonReward = 0;
+        this._dirtyMining = true;
         
-        const confirmBtn = document.getElementById('confirm-claim-btn');
-        const closeBtn = document.getElementById('close-claim-modal');
+        const saved = await this.saveUserData(true);
         
-        const handleClaim = async () => {
-            const earnedAmount = this.pendingTonReward;
-            const originalTon = this.tonBalance;
-            this.tonBalance += earnedAmount;
-            this._dirtyTon = true;
-            this.pendingTonReward = 0;
+        if (!saved) {
+            this.tonBalance = originalTon;
+            this.pendingTonReward = earnedAmount;
+            this._dirtyTon = false;
             this._dirtyMining = true;
-            
-            const saved = await this.saveUserData(true);
-            
-            if (!saved) {
-                this.tonBalance = originalTon;
-                this.pendingTonReward = earnedAmount;
-                this._dirtyTon = false;
-                this._dirtyMining = true;
-                this.showNotification('Error', this.t('save_error'), 'error');
-                return;
-            }
-            
-            modal.style.display = 'none';
-            cleanup();
-            
-            this.updateLevelFromPower();
-            this.renderMining();
-            this.showNotification('Rewards Claimed!', `${earnedAmount.toFixed(8)} TON added to balance`, 'success');
-        };
+            this.showNotification('Error', this.t('save_error'), 'error');
+            return;
+        }
         
-        const handleClose = () => {
-            modal.style.display = 'none';
-            cleanup();
-        };
-        
-        const cleanup = () => {
-            confirmBtn.removeEventListener('click', handleClaim);
-            closeBtn.removeEventListener('click', handleClose);
-        };
-        
-        confirmBtn.addEventListener('click', handleClaim);
-        closeBtn.addEventListener('click', handleClose);
+        this.updateLevelFromPower();
+        this.renderMining();
+        this.showNotification('Rewards Claimed!', `${earnedAmount.toFixed(8)} TON added to balance`, 'success');
     }
     
     startMiningLoop() {
@@ -919,7 +912,7 @@ class App {
                         status: 'active',
                         owner: this.tgUser.id,
                         createdAt: this.getCurrentTime(),
-                        reward: 10,
+                        reward: APP_CONFIG.TASK_REWARD,
                         total: 0
                     };
                     
@@ -1338,7 +1331,6 @@ class App {
             const updates = {};
             if (this._dirtyPower) updates.powerBalance = this.powerBalance;
             if (this._dirtyTon) updates.tonBalance = this.tonBalance;
-            if (this._dirtyStars) updates.starsBalance = this.starsBalance;
             if (this._dirtyMining) {
                 updates.miningActive = this.miningActive;
                 updates.miningStartTime = this.miningStartTime;
@@ -1356,7 +1348,6 @@ class App {
             const userDataForCache = {
                 powerBalance: this.powerBalance,
                 tonBalance: this.tonBalance,
-                starsBalance: this.starsBalance,
                 userLevel: this.userLevel,
                 miningActive: this.miningActive,
                 miningStartTime: this.miningStartTime,
@@ -1369,7 +1360,6 @@ class App {
             
             this._dirtyPower = false;
             this._dirtyTon = false;
-            this._dirtyStars = false;
             this._dirtyMining = false;
             
             if (this._saveTimeout) clearTimeout(this._saveTimeout);
@@ -1398,7 +1388,6 @@ class App {
             createdAt: await this.syncServerTime(),
             powerBalance: 1000,
             tonBalance: 0,
-            starsBalance: 0,
             level: 1,
             totalTasksCompleted: 0,
             totalMiningStarts: 0,
@@ -1424,7 +1413,6 @@ class App {
         
         this.powerBalance = 1000;
         this.tonBalance = 0;
-        this.starsBalance = 0;
         this.userLevel = 1;
         this.hasStartedMining = false;
         this.miningActive = false;
@@ -1483,7 +1471,6 @@ class App {
             const data = JSON.parse(cachedUser);
             this.powerBalance = data.powerBalance ?? 0;
             this.tonBalance = data.tonBalance ?? 0;
-            this.starsBalance = data.starsBalance ?? 0;
             this.userLevel = data.userLevel ?? 1;
             this.miningActive = data.miningActive ?? false;
             this.miningStartTime = data.miningStartTime ?? null;
@@ -1500,7 +1487,6 @@ class App {
                 const d = snap.val();
                 this.powerBalance = d.powerBalance ?? this.powerBalance;
                 this.tonBalance = d.tonBalance ?? this.tonBalance;
-                this.starsBalance = d.starsBalance ?? this.starsBalance;
                 this.userLevel = d.level ?? this.userLevel;
                 this.hasStartedMining = d.hasStartedMining ?? false;
                 this.miningActive = d.miningActive ?? this.miningActive;
@@ -1518,7 +1504,6 @@ class App {
                 const userDataForCache = {
                     powerBalance: this.powerBalance,
                     tonBalance: this.tonBalance,
-                    starsBalance: this.starsBalance,
                     userLevel: this.userLevel,
                     miningActive: this.miningActive,
                     miningStartTime: this.miningStartTime,
@@ -1554,6 +1539,7 @@ class App {
         
         await this.loadDailyTaskStatus();
         await this.loadCompletedSocialTasks();
+        this.updateHeaderBalances();
     }
     
     async loadCompletedSocialTasks() {
@@ -1832,11 +1818,6 @@ class App {
         const showMiningActive = this.miningActive;
         
         el.innerHTML = `
-            <div class="balance-cards">
-                <div class="balance-card"><div class="icon power"><i class="fas fa-bolt"></i></div><span class="label">${this.t('power')}</span><span class="value">${this.formatNumber(Math.floor(this.powerBalance))}</span></div>
-                <div class="balance-card"><i class="fas fa-star" style="color:#FFD93D; font-size:1.8rem; margin-bottom:8px;"></i><span class="label">${this.t('stars')}</span><span class="value">${this.formatNumber(Math.floor(this.starsBalance))}</span></div>
-                <div class="balance-card"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" class="ton-icon-img"><span class="label">${this.t('ton')}</span><span class="value">${this.tonBalance.toFixed(6)}</span></div>
-            </div>
             <div class="mining-card">
                 <div class="mining-icon-container">
                     <img src="https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg" class="mining-icon ${this.miningActive ? 'pulse-logo' : ''}">
@@ -1938,7 +1919,7 @@ class App {
         const availableMainTasksHtml = availableMainTasks.length > 0 ? availableMainTasks.map(t => `
             <div class="task-item daily-task-card">
                 <div class="daily-task-header">
-                    <div class="daily-task-icon"><img src="${t.img}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
+                    <div class="daily-task-icon"><img src="${APP_CONFIG.TASK_IMAGE}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
                     <div class="daily-task-info">
                         <h4>${t.name}</h4>
                         <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
@@ -2076,13 +2057,13 @@ class App {
                     container.innerHTML = activeTasks.map(t => `
                         <div class="task-item daily-task-card">
                             <div class="daily-task-header">
-                                <div class="daily-task-icon"><i class="fas fa-tasks"></i></div>
+                                <div class="daily-task-icon"><img src="${APP_CONFIG.TASK_IMAGE}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
                                 <div class="daily-task-info">
                                     <h4>${t.name}</h4>
-                                    <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
+                                    <div class="task-reward"><i class="fas fa-bolt"></i> ${APP_CONFIG.TASK_REWARD} ${this.t('power')}</div>
                                     <small>Completions: ${t.total}/${t.max}</small>
                                 </div>
-                                <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
+                                <button class="task-btn start" data-id="${t.id}" data-reward="${APP_CONFIG.TASK_REWARD}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
                             </div>
                         </div>
                     `).join('');
@@ -2264,12 +2245,18 @@ class App {
         modal.innerHTML = `
             <div class="modal-content glass-modal modern-modal" style="max-width:320px;">
                 <div class="modal-header">
-                    <h3><i class="fas fa-info-circle"></i> ${this.t('faucetpay_info')}</h3>
+                    <h3><i class="fas fa-wallet"></i> ${this.t('faucetpay_title')}</h3>
                     <button class="modal-close" onclick="this.closest('.modal').remove()">&times;</button>
                 </div>
                 <div class="modal-body" style="text-align:center;">
-                    <p style="margin-bottom:20px;">${this.t('faucetpay_info')}</p>
-                    <button id="register-faucetpay-btn" class="modern-support-btn telegram-btn" style="background:linear-gradient(135deg,#0088cc,#006699);"><i class="fab fa-telegram"></i> ${this.t('register_faucetpay')}</button>
+                    <p style="margin-bottom:16px;">${this.t('faucetpay_desc')}</p>
+                    <div class="promo-steps" style="margin-bottom:16px;">
+                        <h4>${this.t('how_it_works')}</h4>
+                        <div class="step-item"><div class="step-number">1</div><div class="step-text">${this.t('faucetpay_step1')}</div></div>
+                        <div class="step-item"><div class="step-number">2</div><div class="step-text">${this.t('faucetpay_step2')}</div></div>
+                        <div class="step-item"><div class="step-number">3</div><div class="step-text">${this.t('faucetpay_step3')}</div></div>
+                    </div>
+                    <button id="register-faucetpay-btn" class="modern-support-btn" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));"><i class="fas fa-user-plus"></i> ${this.t('register_now')}</button>
                 </div>
             </div>
         `;
@@ -2346,12 +2333,6 @@ class App {
             payBtn.innerHTML = this.t('pay_stars', { stars: price });
         }
         
-        const addAdminNote = document.getElementById('add-admin-note');
-        if (addAdminNote) {
-            const botLink = `https://t.me/${APP_CONFIG.BOT_USERNAME}?startchannel=m&admin=invite_users`;
-            addAdminNote.innerHTML = `<i class="fas fa-info-circle"></i> ${this.t('add_bot_as_admin')} <a href="${botLink}" target="_blank" style="color:var(--primary);text-decoration:none;"><i class="fas fa-external-link-alt"></i> ${this.t('add_admin_btn')}</a>`;
-        }
-        
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
         document.getElementById('current-flag').innerText = currentFlag;
     }
@@ -2365,27 +2346,42 @@ class App {
         
         const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
         verifyButtons.forEach(btn => {
-            if (btn.dataset.value === 'true') btn.classList.add('active');
-            else btn.classList.remove('active');
+            btn.classList.remove('active');
         });
         
         const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
         completionsButtons.forEach(btn => {
-            if (btn.dataset.value === '1000') btn.classList.add('active');
-            else btn.classList.remove('active');
+            btn.classList.remove('active');
         });
         
-        const priceSpan = document.getElementById('task-price');
-        if (priceSpan) {
-            priceSpan.innerText = '50';
-            const payBtn = document.getElementById('pay-task-btn');
-            if (payBtn) payBtn.innerHTML = this.t('pay_stars', { stars: 50 });
+        const addAdminDiv = document.getElementById('add-admin-div');
+        if (addAdminDiv) addAdminDiv.style.display = 'none';
+        
+        const payBtn = document.getElementById('pay-task-btn');
+        if (payBtn) {
+            payBtn.disabled = true;
+            payBtn.style.opacity = '0.5';
+            payBtn.style.pointerEvents = 'none';
         }
         
         this.setupAddTaskModalListeners();
         this.renderAddTaskModal();
         this.updateModalTranslations();
         document.getElementById('add-task-modal').style.display = 'flex';
+        
+        const checkInputs = () => {
+            const name = document.getElementById('task-name-input').value.trim();
+            const url = document.getElementById('task-url-input').value.trim();
+            const isValid = name && url;
+            if (payBtn) {
+                payBtn.disabled = !isValid;
+                payBtn.style.opacity = isValid ? '1' : '0.5';
+                payBtn.style.pointerEvents = isValid ? 'auto' : 'none';
+            }
+        };
+        
+        nameInput?.addEventListener('input', checkInputs);
+        urlInput?.addEventListener('input', checkInputs);
     }
     
     setupAddTaskModalListeners() {
@@ -2408,7 +2404,7 @@ class App {
             newPayBtn.addEventListener('click', async () => {
                 const name = document.getElementById('task-name-input').value.trim();
                 const url = document.getElementById('task-url-input').value.trim();
-                const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'true';
+                const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'false';
                 const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
                 
                 if (!name || name.length > 15 || !/^[a-zA-Z0-9\s]+$/.test(name)) {
@@ -2438,6 +2434,17 @@ class App {
         const parent = btn.parentElement;
         parent.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
         btn.classList.add('active');
+        
+        const addAdminDiv = document.getElementById('add-admin-div');
+        if (addAdminDiv) {
+            if (btn.dataset.value === 'true') {
+                const botLink = `https://t.me/${APP_CONFIG.BOT_USERNAME}?startchannel=m&admin=invite_users`;
+                addAdminDiv.innerHTML = `<button class="add-bot-btn" onclick="window.open('${botLink}', '_blank')"><i class="fab fa-telegram"></i> ${this.t('add_bot_as_admin')}</button>`;
+                addAdminDiv.style.display = 'block';
+            } else {
+                addAdminDiv.style.display = 'none';
+            }
+        }
     }
     
     handleCompletionsToggle(e) {
@@ -2467,7 +2474,7 @@ class App {
         });
         
         window.addEventListener('beforeunload', () => {
-            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyStars || this._dirtyMining) {
+            if (this.miningActive || this._dirtyPower || this._dirtyTon || this._dirtyMining) {
                 this.saveUserData(true);
             }
         });
@@ -2490,6 +2497,7 @@ class App {
                 this.renderUI();
                 this.updateModalTranslations();
                 this.updateAdCooldownDisplay();
+                this.updateHeaderBalances();
                 this.showNotification('Language', `Changed to ${opt.innerText}`, 'success');
             });
         });
@@ -2582,6 +2590,7 @@ class App {
         if (this._teamLoaded) this.renderTeam();
         if (this._withdrawLoaded) this.renderWithdraw();
         this.updateModalTranslations();
+        this.updateHeaderBalances();
     }
     
     async initialize() {
@@ -2646,6 +2655,17 @@ class App {
                 }
             }
             
+            const headerHtml = `
+                <div class="header-balances">
+                    <div class="header-balance" id="header-power"><i class="fas fa-bolt"></i> ${this.formatNumber(Math.floor(this.powerBalance))}</div>
+                    <div class="header-balance" id="header-ton"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(4)}</div>
+                </div>
+            `;
+            const headerActions = document.querySelector('.header-actions');
+            if (headerActions && !document.getElementById('header-balances')) {
+                headerActions.insertAdjacentHTML('afterbegin', headerHtml);
+            }
+            
             this.setupEventListeners();
             this.renderUI();
             this.setupNavigation();
@@ -2662,9 +2682,10 @@ class App {
             }, 60000);
             
             setInterval(() => {
-                if (this._dirtyPower || this._dirtyTon || this._dirtyStars || this._dirtyMining) {
+                if (this._dirtyPower || this._dirtyTon || this._dirtyMining) {
                     this.scheduleSave();
                 }
+                this.updateHeaderBalances();
             }, 60000);
             
             updateProgress(100);
