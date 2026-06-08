@@ -381,41 +381,31 @@ class App {
         return 1000;
     }
 
-    async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
-    try {
-        localStorage.setItem('pending_task_id', taskId);
-        localStorage.setItem('pending_task_amount', Math.round(amount * 1000000000).toString());
-        localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
-        
-        const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-        const amountNano = Math.round(amount * 1000000000);
-        const amountNanoStr = amountNano.toString();
-        
-        const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
-        window.open(tonkeeperUrl, '_blank');
-        
-        this.verifyTonPayment(taskId, amountNanoStr, name, url, verification, maxCompletions);
-        return true;
-    } catch (error) {
-        this.showNotification('Error', error.message, 'error');
-        return false;
-    }
-}
-
     
-async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
+    async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
     const savedTaskId = localStorage.getItem('pending_task_id');
     const searchId = taskId || savedTaskId;
+    const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
     
-    this.showNotification('Waiting', 'Waiting for payment confirmation...', 'info');
+    this.showNotification('Payment Verification', 'Checking blockchain for your payment...', 'info');
     
     if (this.pendingPaymentInterval) clearInterval(this.pendingPaymentInterval);
     
+    let attempts = 0;
+    const maxAttempts = 20;
+    
     this.pendingPaymentInterval = setInterval(async () => {
+        attempts++;
+        this.showNotification('Verifying', `Attempt ${attempts}/${maxAttempts}...`, 'info');
+        
         try {
-            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-            const response = await fetch(`https://tonapi.io/v2/blockchain/accounts/${walletAddress}/transactions?limit=20`);
+            const response = await fetch(`https://toncenter.com/api/v2/getTransactions?address=${walletAddress}&limit=20`);
             const data = await response.json();
+            
+            if (!data.ok) {
+                this.showNotification('API Error', 'Failed to fetch transactions. Retrying...', 'warning');
+                return;
+            }
             
             if (data.result && data.result.length > 0) {
                 const found = data.result.find(tx => {
@@ -442,10 +432,15 @@ async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompl
                     
                     this.showNotification('Success', 'Payment verified! Creating task...', 'success');
                     await this.createTaskAfterPayment(finalName, finalUrl, finalVerification, finalMaxCompletions, finalTaskId);
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(this.pendingPaymentInterval);
+                    this.pendingPaymentInterval = null;
+                    this.showNotification('Not Found', 'Payment not found. Did you complete the transaction?', 'warning');
                 }
             }
         } catch (error) {
-            console.log('Checking for payment...');
+            this.showNotification('Connection Error', 'Cannot connect to blockchain. Retrying...', 'error');
+            console.log('Verification error:', error);
         }
     }, 5000);
     
@@ -453,18 +448,38 @@ async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompl
         if (this.pendingPaymentInterval) {
             clearInterval(this.pendingPaymentInterval);
             this.pendingPaymentInterval = null;
-            this.showNotification('Timeout', 'Payment verification timeout. Please contact support.', 'warning');
+            this.showNotification('Timeout', 'Verification timeout. Please contact support.', 'warning');
             localStorage.removeItem('pending_task_id');
             localStorage.removeItem('pending_task_amount');
             localStorage.removeItem('pending_task_data');
         }
-    }, 600000);
+    }, 100000);
+    }
+
+    async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
+    try {
+        const amountNano = Math.round(amount * 1000000000);
+        const amountNanoStr = amountNano.toString();
+        
+        localStorage.setItem('pending_task_id', taskId);
+        localStorage.setItem('pending_task_amount', amountNanoStr);
+        localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
+        
+        const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+        const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
+        
+        this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
+        
+        window.open(tonkeeperUrl, '_blank');
+        
+        this.verifyTonPayment(taskId, amountNanoStr, name, url, verification, maxCompletions);
+        return true;
+    } catch (error) {
+        this.showNotification('Error', error.message, 'error');
+        return false;
+    }
 }
 
-
-
-
-    
 
     async sendNotification(userId, title, message) {
         try {
