@@ -24,7 +24,7 @@ export const APP_CONFIG = {
     POWER_PER_TON_RATE: 0.00000416667,
     POWER_PER_DAY_RATE: 0.0001,
     CRYPTO_BOT_TOKEN: "593486:AAgnc7TtIM9ay5Vwam3vPkqvwSPyT5YcV5q", 
-    TASK_REWARD: 10,
+    TASK_REWARD: 100,
     TASK_IMAGE: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
     DAILY_TASKS: [
         { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 10, verify: true }
