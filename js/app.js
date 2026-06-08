@@ -291,6 +291,8 @@ class App {
         this.dailyCheckNewsCompleted = false;
         
         this.membershipCache = new Map();
+        this.tonConnector = null;
+        this.pendingTask = null;
     }
     
     truncateName(name, maxLength = 15) {
@@ -379,71 +381,50 @@ class App {
         return 1000;
     }
 
-    async createCryptoInvoice(amount, taskId) {
-        try {
-            const response = await fetch('/api/create-crypto-invoice', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ amount: amount, taskId: taskId })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                window.open(`https://t.me/CryptoBot?start=pay_${data.invoiceId}`, '_blank');
-                this.checkCryptoPayment(data.invoiceId, taskId);
-                return true;
-            } else {
-                this.showNotification('Error', data.error, 'error');
-                return false;
-            }
-        } catch (error) {
-            this.showNotification('Error', 'Payment failed', 'error');
+    async initTonConnect() {
+        if (!window.TonConnectSDK) {
+            console.warn('TonConnectSDK not loaded');
             return false;
         }
+        this.tonConnector = new window.TonConnectSDK({
+            manifestUrl: APP_CONFIG.TON_CONNECT_MANIFEST
+        });
+        await this.tonConnector.restoreConnection();
+        return true;
     }
 
-    async checkCryptoPayment(invoiceId, taskId) {
-        const interval = setInterval(async () => {
-            const response = await fetch('/api/check-crypto-payment', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ invoiceId: invoiceId })
-            });
+    async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
+        try {
+            await this.initTonConnect();
             
-            const data = await response.json();
-            
-            if (data.paid) {
-                clearInterval(interval);
-                this.showNotification('Success', 'Payment received! Creating task...', 'success');
-                const name = document.getElementById('task-name-input').value.trim();
-                const url = document.getElementById('task-url-input').value.trim();
-                const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'false';
-                const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
-                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+            if (!this.tonConnector.connected) {
+                await this.tonConnector.connect();
             }
-        }, 3000);
-    }
-
-    async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
-        const taskData = {
-            name: name,
-            url: url,
-            category: 'social',
-            verification: verification === 'true',
-            max: parseInt(maxCompletions),
-            status: 'pending',
-            owner: this.tgUser.id,
-            createdAt: this.getCurrentTime(),
-            reward: APP_CONFIG.TASK_REWARD,
-            total: 0
-        };
-        
-        await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
-        this.showNotification('Success', 'Task added successfully', 'success');
-        document.getElementById('add-task-modal').style.display = 'none';
-        await this.loadUserTasks();
-        this.renderAddTaskModal();
+            
+            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+            const amountNano = Math.floor(amount * 1000000000).toString();
+            
+            const transaction = {
+                validUntil: Math.floor(Date.now() / 1000) + 600,
+                messages: [{
+                    address: walletAddress,
+                    amount: amountNano,
+                    payload: taskId
+                }]
+            };
+            
+            const result = await this.tonConnector.sendTransaction(transaction);
+            
+            if (result) {
+                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('TON Connect error:', error);
+            this.showNotification('Payment Failed', error.message || 'Transaction failed', 'error');
+            return false;
+        }
     }
     
     async sendNotification(userId, title, message) {
@@ -941,7 +922,7 @@ class App {
                 }
             }
             
-            const success = await this.createCryptoInvoice(price, taskId);
+            const success = await this.createTonConnectPayment(price, taskId, name, url, verification, maxCompletions);
             if (!success) return;
             
             return true;
@@ -950,6 +931,27 @@ class App {
             this.showNotification('Error', 'Failed to add task', 'error');
             return false;
         }
+    }
+    
+    async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
+        const taskData = {
+            name: name,
+            url: url,
+            category: 'social',
+            verification: verification === 'true',
+            max: parseInt(maxCompletions),
+            status: 'pending',
+            owner: this.tgUser.id,
+            createdAt: this.getCurrentTime(),
+            reward: APP_CONFIG.TASK_REWARD,
+            total: 0
+        };
+        
+        await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
+        this.showNotification('Success', 'Task added successfully', 'success');
+        document.getElementById('add-task-modal').style.display = 'none';
+        await this.loadUserTasks();
+        this.renderAddTaskModal();
     }
     
     async loadUserTasks() {
