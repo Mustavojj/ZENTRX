@@ -291,7 +291,6 @@ class App {
         this.dailyCheckNewsCompleted = false;
         
         this.membershipCache = new Map();
-        this.tonConnector = null;
         this.pendingTask = null;
     }
     
@@ -381,60 +380,48 @@ class App {
         return 1000;
     }
 
-    async initTonConnect() {
-    if (window.tonconnectSDK) {
-        this.tonConnector = window.tonconnectSDK;
-        return true;
-    }
-    
-    await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/@tonconnect/sdk@2.2.0/dist/tonconnect-sdk.min.js';
-        script.onload = () => {
-            this.tonConnector = new window.TonConnectSDK({
-                manifestUrl: APP_CONFIG.TON_CONNECT_MANIFEST
-            });
-            resolve();
-        };
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
-    
-    return true;
-    }
-
-    async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
+    async createArcPayOrder(amount, taskId, name, url, verification, maxCompletions) {
         try {
-            await this.initTonConnect();
+            const response = await fetch('/api/create-arcpay-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    amount: amount, 
+                    taskId: taskId,
+                    title: `Add Task: ${name.substring(0, 30)}`
+                })
+            });
             
-            if (!this.tonConnector.connected) {
-                await this.tonConnector.connect();
-            }
+            const data = await response.json();
             
-            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-            const amountNano = Math.floor(amount * 1000000000).toString();
-            
-            const transaction = {
-                validUntil: Math.floor(Date.now() / 1000) + 600,
-                messages: [{
-                    address: walletAddress,
-                    amount: amountNano,
-                    payload: taskId
-                }]
-            };
-            
-            const result = await this.tonConnector.sendTransaction(transaction);
-            
-            if (result) {
-                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+            if (data.success) {
+                window.open(data.paymentUrl, '_blank');
+                this.pendingTask = { name, url, verification, maxCompletions, taskId, uuid: data.uuid };
+                this.checkArcPayPayment(data.uuid, taskId, name, url, verification, maxCompletions);
                 return true;
+            } else {
+                this.showNotification('Error', 'Failed to create payment order', 'error');
+                return false;
             }
-            return false;
         } catch (error) {
-            console.error('TON Connect error:', error);
-            this.showNotification('Payment Failed', error.message || 'Transaction failed', 'error');
+            this.showNotification('Error', 'Payment service error', 'error');
             return false;
         }
+    }
+
+    async checkArcPayPayment(uuid, taskId, name, url, verification, maxCompletions) {
+        const interval = setInterval(async () => {
+            const response = await fetch(`/api/check-arcpay-order?uuid=${uuid}`);
+            const data = await response.json();
+            
+            if (data.paid) {
+                clearInterval(interval);
+                this.showNotification('Success', 'Payment received! Creating task...', 'success');
+                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+            }
+        }, 3000);
+        
+        setTimeout(() => clearInterval(interval), 600000);
     }
     
     async sendNotification(userId, title, message) {
@@ -932,7 +919,7 @@ class App {
                 }
             }
             
-            const success = await this.createTonConnectPayment(price, taskId, name, url, verification, maxCompletions);
+            const success = await this.createArcPayOrder(price, taskId, name, url, verification, maxCompletions);
             if (!success) return;
             
             return true;
