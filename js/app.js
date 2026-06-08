@@ -383,13 +383,13 @@ class App {
 
     async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
         try {
-            localStorage.setItem('pending_task_id', taskId);
-            localStorage.setItem('pending_task_amount', amountNanoStr);
-            localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
-            
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
             const amountNano = Math.round(amount * 1000000000);
             const isValid = amountNano > 0 && Number.isInteger(amountNano);
+
+            localStorage.setItem('pending_task_id', taskId);
+            localStorage.setItem('pending_task_amount', amountNanoStr);
+            localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
             
             if (!isValid) {
                 this.showNotification('Error', 'Invalid amount', 'error');
