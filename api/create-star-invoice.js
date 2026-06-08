@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     
     const starAmount = parseInt(amount);
     if (isNaN(starAmount) || starAmount < 1 || starAmount > 2500) {
-        return res.status(400).json({ error: 'Invalid amount. Must be between 1-2500 Stars' });
+        return res.status(400).json({ error: 'Invalid amount' });
     }
     
     try {
@@ -21,27 +21,17 @@ export default async function handler(req, res) {
                 title: 'Add Social Task',
                 description: description || 'Create a new social task',
                 payload: payload || 'task_payment',
-                provider_token: '',
                 currency: 'XTR',
-                prices: [{ label: 'Task Creation', amount: starAmount }],
-                need_shipping_method: false,
-                need_name: false,
-                need_phone_number: false,
-                need_email: false,
-                send_phone_number_to_provider: false,
-                send_email_to_provider: false,
-                is_flexible: false,
-                max_tip_amount: 0,
-                suggested_tip_amounts: []
+                prices: [{ label: 'Task Creation', amount: starAmount }]
             })
         });
         
         const data = await response.json();
         
-        if (data.ok) {
+        if (data.ok && data.result) {
             return res.status(200).json({ success: true, invoiceLink: data.result });
         } else {
-            return res.status(500).json({ success: false, error: data.description });
+            return res.status(500).json({ success: false, error: data.description || 'Telegram API error' });
         }
     } catch (error) {
         return res.status(500).json({ success: false, error: error.message });
