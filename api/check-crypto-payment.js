@@ -1,4 +1,5 @@
-import { APP_CONFIG } from './js/data.js';
+// api/check-crypto-payment.js
+import { APP_CONFIG } from '../js/data.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
