@@ -386,7 +386,7 @@ class App {
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
             const amountNano = Math.floor(amount * 1000000000).toString();
             
-            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNano}&text=${encodeURIComponent(taskId)}`;
+            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNano}&text=${taskId}`;
             window.open(tonkeeperUrl, '_blank');
             
             this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
