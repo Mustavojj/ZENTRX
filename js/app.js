@@ -293,7 +293,7 @@ class App {
         this.membershipCache = new Map();
     }
     
-    truncateName(name, maxLength = 10) {
+    truncateName(name, maxLength = 15) {
         if (!name) return 'User';
         if (name.length <= maxLength) return name;
         return name.substring(0, maxLength) + '...';
@@ -333,15 +333,15 @@ class App {
         const power = this.powerBalance;
         let newLevel = 1;
         
-        if (power >= 60000) newLevel = 10;
-        else if (power >= 50000) newLevel = 9;
-        else if (power >= 40000) newLevel = 8;
-        else if (power >= 30000) newLevel = 7;
-        else if (power >= 20000) newLevel = 6;
-        else if (power >= 10000) newLevel = 5;
-        else if (power >= 8000) newLevel = 4;
-        else if (power >= 4000) newLevel = 3;
-        else if (power >= 2000) newLevel = 2;
+        if (power >= 600000) newLevel = 10;
+        else if (power >= 500000) newLevel = 9;
+        else if (power >= 400000) newLevel = 8;
+        else if (power >= 300000) newLevel = 7;
+        else if (power >= 200000) newLevel = 6;
+        else if (power >= 100000) newLevel = 5;
+        else if (power >= 80000) newLevel = 4;
+        else if (power >= 40000) newLevel = 3;
+        else if (power >= 20000) newLevel = 2;
         else newLevel = 1;
         
         if (newLevel > this.userLevel) {
@@ -367,14 +367,14 @@ class App {
     }
     
     getRequiredPowerForLevel(level) {
-        if (level === 2) return 2000;
-        if (level === 3) return 4000;
-        if (level === 4) return 8000;
-        if (level === 5) return 10000;
-        if (level === 6) return 20000;
-        if (level === 7) return 30000;
-        if (level === 8) return 40000;
-        if (level === 9) return 50000;
+        if (level === 2) return 20000;
+        if (level === 3) return 40000;
+        if (level === 4) return 80000;
+        if (level === 5) return 100000;
+        if (level === 6) return 200000;
+        if (level === 7) return 300000;
+        if (level === 8) return 400000;
+        if (level === 9) return 500000;
         if (level === 10) return 60000;
         return 1000;
     }
@@ -888,7 +888,7 @@ class App {
                         category: 'social',
                         verification: verification === 'true',
                         max: parseInt(maxCompletions),
-                        status: 'active',
+                        status: 'pending',
                         owner: this.tgUser.id,
                         createdAt: this.getCurrentTime(),
                         reward: APP_CONFIG.TASK_REWARD,
