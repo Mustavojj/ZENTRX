@@ -380,71 +380,71 @@ class App {
     }
 
     async createCryptoInvoice(amount, taskId) {
-    try {
-        const response = await fetch('/api/create-crypto-invoice', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: amount, taskId: taskId })
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            window.open(`https://t.me/CryptoBot?start=pay_${data.invoiceId}`, '_blank');
-            this.checkCryptoPayment(data.invoiceId, taskId);
-            return true;
-        } else {
-            this.showNotification('Error', data.error, 'error');
+        try {
+            const response = await fetch('/api/create-crypto-invoice', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: amount, taskId: taskId })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                window.open(`https://t.me/CryptoBot?start=pay_${data.invoiceId}`, '_blank');
+                this.checkCryptoPayment(data.invoiceId, taskId);
+                return true;
+            } else {
+                this.showNotification('Error', data.error, 'error');
+                return false;
+            }
+        } catch (error) {
+            this.showNotification('Error', 'Payment failed', 'error');
             return false;
         }
-    } catch (error) {
-        this.showNotification('Error', 'Payment failed', 'error');
-        return false;
     }
-}
 
-async checkCryptoPayment(invoiceId, taskId) {
-    const interval = setInterval(async () => {
-        const response = await fetch('/api/check-crypto-payment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ invoiceId: invoiceId })
-        });
-        
-        const data = await response.json();
-        
-        if (data.paid) {
-            clearInterval(interval);
-            this.showNotification('Success', 'Payment received! Creating task...', 'success');
-            const name = document.getElementById('task-name-input').value.trim();
-            const url = document.getElementById('task-url-input').value.trim();
-            const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'false';
-            const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
-            await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
-        }
-    }, 3000);
-}
+    async checkCryptoPayment(invoiceId, taskId) {
+        const interval = setInterval(async () => {
+            const response = await fetch('/api/check-crypto-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ invoiceId: invoiceId })
+            });
+            
+            const data = await response.json();
+            
+            if (data.paid) {
+                clearInterval(interval);
+                this.showNotification('Success', 'Payment received! Creating task...', 'success');
+                const name = document.getElementById('task-name-input').value.trim();
+                const url = document.getElementById('task-url-input').value.trim();
+                const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'false';
+                const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
+                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+            }
+        }, 3000);
+    }
 
-async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
-    const taskData = {
-        name: name,
-        url: url,
-        category: 'social',
-        verification: verification === 'true',
-        max: parseInt(maxCompletions),
-        status: 'pending',
-        owner: this.tgUser.id,
-        createdAt: this.getCurrentTime(),
-        reward: APP_CONFIG.TASK_REWARD,
-        total: 0
-    };
-    
-    await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
-    this.showNotification('Success', 'Task added successfully', 'success');
-    document.getElementById('add-task-modal').style.display = 'none';
-    await this.loadUserTasks();
-    this.renderAddTaskModal();
-}
+    async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
+        const taskData = {
+            name: name,
+            url: url,
+            category: 'social',
+            verification: verification === 'true',
+            max: parseInt(maxCompletions),
+            status: 'pending',
+            owner: this.tgUser.id,
+            createdAt: this.getCurrentTime(),
+            reward: APP_CONFIG.TASK_REWARD,
+            total: 0
+        };
+        
+        await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
+        this.showNotification('Success', 'Task added successfully', 'success');
+        document.getElementById('add-task-modal').style.display = 'none';
+        await this.loadUserTasks();
+        this.renderAddTaskModal();
+    }
     
     async sendNotification(userId, title, message) {
         try {
@@ -747,7 +747,7 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
                 this.renderEarn();
             }
             this.updateAdCooldownDisplay();
-            this.showNotification('Reward Claimed!', '20 Power', 'success');
+            this.showNotification('Reward Claimed!', '100 Power', 'success');
         } catch (result) {
             this.showNotification('No Ads', 'No ads available at the moment', 'warning');
         }
@@ -930,7 +930,7 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
         }
         
         const taskId = `${this.tgUser.id}_${Date.now()}`;
-        const price = (APP_CONFIG.STAR_PRICE_PER_100 * (maxCompletions / 100));
+        const price = (APP_CONFIG.TON_PRICE_PER_100 * (maxCompletions / 100));
         
         try {
             if (verification === 'true') {
@@ -944,32 +944,6 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
             const success = await this.createCryptoInvoice(price, taskId);
             if (!success) return;
             
-            
-            this.tg.openInvoice(invoiceLink, async (status) => {
-                if (status === 'paid') {
-                    const taskData = {
-                        name: name,
-                        url: url,
-                        category: 'social',
-                        verification: verification === 'true',
-                        max: parseInt(maxCompletions),
-                        status: 'pending',
-                        owner: this.tgUser.id,
-                        createdAt: this.getCurrentTime(),
-                        reward: APP_CONFIG.TASK_REWARD,
-                        total: 0
-                    };
-                    
-                    await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
-                    this.showNotification('Success', 'Task added successfully', 'success');
-                    document.getElementById('add-task-modal').style.display = 'none';
-                    await this.loadUserTasks();
-                    this.renderAddTaskModal();
-                } else {
-                    this.showNotification('Payment Failed', 'Please try again', 'error');
-                }
-            });
-            
             return true;
         } catch (error) {
             console.error('Add task error:', error);
@@ -977,41 +951,6 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
             return false;
         }
     }
-    
-    
-    async createStarInvoice(amount, taskId, chat_id) {
-    try {
-        const response = await fetch('/api/create-star-invoice', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                amount: amount, 
-                description: `Add social task: ${taskId}`,
-                payload: taskId,
-                chat_id: chat_id
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            return data.message_id;
-        } else {
-            this.showNotification('Error', data.error, 'error');
-            return null;
-        }
-    } catch (error) {
-        this.showNotification('Error', 'Payment failed', 'error');
-        return null;
-    }
-                }
-
-
-
-    
-
-
-    
     
     async loadUserTasks() {
         if (!this.db) return;
@@ -1207,7 +1146,6 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
                         }
                     }
                 }
-            
             } catch (error) {
                 console.error('Withdrawal save failed:', error);
                 this.tonBalance += actualDeduct;
@@ -2354,8 +2292,8 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
         const payBtn = document.getElementById('pay-task-btn');
         if (payBtn) {
             const max = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
-            const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
-            payBtn.innerHTML = this.t('pay_stars', { stars: price });
+            const price = (APP_CONFIG.TON_PRICE_PER_100 * (max / 100));
+            payBtn.innerHTML = `PAY ${price} TON`;
         }
         
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
@@ -2383,6 +2321,9 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
             payBtn.disabled = false;
             payBtn.style.opacity = '1';
             payBtn.style.pointerEvents = 'auto';
+            const max = '1000';
+            const price = (APP_CONFIG.TON_PRICE_PER_100 * (max / 100));
+            payBtn.innerHTML = `PAY ${price} TON`;
         }
         
         this.setupAddTaskModalListeners();
@@ -2461,9 +2402,9 @@ async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
         btn.classList.add('active');
         
         const max = parseInt(btn.dataset.value);
-        const price = (APP_CONFIG.STAR_PRICE_PER_100 * (max / 100));
+        const price = (APP_CONFIG.TON_PRICE_PER_100 * (max / 100));
         const payBtn = document.getElementById('pay-task-btn');
-        if (payBtn) payBtn.innerHTML = this.t('pay_stars', { stars: price });
+        if (payBtn) payBtn.innerHTML = `PAY ${price} TON`;
     }
     
     setupEventListeners() {
