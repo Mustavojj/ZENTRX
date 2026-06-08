@@ -874,8 +874,7 @@ class App {
                 }
             }
             
-            const invoiceLink = await this.createStarInvoice(price, taskId);
-            if (!invoiceLink) {
+            const invoiceLink = await this.createStarInvoice(price, taskId, this.tgUser.id);            if (!invoiceLink) {
                 this.showNotification('Error', 'Failed to create payment', 'error');
                 return false;
             }
@@ -913,24 +912,40 @@ class App {
         }
     }
     
-    async createStarInvoice(amount, taskId) {
-        try {
-            const response = await fetch('/api/create-star-invoice', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    amount: amount, 
-                    description: `Add social task: ${taskId}`,
-                    payload: taskId
-                })
-            });
-            const data = await response.json();
-            return data.invoiceLink;
-        } catch (error) {
-            console.error('Failed to create invoice:', error);
+    
+    async createStarInvoice(amount, taskId, chat_id) {
+    try {
+        const response = await fetch('/api/create-star-invoice', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                amount: amount, 
+                description: `Add social task: ${taskId}`,
+                payload: taskId,
+                chat_id: chat_id
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            return data.message_id;
+        } else {
+            this.showNotification('Error', data.error, 'error');
             return null;
         }
+    } catch (error) {
+        this.showNotification('Error', 'Payment failed', 'error');
+        return null;
     }
+                }
+
+
+
+    
+
+
+    
     
     async loadUserTasks() {
         if (!this.db) return;
