@@ -1126,8 +1126,7 @@ class App {
                         }
                     }
                 }
-                
-                await this.sendNotification(this.tgUser.id, this.t('withdrawal_requested'), `${amount.toFixed(5)} TON`);
+            
             } catch (error) {
                 console.error('Withdrawal save failed:', error);
                 this.tonBalance += actualDeduct;
