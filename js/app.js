@@ -382,34 +382,25 @@ class App {
     }
 
     async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
-        try {
-            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-            const amountNano = Math.round(amount * 1000000000);
-            const isValid = amountNano > 0 && Number.isInteger(amountNano);
-
-            localStorage.setItem('pending_task_id', taskId);
-            localStorage.setItem('pending_task_amount', amountNanoStr);
-            localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
-            
-            if (!isValid) {
-                this.showNotification('Error', 'Invalid amount', 'error');
-                return false;
-            }
-            
-            const amountNanoStr = amountNano.toString();
-            
-            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
-            window.open(tonkeeperUrl, '_blank');
-            
-            this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
-            
-            this.verifyTonPayment(taskId, amountNano, name, url, verification, maxCompletions);
-            return true;
-        } catch (error) {
-            this.showNotification('Error', error.message, 'error');
-            return false;
-        }
+    try {
+        localStorage.setItem('pending_task_id', taskId);
+        localStorage.setItem('pending_task_amount', Math.round(amount * 1000000000).toString());
+        localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
+        
+        const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+        const amountNano = Math.round(amount * 1000000000);
+        const amountNanoStr = amountNano.toString();
+        
+        const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
+        window.open(tonkeeperUrl, '_blank');
+        
+        this.verifyTonPayment(taskId, amountNanoStr, name, url, verification, maxCompletions);
+        return true;
+    } catch (error) {
+        this.showNotification('Error', error.message, 'error');
+        return false;
     }
+}
 
     
 async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
