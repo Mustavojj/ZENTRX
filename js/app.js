@@ -461,12 +461,6 @@ class App {
         const amountNano = Math.round(amount * 1000000000);
         const amountNanoStr = amountNano.toString();
 
-        const taskd = localStorage.getItem('pending_task_id');
-        if (!taskd) {
-            this.showNotification('Error', 'No pending task', 'error');
-            return false;
-        }
-        
         localStorage.setItem('pending_task_amount', amountNanoStr);
         localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
         
@@ -968,8 +962,7 @@ class App {
             this.showNotification('Error', this.t('all_fields_required'), 'error');
             return false;
         }
-        
-        const taskId = Date.now();
+    
         const taskId = Date.now().toString();
         localStorage.setItem('pending_task_id', taskId);
         
