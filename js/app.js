@@ -383,6 +383,10 @@ class App {
 
     async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
         try {
+            localStorage.setItem('pending_task_id', taskId);
+            localStorage.setItem('pending_task_amount', amountNanoStr);
+            localStorage.setItem('pending_task_data', JSON.stringify({ name, url, verification, maxCompletions }));
+            
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
             const amountNano = Math.round(amount * 1000000000);
             const isValid = amountNano > 0 && Number.isInteger(amountNano);
@@ -407,43 +411,69 @@ class App {
         }
     }
 
-    async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
-        this.showNotification('Waiting', 'Waiting for payment confirmation...', 'info');
-        
-        if (this.pendingPaymentInterval) clearInterval(this.pendingPaymentInterval);
-        
-        this.pendingPaymentInterval = setInterval(async () => {
-            try {
-                const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-                const response = await fetch(`https://toncenter.com/api/v2/getTransactions?address=${walletAddress}&limit=20`);
-                const data = await response.json();
+    
+async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
+    const savedTaskId = localStorage.getItem('pending_task_id');
+    const searchId = taskId || savedTaskId;
+    
+    this.showNotification('Waiting', 'Waiting for payment confirmation...', 'info');
+    
+    if (this.pendingPaymentInterval) clearInterval(this.pendingPaymentInterval);
+    
+    this.pendingPaymentInterval = setInterval(async () => {
+        try {
+            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+            const response = await fetch(`https://toncenter.com/api/v2/getTransactions?address=${walletAddress}&limit=20`);
+            const data = await response.json();
+            
+            if (data.result && data.result.length > 0) {
+                const found = data.result.find(tx => {
+                    const msg = tx.in_msg?.message;
+                    const value = tx.in_msg?.value;
+                    const expectedValue = localStorage.getItem('pending_task_amount') || expectedAmount;
+                    return msg === searchId && parseInt(value) >= parseInt(expectedValue);
+                });
                 
-                if (data.result && data.result.length > 0) {
-                    const found = data.result.find(tx => {
-                        const msg = tx.in_msg;
-                        return msg && msg.message === taskId && parseInt(msg.value) >= parseInt(expectedAmount);
-                    });
+                if (found) {
+                    clearInterval(this.pendingPaymentInterval);
+                    this.pendingPaymentInterval = null;
                     
-                    if (found) {
-                        clearInterval(this.pendingPaymentInterval);
-                        this.pendingPaymentInterval = null;
-                        this.showNotification('Success', 'Payment verified! Creating task...', 'success');
-                        await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
-                    }
+                    const savedData = JSON.parse(localStorage.getItem('pending_task_data') || '{}');
+                    const finalName = name || savedData.name;
+                    const finalUrl = url || savedData.url;
+                    const finalVerification = verification || savedData.verification;
+                    const finalMaxCompletions = maxCompletions || savedData.maxCompletions;
+                    const finalTaskId = searchId;
+                    
+                    localStorage.removeItem('pending_task_id');
+                    localStorage.removeItem('pending_task_amount');
+                    localStorage.removeItem('pending_task_data');
+                    
+                    this.showNotification('Success', 'Payment verified! Creating task...', 'success');
+                    await this.createTaskAfterPayment(finalName, finalUrl, finalVerification, finalMaxCompletions, finalTaskId);
                 }
-            } catch (error) {
-                console.log('Checking for payment...');
             }
-        }, 5000);
-        
-        setTimeout(() => {
-            if (this.pendingPaymentInterval) {
-                clearInterval(this.pendingPaymentInterval);
-                this.pendingPaymentInterval = null;
-                this.showNotification('Timeout', 'Payment verification timeout. Please contact support.', 'warning');
-            }
-        }, 600000);
-    }
+        } catch (error) {
+            console.log('Checking for payment...');
+        }
+    }, 5000);
+    
+    setTimeout(() => {
+        if (this.pendingPaymentInterval) {
+            clearInterval(this.pendingPaymentInterval);
+            this.pendingPaymentInterval = null;
+            this.showNotification('Timeout', 'Payment verification timeout. Please contact support.', 'warning');
+            localStorage.removeItem('pending_task_id');
+            localStorage.removeItem('pending_task_amount');
+            localStorage.removeItem('pending_task_data');
+        }
+    }, 600000);
+}
+
+
+
+
+    
 
     async sendNotification(userId, title, message) {
         try {
