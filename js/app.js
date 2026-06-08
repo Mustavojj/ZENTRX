@@ -378,6 +378,73 @@ class App {
         if (level === 10) return 60000;
         return 1000;
     }
+
+    async createCryptoInvoice(amount, taskId) {
+    try {
+        const response = await fetch('/api/create-crypto-invoice', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount: amount, taskId: taskId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            window.open(`https://t.me/CryptoBot?start=pay_${data.invoiceId}`, '_blank');
+            this.checkCryptoPayment(data.invoiceId, taskId);
+            return true;
+        } else {
+            this.showNotification('Error', data.error, 'error');
+            return false;
+        }
+    } catch (error) {
+        this.showNotification('Error', 'Payment failed', 'error');
+        return false;
+    }
+}
+
+async checkCryptoPayment(invoiceId, taskId) {
+    const interval = setInterval(async () => {
+        const response = await fetch('/api/check-crypto-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ invoiceId: invoiceId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.paid) {
+            clearInterval(interval);
+            this.showNotification('Success', 'Payment received! Creating task...', 'success');
+            const name = document.getElementById('task-name-input').value.trim();
+            const url = document.getElementById('task-url-input').value.trim();
+            const verification = document.querySelector('#add-task-modal .toggle-option.active[data-value]')?.dataset.value || 'false';
+            const maxCompletions = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || '1000';
+            await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+        }
+    }, 3000);
+}
+
+async createTaskAfterPayment(name, url, verification, maxCompletions, taskId) {
+    const taskData = {
+        name: name,
+        url: url,
+        category: 'social',
+        verification: verification === 'true',
+        max: parseInt(maxCompletions),
+        status: 'pending',
+        owner: this.tgUser.id,
+        createdAt: this.getCurrentTime(),
+        reward: APP_CONFIG.TASK_REWARD,
+        total: 0
+    };
+    
+    await this.db.ref(`userTasks/${this.tgUser.id}/${taskId}`).set(taskData);
+    this.showNotification('Success', 'Task added successfully', 'success');
+    document.getElementById('add-task-modal').style.display = 'none';
+    await this.loadUserTasks();
+    this.renderAddTaskModal();
+}
     
     async sendNotification(userId, title, message) {
         try {
@@ -874,10 +941,9 @@ class App {
                 }
             }
             
-            const invoiceLink = await this.createStarInvoice(price, taskId, this.tgUser.id);            if (!invoiceLink) {
-                this.showNotification('Error', 'Failed to create payment', 'error');
-                return false;
-            }
+            const success = await this.createCryptoInvoice(price, taskId);
+            if (!success) return;
+            
             
             this.tg.openInvoice(invoiceLink, async (status) => {
                 if (status === 'paid') {
