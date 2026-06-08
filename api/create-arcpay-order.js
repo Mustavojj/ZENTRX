@@ -1,4 +1,4 @@
-const ARCPAY_ARC_KEY = "YOUR_ARC_KEY_HERE";
+const ARCPAY_ARC_KEY = "e84ad4f7-dc16-4e4e-b7e5-c7c06af00099";
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
