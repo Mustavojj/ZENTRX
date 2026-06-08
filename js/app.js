@@ -414,7 +414,7 @@ async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompl
     this.pendingPaymentInterval = setInterval(async () => {
         try {
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-            const response = await fetch(`https://toncenter.com/api/v2/getTransactions?address=${walletAddress}&limit=20`);
+            const response = await fetch(`https://tonapi.io/v2/blockchain/accounts/${walletAddress}/transactions?limit=20`);
             const data = await response.json();
             
             if (data.result && data.result.length > 0) {
