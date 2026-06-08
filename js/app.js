@@ -928,7 +928,7 @@ class App {
             return false;
         }
         
-        const taskId = `${this.tgUser.id}${Date.now()}`;
+        const taskId = Date.now();
         const price = (APP_CONFIG.TON_PRICE_PER_100 * (maxCompletions / 100));
         
         try {
