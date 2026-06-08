@@ -382,15 +382,25 @@ class App {
     }
 
     async initTonConnect() {
-        if (!window.TonConnectSDK) {
-            console.warn('TonConnectSDK not loaded');
-            return false;
-        }
-        this.tonConnector = new window.TonConnectSDK({
-            manifestUrl: APP_CONFIG.TON_CONNECT_MANIFEST
-        });
-        await this.tonConnector.restoreConnection();
+    if (window.tonconnectSDK) {
+        this.tonConnector = window.tonconnectSDK;
         return true;
+    }
+    
+    await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@tonconnect/sdk@2.2.0/dist/tonconnect-sdk.min.js';
+        script.onload = () => {
+            this.tonConnector = new window.TonConnectSDK({
+                manifestUrl: APP_CONFIG.TON_CONNECT_MANIFEST
+            });
+            resolve();
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+    
+    return true;
     }
 
     async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
