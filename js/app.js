@@ -1937,7 +1937,7 @@ class App {
                 <div class="my-task-card">
                     <div class="task-header">
                         <div class="task-left">
-                            <i class="fas fa-tasks"></i>
+                            <i class="fas fa-tag"></i>
                             <span class="task-name">${task.name}</span>
                         </div>
                         <div class="task-status ${statusClass}">${statusText}</div>
