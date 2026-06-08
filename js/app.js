@@ -1416,14 +1416,14 @@ class App {
     async initFirebase() {
         return new Promise((resolve, reject) => {
             const config = {
-                apiKey: "AIzaSyCWnfPAgBHr1beeph4OxxmXokY45MgPsFM",
-                authDomain: "vevaia.firebaseapp.com",
-                databaseURL: "https://vevaia-default-rtdb.firebaseio.com",
-                projectId: "vevaia",
-                storageBucket: "vevaia.firebasestorage.app",
-                messagingSenderId: "284687408904",
-                appId: "1:284687408904:web:25e88c5066b5844aefd6bd",
-                measurementId: "G-LPRMK4JY0Z"
+                apiKey: "AIzaSyDeFeeuLHk1fjGNAt-niKS-pZeSzXazO2s",
+                authDomain: "zentrix-bro.firebaseapp.com",
+                databaseURL: "https://zentrix-bro-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "zentrix-bro",
+                storageBucket: "zentrix-bro.firebasestorage.app",
+                messagingSenderId: "891224621190",
+                appId: "1:891224621190:web:d1850e5d23f97630105107",
+                measurementId: "G-YS336CHR83"
             };
             
             try {
