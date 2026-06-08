@@ -15,6 +15,7 @@ export const APP_CONFIG = {
     REWARD_AD_BLOCK_ID: "34446",
     INTERSTITIAL_AD_BLOCK_ID: "int-34445",
     BOT_LINK: "https://t.me/Zentrxbot/mine?startapp=",
+    TON_CONNECT_MANIFEST: "https://zentrx.vercel.app/tonconnect-manifest.json"
     DAILY_CHECK_NEWS_LINK: "https://t.me/Zentrxb",
     STAR_PRICE_PER_100: 1,
     REFERRAL_REQUIRED_TASKS: 5,
