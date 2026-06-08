@@ -292,6 +292,7 @@ class App {
         
         this.membershipCache = new Map();
         this.pendingTask = null;
+        this.pendingPaymentInterval = null;
     }
     
     truncateName(name, maxLength = 15) {
@@ -380,50 +381,62 @@ class App {
         return 1000;
     }
 
-    async createArcPayOrder(amount, taskId, name, url, verification, maxCompletions) {
+    async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
         try {
-            const response = await fetch('/api/create-arcpay-order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    amount: amount, 
-                    taskId: taskId,
-                    title: `Add Task: ${name.substring(0, 30)}`
-                })
-            });
+            const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+            const amountNano = Math.floor(amount * 1000000000).toString();
             
-            const data = await response.json();
+            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNano}&text=${encodeURIComponent(taskId)}`;
+            window.open(tonkeeperUrl, '_blank');
             
-            if (data.success) {
-                window.open(data.paymentUrl, '_blank');
-                this.pendingTask = { name, url, verification, maxCompletions, taskId, uuid: data.uuid };
-                this.checkArcPayPayment(data.uuid, taskId, name, url, verification, maxCompletions);
-                return true;
-            } else {
-                this.showNotification('Error', 'Failed to create payment order', 'error');
-                return false;
-            }
+            this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
+            
+            this.verifyTonPayment(taskId, amountNano, name, url, verification, maxCompletions);
+            return true;
         } catch (error) {
-            this.showNotification('Error', 'Payment service error', 'error');
+            this.showNotification('Error', error.message, 'error');
             return false;
         }
     }
 
-    async checkArcPayPayment(uuid, taskId, name, url, verification, maxCompletions) {
-        const interval = setInterval(async () => {
-            const response = await fetch(`/api/check-arcpay-order?uuid=${uuid}`);
-            const data = await response.json();
-            
-            if (data.paid) {
-                clearInterval(interval);
-                this.showNotification('Success', 'Payment received! Creating task...', 'success');
-                await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
-            }
-        }, 3000);
+    async verifyTonPayment(taskId, expectedAmount, name, url, verification, maxCompletions) {
+        this.showNotification('Waiting', 'Waiting for payment confirmation...', 'info');
         
-        setTimeout(() => clearInterval(interval), 600000);
+        if (this.pendingPaymentInterval) clearInterval(this.pendingPaymentInterval);
+        
+        this.pendingPaymentInterval = setInterval(async () => {
+            try {
+                const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
+                const response = await fetch(`https://toncenter.com/api/v2/getTransactions?address=${walletAddress}&limit=20`);
+                const data = await response.json();
+                
+                if (data.result && data.result.length > 0) {
+                    const found = data.result.find(tx => {
+                        const msg = tx.in_msg;
+                        return msg && msg.message === taskId && parseInt(msg.value) >= parseInt(expectedAmount);
+                    });
+                    
+                    if (found) {
+                        clearInterval(this.pendingPaymentInterval);
+                        this.pendingPaymentInterval = null;
+                        this.showNotification('Success', 'Payment verified! Creating task...', 'success');
+                        await this.createTaskAfterPayment(name, url, verification, maxCompletions, taskId);
+                    }
+                }
+            } catch (error) {
+                console.log('Checking for payment...');
+            }
+        }, 5000);
+        
+        setTimeout(() => {
+            if (this.pendingPaymentInterval) {
+                clearInterval(this.pendingPaymentInterval);
+                this.pendingPaymentInterval = null;
+                this.showNotification('Timeout', 'Payment verification timeout. Please contact support.', 'warning');
+            }
+        }, 600000);
     }
-    
+
     async sendNotification(userId, title, message) {
         try {
             const response = await fetch('/api/send-notification', {
@@ -919,7 +932,7 @@ class App {
                 }
             }
             
-            const success = await this.createArcPayOrder(price, taskId, name, url, verification, maxCompletions);
+            const success = await this.createTonConnectPayment(price, taskId, name, url, verification, maxCompletions);
             if (!success) return;
             
             return true;
