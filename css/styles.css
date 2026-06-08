@@ -1585,3 +1585,79 @@ body {
 .bg-dark, .mining-card, .team-benefits, .promo-card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
 } 
+
+
+.app-header {
+    padding: 10px 0 12px;
+}
+
+.header-top {
+    margin-bottom: 0;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+}
+
+.user-name {
+    font-size: 0.85rem;
+}
+
+.user-level {
+    font-size: 0.6rem;
+}
+
+.balance-cards {
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.balance-card {
+    padding: 10px 8px;
+}
+
+.balance-card .value {
+    font-size: 1rem;
+}
+
+.balance-card .icon {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.header-balances {
+    display: flex;
+    gap: 8px;
+    margin-right: 8px;
+}
+
+.header-balance {
+    background: rgba(124, 147, 255, 0.15);
+    border-radius: 40px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--primary-light);
+}
+
+.add-bot-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 0.75rem;
+}
+
+#wallet-addr {
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
