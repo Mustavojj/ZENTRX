@@ -384,9 +384,17 @@ class App {
     async createTonConnectPayment(amount, taskId, name, url, verification, maxCompletions) {
         try {
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
-            const amountNano = Math.floor(amount * 1000000000).toString();
+            const amountNano = Math.round(amount * 1000000000);
+            const isValid = amountNano > 0 && Number.isInteger(amountNano);
             
-            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNano}&text=${taskId}`;
+            if (!isValid) {
+                this.showNotification('Error', 'Invalid amount', 'error');
+                return false;
+            }
+            
+            const amountNanoStr = amountNano.toString();
+            
+            const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
             window.open(tonkeeperUrl, '_blank');
             
             this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
