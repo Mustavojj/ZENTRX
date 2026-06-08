@@ -11,7 +11,7 @@ const translations = {
         no_tasks: "Нет доступных заданий", team_benefits: "Преимущества команды", share_earn: "ДЕЛИСЬ И ЗАРАБАТЫВАЙ",
         copy: "Копировать", share: "Поделиться", total_members: "Всего участников",
         power_earnings: "Заработок энергии", withdraw: "Вывести",
-        available: "Доступно", faucet_email: "Faucet PAY", amount: "Сумма", min_withdraw: "Мин. вывод",
+        available: "Доступно", ton_wallet: "TON кошелек", amount: "Сумма", min_withdraw: "Мин. вывод",
         confirm_withdrawal: "Подтвердить вывод", withdrawal_history: "История выводов", no_withdrawals: "Пока нет выводов",
         pending: "В ОЖИДАНИИ", completed: "ВЫПЛАЧЕНО", claim_mining_title: "Получить награды майнинга", claim_btn: "Получить награды",
         partner_info_title: "Социальные задания", mining: "Майнинг", earn: "Заработок", team: "Команда",
@@ -49,14 +49,8 @@ const translations = {
         add_task_title: "Добавить социальное задание",
         my_tasks_title: "Мои задания",
         withdrawal_fees_note: "Комиссия за вывод: {fees} TON",
-        faucetpay_title: "Faucet PAY",
-        faucetpay_desc: "Payments are processed via the FaucetPay wallet.",
-        faucetpay_step1: "Register a new account",
-        faucetpay_step2: "Link it to your email address",
-        faucetpay_step3: "Receive your payments easily",
-        register_now: "Register Now",
         all_fields_required: "Пожалуйста, заполните все поля",
-        add_bot_as_admin: "Add The Bot As Admin",
+        add_bot_as_admin: "Добавить бота администратором",
         team_benefits_title: "Преимущества команды",
         team_benefit_referral_power: "Заработайте {reward} энергии за подтвержденного реферала",
         team_benefit_referral_percent: "Зарабатывайте {percent}% от дохода друзей",
@@ -72,7 +66,7 @@ const translations = {
         no_tasks: "No tasks available", team_benefits: "Team Benefits", share_earn: "SHARE & EARN",
         copy: "Copy", share: "Share", total_members: "Total Members",
         power_earnings: "Power Earnings", withdraw: "Withdraw",
-        available: "Available", faucet_email: "Faucet PAY", amount: "Amount", min_withdraw: "Minimum withdrawal",
+        available: "Available", ton_wallet: "TON Wallet", amount: "Amount", min_withdraw: "Minimum withdrawal",
         confirm_withdrawal: "Confirm Withdrawal", withdrawal_history: "Withdrawal History", no_withdrawals: "No withdrawals yet",
         pending: "PENDING", completed: "PAID", claim_mining_title: "Claim Mining Rewards", claim_btn: "Claim Rewards",
         partner_info_title: "Social Tasks", mining: "Mining", earn: "Earn", team: "Team",
@@ -110,14 +104,8 @@ const translations = {
         add_task_title: "Add Social Task",
         my_tasks_title: "My Tasks",
         withdrawal_fees_note: "Withdrawal fees: {fees} TON",
-        faucetpay_title: "Faucet PAY",
-        faucetpay_desc: "Payments are processed via the FaucetPay wallet.",
-        faucetpay_step1: "Register a new account",
-        faucetpay_step2: "Link it to your email address",
-        faucetpay_step3: "Receive your payments easily",
-        register_now: "Register Now",
         all_fields_required: "Please fill all fields",
-        add_bot_as_admin: "Add The Bot As Admin",
+        add_bot_as_admin: "Add Bot As Admin",
         team_benefits_title: "Team Benefits",
         team_benefit_referral_power: "Earn {reward} Power per verified referral",
         team_benefit_referral_percent: "Earn {percent}% from friends earnings",
@@ -133,7 +121,7 @@ const translations = {
         no_tasks: "Görev yok", team_benefits: "Takım Avantajları", share_earn: "PAYLAŞ VE KAZAN",
         copy: "Kopyala", share: "Paylaş", total_members: "Toplam Üye",
         power_earnings: "Güç Kazancı", withdraw: "Çek",
-        available: "Mevcut", faucet_email: "Faucet PAY", amount: "Miktar", min_withdraw: "Minimum çekim",
+        available: "Mevcut", ton_wallet: "TON Cüzdanı", amount: "Miktar", min_withdraw: "Minimum çekim",
         confirm_withdrawal: "Çekimi Onayla", withdrawal_history: "Çekim Geçmişi", no_withdrawals: "Henüz çekim yok",
         pending: "beklemede", completed: "tamamlandı", claim_mining_title: "Madencilik Ödüllerini Al", claim_btn: "Ödülleri Al",
         partner_info_title: "Sosyal Görevler", mining: "Madencilik", earn: "Kazan", team: "Takım",
@@ -171,12 +159,6 @@ const translations = {
         add_task_title: "Sosyal Görev Ekle",
         my_tasks_title: "Görevlerim",
         withdrawal_fees_note: "Çekim ücreti: {fees} TON",
-        faucetpay_title: "Faucet PAY",
-        faucetpay_desc: "Ödemeler FaucetPay cüzdanı üzerinden işlenir.",
-        faucetpay_step1: "Yeni hesap oluşturun",
-        faucetpay_step2: "E-posta adresinize bağlayın",
-        faucetpay_step3: "Ödemelerinizi kolayca alın",
-        register_now: "Şimdi Kaydol",
         all_fields_required: "Lütfen tüm alanları doldurun",
         add_bot_as_admin: "Botu Yönetici Olarak Ekle",
         team_benefits_title: "Takım Avantajları",
@@ -194,7 +176,7 @@ const translations = {
         no_tasks: "لا توجد مهام متاحة", team_benefits: "مزايا الفريق", share_earn: "شارك واربح",
         copy: "نسخ", share: "مشاركة", total_members: "إجمالي الأعضاء",
         power_earnings: "أرباح الطاقة", withdraw: "سحب",
-        available: "الرصيد المتوفر", faucet_email: "Faucet PAY", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
+        available: "الرصيد المتوفر", ton_wallet: "محفظة تون", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
         confirm_withdrawal: "تأكيد السحب", withdrawal_history: "سجل السحوبات", no_withdrawals: "لا توجد سحوبات بعد",
         pending: "قيد الانتظار", completed: "مكتمل", claim_mining_title: "استلام مكافآت التعدين", claim_btn: "استلام المكافآت",
         partner_info_title: "المهام الاجتماعية", mining: "التعدين", earn: "الأرباح", team: "الفريق",
@@ -232,12 +214,6 @@ const translations = {
         add_task_title: "إضافة مهمة اجتماعية",
         my_tasks_title: "مهامي",
         withdrawal_fees_note: "رسوم السحب: {fees} TON",
-        faucetpay_title: "Faucet PAY",
-        faucetpay_desc: "تتم المدفوعات عبر محفظة FaucetPay.",
-        faucetpay_step1: "إنشاء حساب جديد",
-        faucetpay_step2: "ربطه بعنوان بريدك الإلكتروني",
-        faucetpay_step3: "استلام مدفوعاتك بسهولة",
-        register_now: "سجل الآن",
         all_fields_required: "الرجاء ملء جميع الحقول",
         add_bot_as_admin: "إضافة البوت كمدير",
         team_benefits_title: "مزايا الفريق",
@@ -317,6 +293,12 @@ class App {
         this.membershipCache = new Map();
     }
     
+    truncateName(name, maxLength = 10) {
+        if (!name) return 'User';
+        if (name.length <= maxLength) return name;
+        return name.substring(0, maxLength) + '...';
+    }
+    
     t(key, params = {}) {
         let text = translations[this.lang]?.[key] || translations.en[key] || key;
         for (const [k, v] of Object.entries(params)) {
@@ -344,7 +326,7 @@ class App {
     }
     
     calculateRewardForHours(hours) {
-        return this.getHourlyTonRate() * (hours / 5);
+        return this.getHourlyTonRate() * hours;
     }
     
     updateLevelFromPower() {
@@ -1071,14 +1053,14 @@ class App {
         return true;
     }
     
-    async withdraw(amount, email) {
+    async withdraw(amount, wallet) {
         if (this._withdrawLock) {
             this.showNotification('Please wait', 'You can withdraw again after 10 seconds', 'warning');
             return false;
         }
         
-        if (!email || email.length < 5) {
-            this.showNotification('Error', 'Invalid email address', 'error');
+        if (!wallet || wallet.length < 20) {
+            this.showNotification('Error', 'Invalid wallet address', 'error');
             return false;
         }
         
@@ -1118,7 +1100,7 @@ class App {
             id: Date.now(),
             amount: amount,
             fees: APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0,
-            email: email,
+            wallet: wallet,
             status: 'pending',
             timestamp: this.getCurrentTime()
         };
@@ -1421,7 +1403,7 @@ class App {
         this.referralRewardGiven = false;
         
         const nameSpan = document.getElementById('user-name');
-        if (nameSpan) nameSpan.innerText = this.tgUser.first_name || 'User';
+        if (nameSpan) nameSpan.innerText = this.truncateName(this.tgUser.first_name || 'User');
         const levelSpan = document.getElementById('user-level');
         if (levelSpan) levelSpan.innerText = this.userLevel;
         const levelBadge = document.getElementById('user-level-badge');
@@ -1526,7 +1508,7 @@ class App {
         this._userDataLoaded = true;
         
         const nameSpan = document.getElementById('user-name');
-        if (nameSpan) nameSpan.innerText = this.tgUser.first_name || 'User';
+        if (nameSpan) nameSpan.innerText = this.truncateName(this.tgUser.first_name || 'User');
         const levelSpan = document.getElementById('user-level');
         if (levelSpan) levelSpan.innerText = this.userLevel;
         const levelBadge = document.getElementById('user-level-badge');
@@ -2173,9 +2155,9 @@ class App {
             <div class="withdraw-card">
                 <div class="withdraw-balance"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:28px;height:28px"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} TON</div>
                 <div class="form-group">
-                    <div class="form-label" style="display:flex; align-items:center; gap:6px;">${this.t('faucet_email')} <button id="faucet-info-btn" class="info-icon-btn" style="width:24px;height:24px;font-size:0.7rem;"><i class="fas fa-question-circle"></i></button></div>
+                    <label class="form-label">${this.t('ton_wallet')}</label>
                     <div class="input-wrapper">
-                        <input type="email" id="wallet-addr" class="form-input" placeholder="email@example.com">
+                        <input type="text" id="wallet-addr" class="form-input" placeholder="UQ...">
                     </div>
                 </div>
                 <div class="form-group">
@@ -2204,7 +2186,7 @@ class App {
             const wallet = walletInput?.value.trim();
             const amount = parseFloat(amountInput?.value);
             const totalRequired = amount + (APP_CONFIG.WITHDRAWAL_FEES > 0 ? APP_CONFIG.WITHDRAWAL_FEES : 0);
-            const isValid = wallet && wallet.length >= 5 && amount >= APP_CONFIG.MINIMUM_WITHDRAW && totalRequired <= this.tonBalance;
+            const isValid = wallet && wallet.length >= 20 && amount >= APP_CONFIG.MINIMUM_WITHDRAW && totalRequired <= this.tonBalance;
             if (withdrawBtn) {
                 if (isValid) withdrawBtn.classList.remove('disabled');
                 else withdrawBtn.classList.add('disabled');
@@ -2226,43 +2208,9 @@ class App {
         withdrawBtn?.addEventListener('click', () => {
             if (withdrawBtn.classList.contains('disabled')) return;
             const amount = parseFloat(amountInput.value);
-            const email = walletInput.value.trim();
-            this.withdraw(amount, email);
+            const wallet = walletInput.value.trim();
+            this.withdraw(amount, wallet);
         });
-        
-        document.getElementById('faucet-info-btn')?.addEventListener('click', () => {
-            this.showFaucetInfoModal();
-        });
-    }
-    
-    showFaucetInfoModal() {
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.style.display = 'flex';
-        modal.innerHTML = `
-            <div class="modal-content glass-modal modern-modal" style="max-width:320px;">
-                <div class="modal-header">
-                    <h3><i class="fas fa-wallet"></i> ${this.t('faucetpay_title')}</h3>
-                    <button class="modal-close" onclick="this.closest('.modal').remove()">&times;</button>
-                </div>
-                <div class="modal-body" style="text-align:center;">
-                    <p style="margin-bottom:16px;">${this.t('faucetpay_desc')}</p>
-                    <div class="promo-steps" style="margin-bottom:16px;">
-                        <h4>${this.t('how_it_works')}</h4>
-                        <div class="step-item"><div class="step-number">1</div><div class="step-text">${this.t('faucetpay_step1')}</div></div>
-                        <div class="step-item"><div class="step-number">2</div><div class="step-text">${this.t('faucetpay_step2')}</div></div>
-                        <div class="step-item"><div class="step-number">3</div><div class="step-text">${this.t('faucetpay_step3')}</div></div>
-                    </div>
-                    <button id="register-faucetpay-btn" class="modern-support-btn" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));"><i class="fas fa-user-plus"></i> ${this.t('register_now')}</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        document.getElementById('register-faucetpay-btn')?.addEventListener('click', () => {
-            window.open('https://t.me/faucetpay/FaucetPay?startapp=5942798', '_blank');
-            modal.remove();
-        });
-        modal.querySelector('.modal-close')?.addEventListener('click', () => modal.remove());
     }
     
     updateModalTranslations() {
@@ -2333,36 +2281,35 @@ class App {
         const currentFlag = this.lang === 'ru' ? '🇷🇺' : this.lang === 'en' ? '🇬🇧' : this.lang === 'tr' ? '🇹🇷' : '🇸🇦';
         document.getElementById('current-flag').innerText = currentFlag;
     }
-
-
-openAddTaskModal() {
-    const nameInput = document.getElementById('task-name-input');
-    const urlInput = document.getElementById('task-url-input');
-    const payBtn = document.getElementById('pay-task-btn');
     
-    if (nameInput) nameInput.value = '';
-    if (urlInput) urlInput.value = '';
-    
-    const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
-    verifyButtons.forEach(btn => btn.classList.remove('active'));
-    
-    const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
-    completionsButtons.forEach(btn => btn.classList.remove('active'));
-    
-    const addAdminDiv = document.getElementById('add-admin-div');
-    if (addAdminDiv) addAdminDiv.style.display = 'none';
-    
-    if (payBtn) {
-        payBtn.disabled = false;
-        payBtn.style.opacity = '1';
-        payBtn.style.pointerEvents = 'auto';
+    openAddTaskModal() {
+        const nameInput = document.getElementById('task-name-input');
+        const urlInput = document.getElementById('task-url-input');
+        const payBtn = document.getElementById('pay-task-btn');
+        
+        if (nameInput) nameInput.value = '';
+        if (urlInput) urlInput.value = '';
+        
+        const verifyButtons = document.querySelectorAll('#add-task-modal .toggle-option[data-value]');
+        verifyButtons.forEach(btn => btn.classList.remove('active'));
+        
+        const completionsButtons = document.querySelectorAll('#add-task-modal .completions-group .toggle-option');
+        completionsButtons.forEach(btn => btn.classList.remove('active'));
+        
+        const addAdminDiv = document.getElementById('add-admin-div');
+        if (addAdminDiv) addAdminDiv.style.display = 'none';
+        
+        if (payBtn) {
+            payBtn.disabled = false;
+            payBtn.style.opacity = '1';
+            payBtn.style.pointerEvents = 'auto';
+        }
+        
+        this.setupAddTaskModalListeners();
+        this.renderAddTaskModal();
+        this.updateModalTranslations();
+        document.getElementById('add-task-modal').style.display = 'flex';
     }
-    
-    this.setupAddTaskModalListeners();
-    this.renderAddTaskModal();
-    this.updateModalTranslations();
-    document.getElementById('add-task-modal').style.display = 'flex';
-}
     
     setupAddTaskModalListeners() {
         const verifyOptions = document.querySelectorAll('#add-task-modal .toggle-option[data-value="true"], #add-task-modal .toggle-option[data-value="false"]');
