@@ -8,6 +8,11 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'BOT_TOKEN not configured' });
     }
     
+    const starAmount = parseInt(amount);
+    if (isNaN(starAmount) || starAmount < 1 || starAmount > 2500) {
+        return res.status(400).json({ error: 'Invalid amount. Must be between 1-2500 Stars' });
+    }
+    
     try {
         const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/createInvoiceLink`, {
             method: 'POST',
@@ -18,7 +23,16 @@ export default async function handler(req, res) {
                 payload: payload || 'task_payment',
                 provider_token: '',
                 currency: 'XTR',
-                prices: [{ label: 'Task Creation', amount: amount }]
+                prices: [{ label: 'Task Creation', amount: starAmount }],
+                need_shipping_method: false,
+                need_name: false,
+                need_phone_number: false,
+                need_email: false,
+                send_phone_number_to_provider: false,
+                send_email_to_provider: false,
+                is_flexible: false,
+                max_tip_amount: 0,
+                suggested_tip_amounts: []
             })
         });
         
