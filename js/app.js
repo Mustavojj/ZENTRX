@@ -1784,7 +1784,7 @@ class App {
         const el = document.getElementById('mining-page');
         if (!el) return;
         const requiredPower = this.getRequiredPowerForLevel(this.userLevel + 1);
-        const hourlyRate = this.getHourlyTonRate();
+        const hourlyRate = this.getHourlyTonRate() * 5;
         const dailyRate = this.getDailyTonRate();
         const monthlyRate = this.getMonthlyTonRate();
         const progressPercent = this.getMiningProgressPercent();
