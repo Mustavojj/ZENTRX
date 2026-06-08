@@ -365,7 +365,7 @@ class App {
         const powerHeader = document.getElementById('header-power');
         const tonHeader = document.getElementById('header-ton');
         if (powerHeader) powerHeader.innerHTML = `<i class="fas fa-bolt"></i> ${this.formatNumber(Math.floor(this.powerBalance))}`;
-        if (tonHeader) tonHeader.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(4)}`;
+        if (tonHeader) tonHeader.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(5)}`;
     }
     
     getRequiredPowerForLevel(level) {
