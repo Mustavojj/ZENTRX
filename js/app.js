@@ -662,7 +662,7 @@ class App {
             localStorage.setItem('last_reward_ad_time', adTime.toString());
             
             const originalPower = this.powerBalance;
-            this.powerBalance += 20;
+            this.powerBalance += 100;
             this._dirtyPower = true;
             await this.updateLevelFromPower();
             
@@ -1818,9 +1818,9 @@ class App {
             
             <div class="earn-more-title"><i class="fas fa-chart-line"></i> ${this.t('earn_more')}</div>
             <div class="earn-cards">
-                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('watch_ad')}</h4><p>20 ${this.t('power')}</p></div><button id="mining-reward-ad" class="earn-card-btn">${this.t('watch')}</button></div>
-                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('complete_tasks')}</h4><p>${this.t('power_earnings')}</p></div><button id="go-tasks-btn" class="earn-card-btn">${this.t('go')}</button></div>
-                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('invite_frens')}</h4><p>${this.t('power_earnings')}</p></div><button id="go-team-btn" class="earn-card-btn">${this.t('go')}</button></div>
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('watch_ad')}</h4><p>100 ${this.t('power')}</p></div><button id="mining-reward-ad" class="earn-card-btn">${this.t('watch')}</button></div>
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('complete_tasks')}</h4></div><button id="go-tasks-btn" class="earn-card-btn">${this.t('go')}</button></div>
+                <div class="earn-card"><div class="earn-card-info"><h4>${this.t('invite_frens')}</h4></div><button id="go-team-btn" class="earn-card-btn">${this.t('go')}</button></div>
             </div>
         `;
         
