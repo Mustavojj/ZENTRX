@@ -2472,6 +2472,9 @@ class App {
     }
     
     setupEventListeners() {
+        document.getElementById('get-promo-codes-btn')?.addEventListener('click', () => {
+            window.open(APP_CONFIG.DAILY_CHECK_NEWS_LINK, '_blank');
+        });
         document.getElementById('close-promo-info')?.addEventListener('click', () => {
             document.getElementById('promo-info-modal').style.display = 'none';
         });
