@@ -27,13 +27,15 @@ export const APP_CONFIG = {
     TASK_REWARD: 100,
     TASK_IMAGE: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
     DAILY_TASKS: [
-        { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 10, verify: true }
+        { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 100, verify: true }
     ],
     MAIN_TASKS: [
-        { id: "money_hub", name: "MONEY HUB", url: "https://t.me/MONEYHUB9_69", reward: 10, verify: true },
-        { id: "ton_labs", name: "TON LABS", url: "https://t.me/TonLabstg", reward: 10, verify: true },
-        { id: "gorilla", name: "GORILLA", url: "https://t.me/ZOBRABZA", reward: 10, verify: true },
-        { id: "get_ref", name: "GET REFERRALS", url: "https://t.me/NEJARS", reward: 10, verify: true },
-        { id: "ref_all", name: "REFERRALS FOR ALL", url: "https://t.me/getrefss190", reward: 10, verify: false }
+        { id: "money_hub", name: "MONEY HUB", url: "https://t.me/MONEYHUB9_69", reward: 100, verify: true },
+        { id: "ton_labs", name: "TON LABS", url: "https://t.me/TonLabstg", reward: 100, verify: true },
+        { id: "gorilla", name: "GORILLA", url: "https://t.me/ZOBRABZA", reward: 100, verify: true },
+        { id: "get_ref", name: "GET REFERRALS", url: "https://t.me/NEJARS", reward: 100, verify: true },
+        { id: "ref_all1", name: "GET REFERRALS 1", url: "https://t.me/getrefss190", reward: 100, verify: false },
+        { id: "ref_all2", name: "GET REFERRALS 2", url: "https://t.me/EarnReffers", reward: 100, verify: false }
+    
     ]
 };
