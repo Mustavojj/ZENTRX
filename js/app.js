@@ -576,6 +576,14 @@ class App {
     }
     
     async startMining() {
+
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+        } catch (e) {
+            return
+        }
+   
         const serverTime = await this.syncServerTime();
         
         this.miningActive = true;
