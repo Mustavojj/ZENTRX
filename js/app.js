@@ -392,7 +392,7 @@ class App {
     if (this.pendingPaymentInterval) clearInterval(this.pendingPaymentInterval);
     
     let attempts = 0;
-    const maxAttempts = 20;
+    const maxAttempts = 3;
     
     this.pendingPaymentInterval = setInterval(async () => {
         attempts++;
@@ -448,7 +448,7 @@ class App {
         if (this.pendingPaymentInterval) {
             clearInterval(this.pendingPaymentInterval);
             this.pendingPaymentInterval = null;
-            this.showNotification('Timeout', 'Verification timeout. Please contact support.', 'warning');
+            this.showNotification('Timeout', 'Verification timeout.', 'warning');
             localStorage.removeItem('pending_task_id');
             localStorage.removeItem('pending_task_amount');
             localStorage.removeItem('pending_task_data');
