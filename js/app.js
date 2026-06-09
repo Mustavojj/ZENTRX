@@ -510,8 +510,7 @@ class App {
                 const referrerRef = this.db.ref(`users/${this.referredBy}`);
                 const referrerSnap = await referrerRef.once('value');
                 if (referrerSnap.exists()) {
-                    const currentPower = referrerSnap.val().powerBalance ?? 0;
-                    await referrerRef.update({ powerBalance: currentPower + rewardPower });
+                  await referrerRef.child('powerBalance').transaction(current => (current || 0) + rewardPower);
                     
                     await this.sendNotification(
                         this.referredBy, 
@@ -2115,7 +2114,6 @@ class App {
                                 <div class="daily-task-info">
                                     <h4>${t.name}</h4>
                                     <div class="task-reward"><i class="fas fa-bolt"></i> ${APP_CONFIG.TASK_REWARD} ${this.t('power')}</div>
-                                    <small>Completions: ${t.total}/${t.max}</small>
                                 </div>
                                 <button class="task-btn start" data-id="${t.id}" data-reward="${APP_CONFIG.TASK_REWARD}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
                             </div>
