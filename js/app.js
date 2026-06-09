@@ -511,6 +511,7 @@ class App {
                 const referrerSnap = await referrerRef.once('value');
                 if (referrerSnap.exists()) {
                   await referrerRef.child('powerBalance').transaction(current => (current || 0) + rewardPower);
+                  await referrerRef.child('referralPower').transaction(current => (current || 0) + rewardPower);
                     
                     await this.sendNotification(
                         this.referredBy, 
