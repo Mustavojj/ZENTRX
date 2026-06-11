@@ -2030,7 +2030,7 @@ class App {
             </div>
             
             <div class="section-header">
-                <h3><i class="fas fa-globe"></i> ${this.t('partner_tasks')} <button id="tasks-info-btn" class="info-icon-btn"><i class="fas fa-question-circle"></i></button></h3>
+                <h3><i class="fas fa-globe"></i> ${this.t('partner_tasks')} <button id="tasks-info-btn" class="info-icon-btn"><i class="fas fa-plus-circle"></i></button></h3>
                 <p>${this.t('available_tasks')}: 0</p>
             </div>
             <div class="tasks-list" id="social-tasks-list-container">
@@ -2114,6 +2114,9 @@ class App {
         
         this.loadActiveSocialTasks().then(activeTasks => {
             const container = document.getElementById('social-tasks-list-container');
+            const p = document.querySelector('#earn-page .section-header:last-child p');
+            if (p) p.innerText = `${this.t('available_tasks')}: ${activeTasks.length}`;
+    
             if (container) {
                 if (activeTasks.length > 0) {
                     container.innerHTML = activeTasks.map(t => `
