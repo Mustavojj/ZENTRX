@@ -364,56 +364,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.balance-cards {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.balance-card {
-    flex: 1;
-    background: var(--bg-card);
-    border-radius: var(--border-radius-sm);
-    padding: 16px 12px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.balance-card .icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.balance-card .icon.power { 
-    color: var(--primary); 
-    text-shadow: 0 0 10px var(--primary-glow);
-}
-
-.balance-card .label {
-    font-size: 0.7rem;
-    color: #888;
-    display: block;
-}
-
-.balance-card .value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #E0E0E0, #ccc);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.ton-icon-img {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 8px;
-    pointer-events: none;
-}
-
 .mining-card {
     background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
     border-radius: var(--border-radius);
@@ -526,12 +476,26 @@ body {
     border-radius: 40px;
 }
 
-.mining-note {
-    font-size: 0.65rem;
-    color: #888;
-    margin-bottom: 16px;
-    position: relative;
-    z-index: 2;
+.mining-active-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--success);
+    background: rgba(46, 204, 113, 0.15);
+    padding: 6px 12px;
+    border-radius: 40px;
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.mining-active-badge i {
+    font-size: 0.6rem;
+    margin-right: 6px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
 .mining-action-btn, .mining-claim-btn {
@@ -559,6 +523,95 @@ body {
 .mining-claim-btn {
     background: linear-gradient(135deg, var(--success), #27ae60);
     box-shadow: 0 5px 15px rgba(46,204,113,0.3);
+}
+
+.quests-section {
+    margin-bottom: 20px;
+}
+
+.quests-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 20px 0 12px;
+    color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quest-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(92, 107, 192, 0.2);
+}
+
+.quest-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(92, 107, 192, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.quest-info {
+    flex: 1;
+}
+
+.quest-info h4 {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.quest-reward {
+    font-size: 0.7rem;
+    color: var(--primary-light);
+}
+
+.quest-progress {
+    font-size: 0.65rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.quest-claim-btn {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quest-claim-btn:active {
+    transform: scale(0.95);
+}
+
+.quest-claim-btn.claimed {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+    cursor: default;
+}
+
+.quest-claim-btn.claimed:active {
+    transform: none;
+}
+
+.quest-claim-btn.locked {
+    background: rgba(128, 128, 128, 0.2);
+    color: #888;
+    cursor: not-allowed;
 }
 
 .earn-more-title {
@@ -590,6 +643,23 @@ body {
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgba(255,255,255,0.06);
+}
+
+.earn-card-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(92, 107, 192, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-right: 12px;
+}
+
+.earn-card-info {
+    flex: 1;
 }
 
 .earn-card-info h4 {
@@ -660,6 +730,15 @@ body {
     color: white;
 }
 
+.pulse-btn {
+    animation: btn-pulse 1.5s infinite;
+}
+
+@keyframes btn-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--primary-glow); }
+    50% { box-shadow: 0 0 0 6px rgba(92, 107, 192, 0); }
+}
+
 .promo-input-group {
     display: flex;
     gap: 8px;
@@ -707,6 +786,7 @@ body {
     margin: 20px 0 16px;
     text-align: center;
     border: 1px solid rgba(92,107,192,0.2);
+    position: relative;
 }
 
 .section-header h3 {
@@ -1106,6 +1186,10 @@ body {
     overflow-y: auto;
 }
 
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
 .modern-modal .modal-body {
     padding: 20px;
 }
@@ -1172,6 +1256,17 @@ body {
 
 .modern-support-btn:active {
     transform: scale(0.98);
+}
+
+.payment-buttons-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.payment-buttons-group .modern-support-btn {
+    flex: 1;
+    margin-top: 0;
 }
 
 .telegram-btn {
@@ -1463,20 +1558,6 @@ body {
     padding-bottom: 80px;
 }
 
-.modal-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
 .my-tasks-list::-webkit-scrollbar {
     width: 4px;
 }
@@ -1574,7 +1655,7 @@ body {
     pointer-events: auto;
 }
 
-.withdraw-confirm-btn, .modern-support-btn, .earn-card-btn, .referral-buttons button, .promo-submit-btn.active {
+.withdraw-confirm-btn, .modern-support-btn, .earn-card-btn, .referral-buttons button, .promo-submit-btn.active, .quest-claim-btn:not(.claimed):not(.locked) {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 }
 
@@ -1582,10 +1663,9 @@ body {
     background: linear-gradient(135deg, var(--success), #27ae60);
 }
 
-.bg-dark, .mining-card, .team-benefits, .promo-card {
+.bg-dark, .mining-card, .team-benefits, .promo-card, .quest-card {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
-} 
-
+}
 
 .app-header {
     padding: 10px 0 12px;
@@ -1606,24 +1686,6 @@ body {
 
 .user-level {
     font-size: 0.6rem;
-}
-
-.balance-cards {
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.balance-card {
-    padding: 10px 8px;
-}
-
-.balance-card .value {
-    font-size: 1rem;
-}
-
-.balance-card .icon {
-    font-size: 1.2rem;
-    margin-bottom: 4px;
 }
 
 .header-balances {
