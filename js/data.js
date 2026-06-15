@@ -26,7 +26,6 @@ export const APP_CONFIG = {
     TASK_IMAGE: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
     DAILY_TASKS: [
         { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 100, verify: true, icon: "fa-newspaper" },
-        { id: "daily_partner_channel", name: "Join Partner Channel", url: "https://t.me/MONEYHUB9_69", reward: 150, verify: true, icon: "fa-telegram" }
     ],
     MAIN_TASKS: [
         { id: "money_hub", name: "MONEY HUB", url: "https://t.me/MONEYHUB9_69", reward: 100, verify: true },
