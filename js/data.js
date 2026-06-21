@@ -28,13 +28,7 @@ export const APP_CONFIG = {
         { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 100, verify: true, icon: "fa-newspaper" },
         ],
     MAIN_TASKS: [
-        { id: "money_hub1", name: "MONEY HUB", url: "https://t.me/MONEYHUB9_69", reward: 100, verify: true },
-        { id: "ton_labs1", name: "TON LABS", url: "https://t.me/TonLabstg", reward: 100, verify: true },
-        { id: "gorilla1", name: "GORILLA", url: "https://t.me/ZOBRABZA", reward: 100, verify: true },
-        { id: "get_ref1", name: "GET REFERRALS", url: "https://t.me/NEJARS", reward: 100, verify: true },
-        { id: "ref_all11", name: "GET REFERRALS 1", url: "https://t.me/getrefss190", reward: 100, verify: false },
-        { id: "ref_all21", name: "GET REFERRALS 2", url: "https://t.me/EarnReffers", reward: 100, verify: false }
-    ],
+        ],
     QUESTS: {
         welcome_bonus: { reward: 3000, type: "power" },
         level_quests: [
