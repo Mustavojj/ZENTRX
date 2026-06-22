@@ -2211,178 +2211,185 @@ class App {
             `;
         }).join('');
     }
-    
+
     renderEarn() {
-        const el = document.getElementById('earn-page');
-        if (!el) return;
+    const el = document.getElementById('earn-page');
+    if (!el) return;
+    
+    const resetTime = this.getDailyResetTimeUTC();
+    const now = Date.now();
+    const timeRemaining = Math.max(0, resetTime - now);
+    const hoursRemaining = Math.floor(timeRemaining / 3600000);
+    const minutesRemaining = Math.floor((timeRemaining % 3600000) / 60000);
+    
+    const dailyTasksHtml = APP_CONFIG.DAILY_TASKS.map(task => {
+        const isCompleted = this.dailyTasksCompleted.has(task.id);
+        const btnClass = isCompleted ? 'done' : 'start';
+        const btnText = isCompleted ? 'Done' : this.t('start');
+        const icon = task.icon || 'fa-clock';
         
-        const resetTime = this.getDailyResetTimeUTC();
-        const now = Date.now();
-        const timeRemaining = Math.max(0, resetTime - now);
-        const hoursRemaining = Math.floor(timeRemaining / 3600000);
-        const minutesRemaining = Math.floor((timeRemaining % 3600000) / 60000);
-        
-        const dailyTasksHtml = APP_CONFIG.DAILY_TASKS.map(task => {
-            const isCompleted = this.dailyTasksCompleted.has(task.id);
-            const btnClass = isCompleted ? 'done' : 'start';
-            const btnText = isCompleted ? 'Done' : this.t('start');
-            const icon = task.icon || 'fa-clock';
-            
-            return `
-                <div class="daily-task-card">
-                    <div class="daily-task-header">
-                        <div class="daily-task-icon"><i class="fas ${icon}"></i></div>
-                        <div class="daily-task-info">
-                            <h4>${task.name}</h4>
-                            <div class="daily-task-reward"><i class="fas fa-bolt"></i> ${task.reward} ${this.t('power')}</div>
-                        </div>
-                        <button class="task-btn ${btnClass}" data-task-id="${task.id}" data-task-reward="${task.reward}" data-task-url="${task.url}" data-task-verify="${task.verify}" ${isCompleted ? 'disabled' : ''}>${btnText}</button>
+        return `
+            <div class="daily-task-card">
+                <div class="daily-task-header">
+                    <div class="daily-task-icon"><i class="fas ${icon}"></i></div>
+                    <div class="daily-task-info">
+                        <h4>${task.name}</h4>
+                        <div class="daily-task-reward"><i class="fas fa-bolt"></i> ${task.reward} ${this.t('power')}</div>
                     </div>
+                    <button class="task-btn ${btnClass}" data-task-id="${task.id}" data-task-reward="${task.reward}" data-task-url="${task.url}" data-task-verify="${task.verify}" ${isCompleted ? 'disabled' : ''}>${btnText}</button>
                 </div>
-            `;
-        }).join('');
-        
-        el.innerHTML = `
-            <div class="promo-card">
-                <div class="promo-header">
-                    <div class="promo-title"><i class="fas fa-gift"></i> ${this.t('promo_code')}</div>
-                    <button id="promo-info-btn" class="info-icon-btn"><i class="fas fa-question-circle"></i></button>
-                </div>
-                <div class="promo-input-group">
-                    <input type="text" id="promo-input" class="form-input" placeholder="${this.t('enter_code')}" autocomplete="off">
-                    <button id="promo-submit" class="promo-submit-btn" disabled>${this.t('claim')}</button>
-                </div>
-            </div>
-            
-            <div class="section-header">
-                <h3><i class="fas fa-clock"></i> ${this.t('daily_tasks')}</h3>
-                <p>${this.t('refresh_in')}: ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}</p>
-            </div>
-            
-            <div class="daily-tasks-container">
-                ${dailyTasksHtml}
-            </div>
-            
-            <div class="section-header" style="position: relative;">
-                <h3 style="flex:1; text-align:center;"><i class="fas fa-tasks"></i> ${this.t('available_tasks')} (${this.partnerTasks.length})</h3>
-                <button id="tasks-info-btn" class="info-icon-btn pulse-btn" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%);"><i class="fas fa-plus-circle"></i></button>
-            </div>
-            <div class="tasks-list" id="social-tasks-list-container">
-                <div class="task-loading"><i class="fas fa-spinner fa-pulse"></i><p>${this.t('loading')}...</p></div>
             </div>
         `;
-        
-        const promoInput = document.getElementById('promo-input');
-        const promoSubmit = document.getElementById('promo-submit');
-        if (promoInput && promoSubmit) {
-            promoInput.addEventListener('input', () => {
-                promoSubmit.disabled = promoInput.value.trim() === '';
-                promoSubmit.classList.toggle('active', !promoSubmit.disabled);
-            });
-            promoSubmit.addEventListener('click', () => {
-                const code = promoInput.value.trim();
-                if (code) this.applyPromoCode(code);
-                promoInput.value = '';
-                promoSubmit.disabled = true;
-                promoSubmit.classList.remove('active');
-            });
-        }
-        
-        document.getElementById('tasks-info-btn')?.addEventListener('click', async () => {
-            await this.loadUserTasks();
-            this.openAddTaskModal();
-        });
-        
-        document.getElementById('promo-info-btn')?.addEventListener('click', () => {
-            document.getElementById('promo-info-modal').style.display = 'flex';
-            this.updateModalTranslations();
-        });
-        
-        document.querySelectorAll('.daily-task-card .task-btn.start').forEach(btn => {
-            const taskId = btn.dataset.taskId;
-            const taskReward = parseInt(btn.dataset.taskReward);
-            const taskUrl = btn.dataset.taskUrl;
-            const taskVerify = btn.dataset.taskVerify === 'true';
-            const task = APP_CONFIG.DAILY_TASKS.find(t => t.id === taskId);
-            
-            btn.addEventListener('click', async () => {
-                if (this.isTaskRunning) {
-                    this.showNotification('Busy', 'Complete current task first', 'warning');
-                    return;
-                }
-                this.isTaskRunning = true;
-                await this.completeDailyTask(taskId, { url: taskUrl, reward: taskReward, verify: taskVerify }, btn);
-                this.isTaskRunning = false;
-            });
-        });
-        
-        this.loadActiveSocialTasks().then(activeTasks => {
-            const container = document.getElementById('social-tasks-list-container');
-            const p = document.querySelector('#earn-page .section-header:last-child p');
-            if (p) p.innerText = `${this.t('available_tasks')}: ${activeTasks.length}`;
+    }).join('');
     
-            if (container) {
-                if (activeTasks.length > 0) {
-                    container.innerHTML = activeTasks.map(t => `
-                        <div class="task-item daily-task-card">
-                            <div class="daily-task-header">
-                                <div class="daily-task-icon"><img src="${APP_CONFIG.TASK_IMAGE}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
-                                <div class="daily-task-info">
-                                    <h4>${t.name}</h4>
-                                    <div class="task-reward"><i class="fas fa-bolt"></i> ${APP_CONFIG.TASK_REWARD} ${this.t('power')}</div>
-                                </div>
-                                <button class="task-btn start" data-id="${t.id}" data-reward="${APP_CONFIG.TASK_REWARD}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
-                            </div>
-                        </div>
-                    `).join('');
-                    
-                    document.querySelectorAll('#social-tasks-list-container .task-btn.start').forEach(btn => {
-                        btn.addEventListener('click', async () => {
-                            if (this.isTaskRunning) {
-                                this.showNotification('Busy', 'Complete current task first', 'warning');
-                                return;
-                            }
-                            const id = btn.dataset.id;
-                            const reward = parseInt(btn.dataset.reward);
-                            const url = btn.dataset.url;
-                            const verify = btn.dataset.verify === 'true';
-                            const taskData = activeTasks.find(t => t.id === id);
-                            
-                            window.open(url, '_blank');
-                            this.isTaskRunning = true;
-                            this.disableAllTaskButtons();
-                            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                            btn.disabled = true;
-                            
-                            let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
-                            const interval = setInterval(() => {
-                                seconds--;
-                                if (seconds <= 0) {
-                                    clearInterval(interval);
-                                    btn.innerHTML = 'Claim';
-                                    btn.disabled = false;
-                                    btn.classList.remove('start');
-                                    btn.classList.add('check');
-                                    
-                                    const newBtn = btn.cloneNode(true);
-                                    btn.parentNode.replaceChild(newBtn, btn);
-                                    
-                                    newBtn.addEventListener('click', async (e) => {
-                                        e.stopPropagation();
-                                        newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                                        newBtn.disabled = true;
-                                        await this.completeTask(id, reward, url, verify, newBtn, false, true, taskData);
-                                    });
-                                }
-                            }, 1000);
-                        });
-                    });
-                } else {
-                    container.innerHTML = '<div class="no-data"><i class="fas fa-globe"></i><p>' + this.t('no_tasks') + '</p><small>' + this.t('check_later') + '</small></div>';
-                }
-            }
+    el.innerHTML = `
+        <div class="promo-card">
+            <div class="promo-header">
+                <div class="promo-title"><i class="fas fa-gift"></i> ${this.t('promo_code')}</div>
+                <button id="promo-info-btn" class="info-icon-btn"><i class="fas fa-question-circle"></i></button>
+            </div>
+            <div class="promo-input-group">
+                <input type="text" id="promo-input" class="form-input" placeholder="${this.t('enter_code')}" autocomplete="off">
+                <button id="promo-submit" class="promo-submit-btn" disabled>${this.t('claim')}</button>
+            </div>
+        </div>
+        
+        <div class="section-header">
+            <h3><i class="fas fa-clock"></i> ${this.t('daily_tasks')}</h3>
+            <p>${this.t('refresh_in')}: ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}</p>
+        </div>
+        
+        <div class="daily-tasks-container">
+            ${dailyTasksHtml}
+        </div>
+        
+        <div class="section-header" style="position: relative;">
+            <h3 style="flex:1; text-align:center;"><i class="fas fa-tasks"></i> ${this.t('available_tasks')} (0)</h3>
+            <button id="tasks-info-btn" class="info-icon-btn pulse-btn" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%);"><i class="fas fa-plus-circle"></i></button>
+        </div>
+        <div class="tasks-list" id="social-tasks-list-container">
+            <div class="task-loading"><i class="fas fa-spinner fa-pulse"></i><p>${this.t('loading')}...</p></div>
+        </div>
+    `;
+    
+    const promoInput = document.getElementById('promo-input');
+    const promoSubmit = document.getElementById('promo-submit');
+    if (promoInput && promoSubmit) {
+        promoInput.addEventListener('input', () => {
+            promoSubmit.disabled = promoInput.value.trim() === '';
+            promoSubmit.classList.toggle('active', !promoSubmit.disabled);
+        });
+        promoSubmit.addEventListener('click', () => {
+            const code = promoInput.value.trim();
+            if (code) this.applyPromoCode(code);
+            promoInput.value = '';
+            promoSubmit.disabled = true;
+            promoSubmit.classList.remove('active');
         });
     }
+    
+    document.getElementById('tasks-info-btn')?.addEventListener('click', async () => {
+        await this.loadUserTasks();
+        this.openAddTaskModal();
+    });
+    
+    document.getElementById('promo-info-btn')?.addEventListener('click', () => {
+        document.getElementById('promo-info-modal').style.display = 'flex';
+        this.updateModalTranslations();
+    });
+    
+    document.querySelectorAll('.daily-task-card .task-btn.start').forEach(btn => {
+        const taskId = btn.dataset.taskId;
+        const taskReward = parseInt(btn.dataset.taskReward);
+        const taskUrl = btn.dataset.taskUrl;
+        const taskVerify = btn.dataset.taskVerify === 'true';
+        const task = APP_CONFIG.DAILY_TASKS.find(t => t.id === taskId);
+        
+        btn.addEventListener('click', async () => {
+            if (this.isTaskRunning) {
+                this.showNotification('Busy', 'Complete current task first', 'warning');
+                return;
+            }
+            this.isTaskRunning = true;
+            await this.completeDailyTask(taskId, { url: taskUrl, reward: taskReward, verify: taskVerify }, btn);
+            this.isTaskRunning = false;
+        });
+    });
+    
+    this.loadActiveSocialTasks().then(activeTasks => {
+        const container = document.getElementById('social-tasks-list-container');
+        const activeTasksCount = activeTasks.length;
+        
+        const header = document.querySelector('#earn-page .section-header:last-child h3');
+        if (header) {
+            header.innerHTML = `<i class="fas fa-tasks"></i> ${this.t('available_tasks')} (${activeTasksCount})`;
+        }
+        
+        const p = document.querySelector('#earn-page .section-header:last-child p');
+        if (p) p.innerText = `${this.t('available_tasks')}: ${activeTasksCount}`;
+        
+        if (container) {
+            if (activeTasks.length > 0) {
+                container.innerHTML = activeTasks.map(t => `
+                    <div class="task-item daily-task-card">
+                        <div class="daily-task-header">
+                            <div class="daily-task-icon"><img src="${APP_CONFIG.TASK_IMAGE}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
+                            <div class="daily-task-info">
+                                <h4>${t.name}</h4>
+                                <div class="task-reward"><i class="fas fa-bolt"></i> ${APP_CONFIG.TASK_REWARD} ${this.t('power')}</div>
+                            </div>
+                            <button class="task-btn start" data-id="${t.id}" data-reward="${APP_CONFIG.TASK_REWARD}" data-url="${t.url}" data-verify="${t.verification}">Start</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                document.querySelectorAll('#social-tasks-list-container .task-btn.start').forEach(btn => {
+                    btn.addEventListener('click', async () => {
+                        if (this.isTaskRunning) {
+                            this.showNotification('Busy', 'Complete current task first', 'warning');
+                            return;
+                        }
+                        const id = btn.dataset.id;
+                        const reward = parseInt(btn.dataset.reward);
+                        const url = btn.dataset.url;
+                        const verify = btn.dataset.verify === 'true';
+                        const taskData = activeTasks.find(t => t.id === id);
+                        
+                        window.open(url, '_blank');
+                        this.isTaskRunning = true;
+                        this.disableAllTaskButtons();
+                        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                        btn.disabled = true;
+                        
+                        let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
+                        const interval = setInterval(() => {
+                            seconds--;
+                            if (seconds <= 0) {
+                                clearInterval(interval);
+                                btn.innerHTML = 'Claim';
+                                btn.disabled = false;
+                                btn.classList.remove('start');
+                                btn.classList.add('check');
+                                
+                                const newBtn = btn.cloneNode(true);
+                                btn.parentNode.replaceChild(newBtn, btn);
+                                
+                                newBtn.addEventListener('click', async (e) => {
+                                    e.stopPropagation();
+                                    newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+                                    newBtn.disabled = true;
+                                    await this.completeTask(id, reward, url, verify, newBtn, false, true, taskData);
+                                });
+                            }
+                        }, 1000);
+                    });
+                });
+            } else {
+                container.innerHTML = '<div class="no-data"><i class="fas fa-globe"></i><p>' + this.t('no_tasks') + '</p><small>' + this.t('check_later') + '</small></div>';
+            }
+        }
+    });
+}
     
     renderTeam() {
         const el = document.getElementById('team-page');
