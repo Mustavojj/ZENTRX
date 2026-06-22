@@ -1783,3 +1783,8 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
+
+.header-balance img {
+    width: 21px !important;
+    height: 21px !important;
+} 
