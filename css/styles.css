@@ -2,18 +2,21 @@
     --primary: #7C93FF;
     --primary-dark: #5C6BC0;
     --primary-light: #A5B9FF;
-    --primary-glow: rgba(124, 147, 255, 0.4);   --accent: #B0BEC5;
+    --primary-glow: rgba(124, 147, 255, 0.4);
+    --accent: #B0BEC5;
     --success: #2ecc71;
     --warning: #f39c12;
     --error: #e74c3c;
     --power: #5C6BC0;
     --power-gradient: linear-gradient(135deg, #5C6BC0, #3F51B5);
-    --ton: #0088CC;
+    --gram: #0088CC;
     --bg-dark: #0a0a0f;
-    --bg-card: #111115;
-    --bg-elevated: #1a1a22;
+    --bg-card: rgba(17, 17, 21, 0.85);
+    --bg-elevated: rgba(26, 26, 34, 0.9);
     --border-radius: 24px;
     --border-radius-sm: 16px;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -59,8 +62,9 @@ body {
     text-align: center;
     width: 85%;
     max-width: 340px;
-    border: 1px solid rgba(92, 107, 192, 0.2);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(12px);
 }
 
 .loader-logo {
@@ -272,11 +276,11 @@ body {
     right: 10px;
     background: var(--bg-elevated);
     border-radius: var(--border-radius-sm);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
     backdrop-filter: blur(20px);
     z-index: 200;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: var(--glass-shadow);
 }
 
 .lang-menu-content {
@@ -316,8 +320,8 @@ body {
     border-radius: 60px;
     gap: 8px;
     z-index: 100;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .nav-btn {
@@ -364,16 +368,26 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--glass-shadow);
+}
+
 .mining-card {
-    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     padding: 28px 20px;
     text-align: center;
-    border: 1px solid rgba(92, 107, 192, 0.3);
+    border: 1px solid var(--glass-border);
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: var(--glass-shadow);
 }
 
 .mining-icon-container {
@@ -459,7 +473,7 @@ body {
 .rate-stat .stat-value {
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--ton);
+    color: var(--gram);
     margin-top: 4px;
 }
 
@@ -541,13 +555,15 @@ body {
 
 .quest-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 14px 16px;
     display: flex;
     align-items: center;
     gap: 14px;
     margin-bottom: 10px;
-    border: 1px solid rgba(92, 107, 192, 0.2);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .quest-icon {
@@ -637,12 +653,14 @@ body {
 
 .earn-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 14px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .earn-card-icon {
@@ -689,11 +707,13 @@ body {
 }
 
 .promo-card {
-    background: linear-gradient(135deg, #1a1a22, #111115);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     padding: 20px;
     margin-bottom: 24px;
-    border: 1px solid rgba(92, 107, 192, 0.3);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .promo-header {
@@ -780,12 +800,14 @@ body {
 }
 
 .section-header {
-    background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 14px 20px;
     margin: 20px 0 16px;
     text-align: center;
-    border: 1px solid rgba(92,107,192,0.2);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     position: relative;
 }
 
@@ -793,6 +815,10 @@ body {
     font-size: 1rem;
     font-weight: 700;
     color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .section-header p {
@@ -808,10 +834,12 @@ body {
 }
 
 .daily-task-card {
-    background: linear-gradient(135deg, #1a1a22, #111115);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 16px;
-    border: 1px solid rgba(92, 107, 192, 0.3);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .daily-task-header {
@@ -895,8 +923,9 @@ body {
     padding: 40px 20px;
     color: #888;
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--glass-border);
 }
 
 .no-data i {
@@ -906,11 +935,13 @@ body {
 }
 
 .team-benefits {
-    background: linear-gradient(135deg, #1a1a22, #111115);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     padding: 24px;
     margin-bottom: 20px;
-    border: 1px solid rgba(92, 107, 192, 0.3);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     text-align: center;
 }
 
@@ -947,9 +978,12 @@ body {
 
 .referral-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     padding: 20px;
     margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .referral-card h4 {
@@ -999,10 +1033,12 @@ body {
 
 .stat-mini {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 16px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .stat-mini .stat-label {
@@ -1023,9 +1059,12 @@ body {
 
 .withdraw-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     padding: 24px;
     margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .withdraw-balance {
@@ -1039,13 +1078,14 @@ body {
     margin-bottom: 24px;
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--ton);
+    color: var(--gram);
 }
 
 .withdraw-balance img {
     width: 28px;
     height: 28px;
     pointer-events: none;
+    border-radius: 50%;
 }
 
 .form-group {
@@ -1125,13 +1165,15 @@ body {
 
 .history-item {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .history-amount {
@@ -1146,6 +1188,7 @@ body {
     width: 16px;
     height: 16px;
     pointer-events: none;
+    border-radius: 50%;
 }
 
 .history-status {
@@ -1173,10 +1216,11 @@ body {
 }
 
 .glass-modal {
-    background: rgba(17, 17, 21, 0.95);
+    background: var(--bg-card);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
     border-radius: var(--border-radius);
+    box-shadow: var(--glass-shadow);
 }
 
 .modal-content {
@@ -1199,7 +1243,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .modal-close {
@@ -1305,7 +1349,7 @@ body {
 
 .my-tasks-section {
     margin-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--glass-border);
     padding-top: 20px;
 }
 
@@ -1325,10 +1369,12 @@ body {
 
 .my-task-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-sm);
     padding: 12px;
     margin-bottom: 8px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .my-task-card .task-header {
@@ -1466,6 +1512,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background: var(--bg-elevated);
+    backdrop-filter: blur(12px);
     border-radius: 12px;
     padding: 12px 20px;
     display: flex;
@@ -1476,8 +1523,7 @@ body {
     border-left: 4px solid;
     max-width: 320px;
     width: 85%;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: var(--glass-shadow);
 }
 
 .notif.success { border-left-color: var(--success); }
@@ -1513,16 +1559,6 @@ body {
     to { transform: rotate(360deg); }
 }
 
-.section-header h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--primary-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
 .referral-reward {
     margin-top: 12px;
     padding: 8px;
@@ -1537,8 +1573,11 @@ body {
     text-align: center;
     padding: 40px 20px;
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius);
     margin: 40px 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .ban-message i {
@@ -1651,75 +1690,50 @@ body {
     cursor: text;
 }
 
-.promo-input-group .form-input {
-    pointer-events: auto;
+/* Team page specific */
+.team-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 16px;
 }
 
-.withdraw-confirm-btn, .modern-support-btn, .earn-card-btn, .referral-buttons button, .promo-submit-btn.active, .quest-claim-btn:not(.claimed):not(.locked) {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+.team-stat-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border-radius: var(--border-radius-sm);
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
-.mining-claim-btn {
-    background: linear-gradient(135deg, var(--success), #27ae60);
+.team-stat-card .stat-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #E0E0E0, #ccc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.bg-dark, .mining-card, .team-benefits, .promo-card, .quest-card {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-}
-
-.app-header {
-    padding: 10px 0 12px;
-}
-
-.header-top {
-    margin-bottom: 0;
-}
-
-.user-avatar {
-    width: 44px;
-    height: 44px;
-}
-
-.user-name {
-    font-size: 0.85rem;
-}
-
-.user-level {
-    font-size: 0.6rem;
-}
-
-.header-balances {
-    display: flex;
-    gap: 8px;
-    margin-right: 8px;
-}
-
-.header-balance {
-    background: rgba(124, 147, 255, 0.15);
-    border-radius: 40px;
-    padding: 5px 10px;
+.team-stat-card .stat-label {
     font-size: 0.7rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--primary-light);
+    color: #888;
+    margin-top: 4px;
 }
 
-.add-bot-btn {
-    width: 100%;
-    padding: 10px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border: none;
-    border-radius: 40px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 8px;
-    font-size: 0.75rem;
+/* Daily Bonus */
+.bonus-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 8px;
 }
 
-#wallet-addr {
-    font-family: monospace;
-    letter-spacing: 0.5px;
+/* GRAM icon in header */
+.gram-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
 }
