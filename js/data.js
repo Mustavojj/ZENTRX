@@ -24,11 +24,14 @@ export const APP_CONFIG = {
     CRYPTO_BOT_TOKEN: "593486:AAgnc7TtIM9ay5Vwam3vPkqvwSPyT5YcV5q", 
     TASK_REWARD: 100,
     TASK_IMAGE: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
+    DAILY_BONUS_AMOUNT: 500,
+    GRAM_ICON: "https://i.ibb.co/Xk7mTXsn/ed75d5693aa2.jpg",
+    MINING_ICON: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
+    REFERRAL_LINK: "https://t.me/NEJARS",
     DAILY_TASKS: [
-        { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 100, verify: true, icon: "fa-newspaper" },
-        ],
-    MAIN_TASKS: [
-        ],
+        { id: "daily_check_news", name: "Daily Check News", url: "https://t.me/Zentrxb", reward: 100, verify: true, icon: "fa-clock" },
+    ],
+    MAIN_TASKS: [],
     QUESTS: {
         welcome_bonus: { reward: 3000, type: "power" },
         level_quests: [
