@@ -2463,8 +2463,7 @@ class App {
         
         el.innerHTML = `
             <div class="withdraw-card">
-                <div class="withdraw-balance"><img src="${APP_CONFIG.GRAM_ICON}" style="width:28px;height:28px;border-radius:50%;"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} GRAM</div>
-                <div class="form-group">
+                 <div class="form-group">
                     <label class="form-label">${this.t('ton_wallet')}</label>
                     <div class="input-wrapper">
                         <input type="text" id="wallet-addr" class="form-input" placeholder="UQ...">
