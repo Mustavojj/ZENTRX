@@ -25,7 +25,7 @@ export const APP_CONFIG = {
     TASK_REWARD: 100,
     TASK_IMAGE: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
     DAILY_BONUS_AMOUNT: 500,
-    GRAM_ICON: "https://i.ibb.co/Xk7mTXsn/ed75d5693aa2.jpg",
+    GRAM_ICON: "https://i.ibb.co/bgX518dY/IMG-20260622-025621-420.png",
     MINING_ICON: "https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg",
     REFERRAL_LINK: "https://t.me/NEJARS",
     DAILY_TASKS: [
