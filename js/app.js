@@ -58,7 +58,7 @@ const translations = {
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
         claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
         daily_bonus: "Daily Bonus", claim_daily_bonus: "Claim", daily_bonus_claimed: "Already Claimed",
-        invite_earn: "Invite & Earn", verified_member: "Verified Member", team_earnings: "Team Earnings",
+        invite_earn: "Invite & Earn Power", verified_member: "Verified Member", team_earnings: "Team Earnings",
         more_active_members: "More active members, more profits", copy_link: "Copy Link", get_referrals: "Get Referrals",
         total_members: "Total Members", active_members: "Active Members", total_earnings: "Total Earnings"
     },
@@ -241,7 +241,7 @@ const translations = {
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
         claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
         daily_bonus: "المكافأة اليومية", claim_daily_bonus: "استلام", daily_bonus_claimed: "تم الاستلام بالفعل",
-        invite_earn: "دعوة واربح", verified_member: "عضو مؤكد", team_earnings: "أرباح الفريق",
+        invite_earn: "دعوة واربح Power", verified_member: "عضو مؤكد", team_earnings: "أرباح الفريق",
         more_active_members: "كلما زاد الأعضاء النشطاء، زادت الأرباح", copy_link: "نسخ الرابط", get_referrals: "احصل على الإحالات",
         total_members: "إجمالي الأعضاء", active_members: "الأعضاء النشطاء", total_earnings: "إجمالي الأرباح"
     }
