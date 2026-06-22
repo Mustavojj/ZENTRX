@@ -1742,3 +1742,44 @@ body {
     width: 28px !important;
     height: 28px !important;
 } 
+
+.header-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-right: 0;
+}
+
+.header-balances {
+    display: flex;
+    gap: 4px;
+    margin-right: 0;
+}
+
+.header-balance {
+    background: rgba(92, 107, 192, 0.15);
+    border-radius: 40px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--primary-light);
+    white-space: nowrap;
+}
+
+.header-balance img {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: -4px;
+}
+
+.history-amount img {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
