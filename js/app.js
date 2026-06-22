@@ -4,14 +4,14 @@ const translations = {
     ru: {
         level: "Уровень", mining_rig: "Майнинг-установка Ур.", hourly: "5 часов", daily: "Ежедневно", monthly: "Ежемесячно",
         start_mining: "НАЧАТЬ МАЙНИНГ", claim_reward: "ПОЛУЧИТЬ НАГРАДУ", mining_note: "Награды можно получить после окончания сеанса майнинга",
-        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "TON", promo_code: "Промокод",
-        enter_code: "Введите код", claim: "Получить", main_tasks: "Основные задания", partner_tasks: "Социальные задания",
+        next_level_reward: "Награда за следующий уровень", power: "Энергия", ton: "GRAM", promo_code: "Промокод",
+        enter_code: "Введите код", claim: "Получить", partner_tasks: "Социальные задания",
         watch_ad: "Смотреть рекламу", reward_amount: "Награда", available_in: "Доступно через", hours: "ч",
         watch: "Смотреть", all_tasks_completed: "Все задания выполнены!", check_later: "Заходите позже за новыми",
         no_tasks: "Нет доступных заданий", team_benefits: "Преимущества команды", share_earn: "ДЕЛИСЬ И ЗАРАБАТЫВАЙ",
         copy: "Копировать", share: "Поделиться", total_members: "Всего участников",
         power_earnings: "Заработок энергии", withdraw: "Вывести",
-        available: "Доступно", ton_wallet: "ошелек", amount: "Сумма", min_withdraw: "Мин. вывод",
+        available: "Доступно", ton_wallet: "кошелек", amount: "Сумма", min_withdraw: "Мин. вывод",
         confirm_withdrawal: "Подтвердить вывод", withdrawal_history: "История выводов", no_withdrawals: "Пока нет выводов",
         pending: "В ОЖИДАНИИ", completed: "ВЫПЛАЧЕНО", claim_mining_title: "Получить награды майнинга", claim_btn: "Получить награды",
         partner_info_title: "Социальные задания", mining: "Майнинг", earn: "Заработок", team: "Команда",
@@ -48,7 +48,7 @@ const translations = {
         completions_count: "выполнений",
         add_task_title: "Добавить социальное задание",
         my_tasks_title: "Мои задания",
-        withdrawal_fees_note: "Комиссия за вывод: {fees} TON",
+        withdrawal_fees_note: "Комиссия за вывод: {fees} GRAM",
         all_fields_required: "Пожалуйста, заполните все поля",
         add_bot_as_admin: "Добавить бота администратором",
         team_benefits_title: "Преимущества команды",
@@ -56,19 +56,23 @@ const translations = {
         team_benefit_referral_percent: "Зарабатывайте {percent}% от дохода друзей",
         reward_added: "Награда добавлена! +{reward} Power",
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
-        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first"
+        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
+        daily_bonus: "Daily Bonus", claim_daily_bonus: "Claim", daily_bonus_claimed: "Already Claimed",
+        invite_earn: "Invite & Earn", verified_member: "Verified Member", team_earnings: "Team Earnings",
+        more_active_members: "More active members, more profits", copy_link: "Copy Link", get_referrals: "Get Referrals",
+        total_members: "Total Members", active_members: "Active Members", total_earnings: "Total Earnings"
     },
     en: {
         level: "Level", mining_rig: "Mining Rig Lv.", hourly: "5 Hours", daily: "Daily", monthly: "Monthly",
         start_mining: "START MINING", claim_reward: "CLAIM REWARD", mining_note: "Rewards can be collected after mining session ends",
-        next_level_reward: "Next level reward", power: "Power", ton: "TON", promo_code: "Promo Code",
-        enter_code: "Enter code", claim: "Claim", main_tasks: "Main Tasks", partner_tasks: "Social Tasks",
+        next_level_reward: "Next level reward", power: "Power", ton: "GRAM", promo_code: "Promo Code",
+        enter_code: "Enter code", claim: "Claim", partner_tasks: "Social Tasks",
         watch_ad: "Watch Reward AD", reward_amount: "Reward", available_in: "Available in", hours: "h",
         watch: "Watch", all_tasks_completed: "All tasks completed!", check_later: "Check back later for more",
         no_tasks: "No tasks available", team_benefits: "Team Benefits", share_earn: "SHARE & EARN",
         copy: "Copy", share: "Share", total_members: "Total Members",
         power_earnings: "Power Earnings", withdraw: "Withdraw",
-        available: "Available", ton_wallet: "TON Wallet", amount: "Amount", min_withdraw: "Minimum withdrawal",
+        available: "Available", ton_wallet: "GRAM Wallet", amount: "Amount", min_withdraw: "Minimum withdrawal",
         confirm_withdrawal: "Confirm Withdrawal", withdrawal_history: "Withdrawal History", no_withdrawals: "No withdrawals yet",
         pending: "PENDING", completed: "PAID", claim_mining_title: "Claim Mining Rewards", claim_btn: "Claim Rewards",
         partner_info_title: "Social Tasks", mining: "Mining", earn: "Earn", team: "Team",
@@ -105,7 +109,7 @@ const translations = {
         completions_count: "completions",
         add_task_title: "Add Social Task",
         my_tasks_title: "My Tasks",
-        withdrawal_fees_note: "Withdrawal fees: {fees} TON",
+        withdrawal_fees_note: "Withdrawal fees: {fees} GRAM",
         all_fields_required: "Please fill all fields",
         add_bot_as_admin: "Add Bot As Admin",
         team_benefits_title: "Team Benefits",
@@ -113,19 +117,23 @@ const translations = {
         team_benefit_referral_percent: "Earn {percent}% from friends earnings",
         reward_added: "Reward Added! +{reward} Power",
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
-        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first"
+        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
+        daily_bonus: "Daily Bonus", claim_daily_bonus: "Claim", daily_bonus_claimed: "Already Claimed",
+        invite_earn: "Invite & Earn", verified_member: "Verified Member", team_earnings: "Team Earnings",
+        more_active_members: "More active members, more profits", copy_link: "Copy Link", get_referrals: "Get Referrals",
+        total_members: "Total Members", active_members: "Active Members", total_earnings: "Total Earnings"
     },
     tr: {
         level: "Seviye", mining_rig: "Madenci Seviye", hourly: "5 saat", daily: "Günlük", monthly: "Aylık",
         start_mining: "MADENCİLİĞE BAŞLA", claim_reward: "ÖDÜLÜ AL", mining_note: "Ödüller madencilik oturumu bittikten sonra toplanabilir",
-        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "TON", promo_code: "Promosyon Kodu",
-        enter_code: "Kodu girin", claim: "Al", main_tasks: "Ana Görevler", partner_tasks: "Sosyal Görevler",
+        next_level_reward: "Sonraki seviye ödülü", power: "Güç", ton: "GRAM", promo_code: "Promosyon Kodu",
+        enter_code: "Kodu girin", claim: "Al", partner_tasks: "Sosyal Görevler",
         watch_ad: "Ödüllü Reklam İzle", reward_amount: "Ödül", available_in: "Kalan süre", hours: "sa",
         watch: "İzle", all_tasks_completed: "Tüm görevler tamamlandı!", check_later: "Daha fazlası için daha sonra kontrol edin",
         no_tasks: "Görev yok", team_benefits: "Takım Avantajları", share_earn: "PAYLAŞ VE KAZAN",
         copy: "Kopyala", share: "Paylaş", total_members: "Toplam Üye",
         power_earnings: "Güç Kazancı", withdraw: "Çek",
-        available: "Mevcut", ton_wallet: "TON Cüzdanı", amount: "Miktar", min_withdraw: "Minimum çekim",
+        available: "Mevcut", ton_wallet: "GRAM Cüzdanı", amount: "Miktar", min_withdraw: "Minimum çekim",
         confirm_withdrawal: "Çekimi Onayla", withdrawal_history: "Çekim Geçmişi", no_withdrawals: "Henüz çekim yok",
         pending: "beklemede", completed: "tamamlandı", claim_mining_title: "Madencilik Ödüllerini Al", claim_btn: "Ödülleri Al",
         partner_info_title: "Sosyal Görevler", mining: "Madencilik", earn: "Kazan", team: "Takım",
@@ -162,7 +170,7 @@ const translations = {
         completions_count: "tamamlama",
         add_task_title: "Sosyal Görev Ekle",
         my_tasks_title: "Görevlerim",
-        withdrawal_fees_note: "Çekim ücreti: {fees} TON",
+        withdrawal_fees_note: "Çekim ücreti: {fees} GRAM",
         all_fields_required: "Lütfen tüm alanları doldurun",
         add_bot_as_admin: "Botu Yönetici Olarak Ekle",
         team_benefits_title: "Takım Avantajları",
@@ -170,19 +178,23 @@ const translations = {
         team_benefit_referral_percent: "Arkadaş kazançlarından %{percent} kazanın",
         reward_added: "Ödül Eklendi! +{reward} Power",
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
-        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first"
+        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
+        daily_bonus: "Daily Bonus", claim_daily_bonus: "Claim", daily_bonus_claimed: "Already Claimed",
+        invite_earn: "Invite & Earn", verified_member: "Verified Member", team_earnings: "Team Earnings",
+        more_active_members: "More active members, more profits", copy_link: "Copy Link", get_referrals: "Get Referrals",
+        total_members: "Total Members", active_members: "Active Members", total_earnings: "Total Earnings"
     },
     ar: {
         level: "مستوى", mining_rig: "جهاز التعدين مستوى", hourly: "كل 5 ساعات", daily: "يومي", monthly: "شهري",
         start_mining: "بدء التعدين", claim_reward: "استلام المكافأة", mining_note: "يمكن جمع المكافآت بعد انتهاء جلسة التعدين",
-        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "تون", promo_code: "رمز ترويجي",
-        enter_code: "أدخل الرمز", claim: "استلام", main_tasks: "المهام الرئيسية", partner_tasks: "المهام الاجتماعية",
+        next_level_reward: "مكافأة المستوى التالي", power: "الطاقة", ton: "غرام", promo_code: "رمز ترويجي",
+        enter_code: "أدخل الرمز", claim: "استلام", partner_tasks: "المهام الاجتماعية",
         watch_ad: "مشاهدة إعلان مكافأة", reward_amount: "المكافأة", available_in: "متاح بعد", hours: "ساعة",
         watch: "مشاهدة", all_tasks_completed: "جميع المهام مكتملة!", check_later: "تحقق لاحقاً للمزيد",
         no_tasks: "لا توجد مهام متاحة", team_benefits: "مزايا الفريق", share_earn: "شارك واربح",
         copy: "نسخ", share: "مشاركة", total_members: "إجمالي الأعضاء",
         power_earnings: "أرباح الطاقة", withdraw: "سحب",
-        available: "الرصيد المتوفر", ton_wallet: "محفظة تون", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
+        available: "الرصيد المتوفر", ton_wallet: "محفظة غرام", amount: "المبلغ", min_withdraw: "الحد الأدنى للسحب",
         confirm_withdrawal: "تأكيد السحب", withdrawal_history: "سجل السحوبات", no_withdrawals: "لا توجد سحوبات بعد",
         pending: "قيد الانتظار", completed: "مكتمل", claim_mining_title: "استلام مكافآت التعدين", claim_btn: "استلام المكافآت",
         partner_info_title: "المهام الاجتماعية", mining: "التعدين", earn: "الأرباح", team: "الفريق",
@@ -219,7 +231,7 @@ const translations = {
         completions_count: "إكمال",
         add_task_title: "إضافة مهمة اجتماعية",
         my_tasks_title: "مهامي",
-        withdrawal_fees_note: "رسوم السحب: {fees} TON",
+        withdrawal_fees_note: "رسوم السحب: {fees} غرام",
         all_fields_required: "الرجاء ملء جميع الحقول",
         add_bot_as_admin: "إضافة البوت كمدير",
         team_benefits_title: "مزايا الفريق",
@@ -227,7 +239,11 @@ const translations = {
         team_benefit_referral_percent: "اربح {percent}% من أرباح الأصدقاء",
         reward_added: "تمت إضافة المكافأة! +{reward} طاقة",
         welcome_bonus: "Welcome Bonus", up_to_level: "Up To Level {level}", start_mining_quest: "Start Mining {times} Times",
-        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first"
+        claim_quest: "Claim", claimed: "Claimed", quests_title: "ZENTRIX Quests", choose_completions: "Choose total completions first",
+        daily_bonus: "المكافأة اليومية", claim_daily_bonus: "استلام", daily_bonus_claimed: "تم الاستلام بالفعل",
+        invite_earn: "دعوة واربح", verified_member: "عضو مؤكد", team_earnings: "أرباح الفريق",
+        more_active_members: "كلما زاد الأعضاء النشطاء، زادت الأرباح", copy_link: "نسخ الرابط", get_referrals: "احصل على الإحالات",
+        total_members: "إجمالي الأعضاء", active_members: "الأعضاء النشطاء", total_earnings: "إجمالي الأرباح"
     }
 };
 
@@ -310,6 +326,9 @@ class App {
         };
         
         this.taskCompletionTimers = new Map();
+        
+        this.dailyBonusClaimed = false;
+        this.dailyBonusDate = null;
     }
     
     truncateName(name, maxLength = 15) {
@@ -386,7 +405,7 @@ class App {
         const powerHeader = document.getElementById('header-power');
         const tonHeader = document.getElementById('header-ton');
         if (powerHeader) powerHeader.innerHTML = `<i class="fas fa-bolt"></i> ${this.formatNumber(Math.floor(this.powerBalance))}`;
-        if (tonHeader) tonHeader.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(5)}`;
+        if (tonHeader) tonHeader.innerHTML = `<img src="${APP_CONFIG.GRAM_ICON}" style="width:14px;height:14px;border-radius:50%;object-fit:cover;"> ${this.tonBalance.toFixed(5)}`;
     }
     
     getRequiredPowerForLevel(level) {
@@ -447,7 +466,6 @@ class App {
     async checkAndUpdateLevelQuest() {
         const currentQuest = this.getCurrentLevelQuest();
         if (!currentQuest) return false;
-        
         if (this.userLevel >= currentQuest.target_level) {
             return true;
         }
@@ -457,7 +475,6 @@ class App {
     async checkAndUpdateMiningQuest() {
         const currentQuest = this.getCurrentMiningQuest();
         if (!currentQuest) return false;
-        
         if (this.totalMiningStarts >= currentQuest.target_starts) {
             return true;
         }
@@ -672,7 +689,7 @@ class App {
             const walletAddress = APP_CONFIG.TON_WALLET_ADDRESS;
             const tonkeeperUrl = `https://app.tonkeeper.com/transfer/${walletAddress}?amount=${amountNanoStr}&text=${taskId}`;
             
-            this.showNotification('Payment Required', `Please send ${amount} TON to complete your task`, 'info');
+            this.showNotification('Payment Required', `Please send ${amount} GRAM to complete your task`, 'info');
             
             window.open(tonkeeperUrl, '_blank');
             
@@ -779,16 +796,8 @@ class App {
     }
     
     async startMining() {
-        try {
-            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
-            await AdController.show();
-        } catch (e) {
-            return
-        }
-   
-        const serverTime = await this.syncServerTime();
-        
         this.miningActive = true;
+        const serverTime = await this.syncServerTime();
         this.miningStartTime = serverTime;
         this.miningEndTime = serverTime + (this.miningSessionHours * 3600000);
         this.pendingTonReward = 0;
@@ -813,7 +822,7 @@ class App {
         
         this.renderMining();
         this.startMiningLoop();
-        this.showNotification(this.t('start_mining'), 'Your rig is now mining TON', 'success');
+        this.showNotification(this.t('start_mining'), 'Your rig is now mining GRAM', 'success');
         
         await this.checkReferralReward();
         if (this._earnLoaded) this.renderEarn();
@@ -878,7 +887,7 @@ class App {
         
         this.updateLevelFromPower();
         this.renderMining();
-        this.showNotification('Rewards Claimed!', `${earnedAmount.toFixed(8)} TON added to balance`, 'success');
+        this.showNotification('Rewards Claimed!', `${earnedAmount.toFixed(8)} GRAM added to balance`, 'success');
     }
     
     startMiningLoop() {
@@ -924,78 +933,15 @@ class App {
     }
     
     async updateAdCooldownDisplay() {
-        const currentTime = this.getCurrentTime();
-        const cooldownMs = APP_CONFIG.AD_COOLDOWN_HOURS * 3600000;
-        const lastAdTime = this.lastRewardAdTime;
-        const remaining = Math.max(0, cooldownMs - (currentTime - lastAdTime));
-        
-        const adBtn = document.getElementById('mining-reward-ad');
-        
-        if (adBtn) {
-            if (remaining > 0) {
-                const hours = Math.floor(remaining / 3600000);
-                const minutes = Math.floor((remaining % 3600000) / 60000);
-                const seconds = Math.floor((remaining % 60000) / 1000);
-                adBtn.innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                adBtn.disabled = true;
-                adBtn.classList.add('disabled');
-            } else {
-                adBtn.innerHTML = this.t('watch');
-                adBtn.disabled = false;
-                adBtn.classList.remove('disabled');
-            }
-        }
+        // Removed ad cooldown for mining
     }
     
     startCooldownTimer() {
-        if (this.cooldownInterval) clearInterval(this.cooldownInterval);
-        this.cooldownInterval = setInterval(() => this.updateAdCooldownDisplay(), 1000);
+        // Removed
     }
     
     async watchRewardAd() {
-        await this.syncServerTime();
-        const currentTime = this.getCurrentTime();
-        const cooldownMs = APP_CONFIG.AD_COOLDOWN_HOURS * 3600000;
-        if (currentTime - this.lastRewardAdTime < cooldownMs) {
-            const remaining = Math.ceil((cooldownMs - (currentTime - this.lastRewardAdTime)) / 1000);
-            const hours = Math.floor(remaining / 3600);
-            const minutes = Math.floor((remaining % 3600) / 60);
-            const seconds = remaining % 60;
-            this.showNotification('Cooldown', `${this.t('available_in')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`, 'warning');
-            return;
-        }
-        
-        try {
-            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.REWARD_AD_BLOCK_ID });
-            await AdController.show();
-            
-            const adTime = this.getCurrentTime();
-            this.lastRewardAdTime = adTime;
-            localStorage.setItem('last_reward_ad_time', adTime.toString());
-            
-            const originalPower = this.powerBalance;
-            this.powerBalance += 100;
-            this._dirtyPower = true;
-            await this.updateLevelFromPower();
-            
-            const saved = await this.saveUserData(true);
-            if (!saved) {
-                this.powerBalance = originalPower;
-                this._dirtyPower = false;
-                this.showNotification('Error', this.t('save_error'), 'error');
-                return;
-            }
-            
-            this.renderMining();
-            if (this._earnLoaded) {
-                await this.loadTasks();
-                this.renderEarn();
-            }
-            this.updateAdCooldownDisplay();
-            this.showNotification('Reward Claimed!', '100 Power', 'success');
-        } catch (result) {
-            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
-        }
+        // Removed
     }
     
     resetTaskButton(btnElement, type, text) {
@@ -1365,7 +1311,7 @@ class App {
                 return false;
             }
             
-            this.showNotification('Code Applied!', `You received ${promoData.reward} TON`, 'success');
+            this.showNotification('Code Applied!', `You received ${promoData.reward} GRAM`, 'success');
         } else {
             this.showNotification('Error', 'Invalid reward type', 'error');
             return false;
@@ -1469,7 +1415,7 @@ class App {
         if (this._withdrawLoaded) {
             this.renderWithdraw();
         }
-        this.showNotification('Withdrawn!', `${amount.toFixed(5)} TON requested`, 'success');
+        this.showNotification('Withdrawn!', `${amount.toFixed(5)} GRAM requested`, 'success');
         return true;
     }
     
@@ -1701,11 +1647,17 @@ class App {
                 welcomeBonusClaimed: false,
                 currentLevelQuestIndex: 0,
                 currentMiningQuestIndex: 0
+            },
+            dailyBonus: {
+                claimed: false,
+                date: null
             }
         };
         
         await this.db.ref(`users/${this.tgUser.id}`).set(userData);
         this.quests = userData.quests;
+        this.dailyBonusClaimed = false;
+        this.dailyBonusDate = null;
         
         const totalUsersRef = this.db.ref('Status/totalUsers');
         const currentTotal = (await totalUsersRef.once('value')).val() || 0;
@@ -1811,6 +1763,13 @@ class App {
                 this.referralRewardGiven = d.referralRewardGiven ?? false;
                 this.userState = d.state ?? 'active';
                 if (d.quests) this.quests = d.quests;
+                if (d.dailyBonus) {
+                    this.dailyBonusClaimed = d.dailyBonus.claimed || false;
+                    this.dailyBonusDate = d.dailyBonus.date || null;
+                } else {
+                    this.dailyBonusClaimed = false;
+                    this.dailyBonusDate = null;
+                }
                 
                 const userDataForCache = {
                     powerBalance: this.powerBalance,
@@ -1831,6 +1790,10 @@ class App {
                 if (snap2.exists()) {
                     this.referredBy = snap2.val().referredBy ?? null;
                     if (snap2.val().quests) this.quests = snap2.val().quests;
+                    if (snap2.val().dailyBonus) {
+                        this.dailyBonusClaimed = snap2.val().dailyBonus.claimed || false;
+                        this.dailyBonusDate = snap2.val().dailyBonus.date || null;
+                    }
                 }
             }
         } catch (error) {
@@ -2149,7 +2112,7 @@ class App {
         el.innerHTML = `
             <div class="mining-card">
                 <div class="mining-icon-container">
-                    <img src="https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg" class="mining-icon ${this.miningActive ? 'pulse-logo' : ''}">
+                    <img src="${APP_CONFIG.MINING_ICON || 'https://i.ibb.co/bjyVgYqJ/256e636cf3a0.jpg'}" class="mining-icon ${this.miningActive ? 'pulse-logo' : ''}">
                     <svg class="progress-ring" width="150" height="150" viewBox="0 0 150 150">
                         <circle cx="75" cy="75" r="${radius}" fill="none" stroke="rgba(92,107,192,0.2)" stroke-width="6"/>
                         <circle class="progress-ring-circle" cx="75" cy="75" r="${radius}" fill="none" stroke="var(--primary)" stroke-width="6" stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}" stroke-linecap="round" transform="rotate(-90 75 75)"/>
@@ -2196,13 +2159,6 @@ class App {
                     ${this.totalMiningStarts >= currentMiningQuest.target_starts ? `<button id="claim-mining-quest" class="quest-claim-btn"><i class="fas fa-hammer"></i> ${this.t('claim_quest')}</button>` : `<button class="quest-claim-btn locked" disabled><i class="fas fa-lock"></i> Locked</button>`}
                 </div>` : ''}
             </div>
-            
-            <div class="earn-more-title"><i class="fas fa-chart-line"></i> ${this.t('earn_more')}</div>
-            <div class="earn-cards">
-                <div class="earn-card"><div class="earn-card-icon"><i class="fas fa-tv"></i></div><div class="earn-card-info"><h4>${this.t('watch_ad')}</h4><p>100 ${this.t('power')}</p></div><button id="mining-reward-ad" class="earn-card-btn">${this.t('watch')}</button></div>
-                <div class="earn-card"><div class="earn-card-icon"><i class="fas fa-tasks"></i></div><div class="earn-card-info"><h4>${this.t('complete_tasks')}</h4></div><button id="go-tasks-btn" class="earn-card-btn">${this.t('go')}</button></div>
-                <div class="earn-card"><div class="earn-card-icon"><i class="fas fa-users"></i></div><div class="earn-card-info"><h4>${this.t('invite_frens')}</h4></div><button id="go-team-btn" class="earn-card-btn">${this.t('go')}</button></div>
-            </div>
         `;
         
         const ringCircle = document.querySelector('.progress-ring-circle');
@@ -2212,19 +2168,14 @@ class App {
         
         document.getElementById('start-mining-btn')?.addEventListener('click', () => this.startMining());
         document.getElementById('claim-mining-btn')?.addEventListener('click', () => this.claimMiningRewards());
-        document.getElementById('mining-reward-ad')?.addEventListener('click', () => this.watchRewardAd());
-        document.getElementById('go-tasks-btn')?.addEventListener('click', () => {
-            document.querySelector('.nav-btn[data-page="earn-page"]').click();
-        });
-        document.getElementById('go-team-btn')?.addEventListener('click', () => {
-            document.querySelector('.nav-btn[data-page="team-page"]').click();
-        });
         document.getElementById('claim-welcome-quest')?.addEventListener('click', () => this.claimWelcomeBonus());
         document.getElementById('claim-level-quest')?.addEventListener('click', () => this.claimLevelQuest());
         document.getElementById('claim-mining-quest')?.addEventListener('click', () => this.claimMiningQuest());
         
         if (this.miningActive) this.updateMiningTimerDisplay();
-        this.updateAdCooldownDisplay();
+        
+        // Check daily bonus after rendering mining page
+        this.checkDailyBonus();
     }
     
     renderAddTaskModal() {
@@ -2275,7 +2226,7 @@ class App {
             const isCompleted = this.dailyTasksCompleted.has(task.id);
             const btnClass = isCompleted ? 'done' : 'start';
             const btnText = isCompleted ? 'Done' : this.t('start');
-            const icon = task.icon || (task.url.includes('t.me') ? 'fa-telegram' : 'fa-newspaper');
+            const icon = task.icon || 'fa-clock';
             
             return `
                 <div class="daily-task-card">
@@ -2291,21 +2242,6 @@ class App {
             `;
         }).join('');
         
-        const availableMainTasks = APP_CONFIG.MAIN_TASKS.filter(t => !this.userCompletedMainTasks.has(t.id));
-        
-        const availableMainTasksHtml = availableMainTasks.length > 0 ? availableMainTasks.map(t => `
-            <div class="task-item daily-task-card">
-                <div class="daily-task-header">
-                    <div class="daily-task-icon"><img src="${APP_CONFIG.TASK_IMAGE}" class="task-img" style="width:48px;height:48px;border-radius:50%;object-fit:cover"></div>
-                    <div class="daily-task-info">
-                        <h4>${t.name}</h4>
-                        <div class="task-reward"><i class="fas fa-bolt"></i> ${t.reward} ${this.t('power')}</div>
-                    </div>
-                    <button class="task-btn start" data-id="${t.id}" data-reward="${t.reward}" data-url="${t.url}" data-verify="${t.verify}">${this.t('start')}</button>
-                </div>
-            </div>
-        `).join('') : '<div class="no-data"><i class="fas fa-check-circle"></i><p>' + this.t('all_tasks_completed') + '</p><small>' + this.t('check_later') + '</small></div>';
-        
         el.innerHTML = `
             <div class="promo-card">
                 <div class="promo-header">
@@ -2319,7 +2255,7 @@ class App {
             </div>
             
             <div class="section-header">
-                <h3><i class="fas fa-calendar-day"></i> ${this.t('daily_tasks')}</h3>
+                <h3><i class="fas fa-clock"></i> ${this.t('daily_tasks')}</h3>
                 <p>${this.t('refresh_in')}: ${hoursRemaining.toString().padStart(2, '0')}:${minutesRemaining.toString().padStart(2, '0')}</p>
             </div>
             
@@ -2327,16 +2263,8 @@ class App {
                 ${dailyTasksHtml}
             </div>
             
-            <div class="section-header">
-                <h3><i class="fas fa-star"></i> ${this.t('main_tasks')}</h3>
-                <p>${this.t('available_tasks')}: ${availableMainTasks.length}</p>
-            </div>
-            <div class="tasks-list" id="main-tasks-list">
-                ${availableMainTasksHtml}
-            </div>
-            
             <div class="section-header" style="position: relative;">
-                <h3 style="flex:1; text-align:center;"><i class="fas fa-globe"></i> ${this.t('partner_tasks')}</h3>
+                <h3 style="flex:1; text-align:center;"><i class="fas fa-tasks"></i> ${this.t('available_tasks')} (${this.partnerTasks.length})</h3>
                 <button id="tasks-info-btn" class="info-icon-btn pulse-btn" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%);"><i class="fas fa-plus-circle"></i></button>
             </div>
             <div class="tasks-list" id="social-tasks-list-container">
@@ -2385,48 +2313,6 @@ class App {
                 this.isTaskRunning = true;
                 await this.completeDailyTask(taskId, { url: taskUrl, reward: taskReward, verify: taskVerify }, btn);
                 this.isTaskRunning = false;
-            });
-        });
-        
-        document.querySelectorAll('#main-tasks-list .task-btn.start').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                if (this.isTaskRunning) {
-                    this.showNotification('Busy', 'Complete current task first', 'warning');
-                    return;
-                }
-                const id = btn.dataset.id;
-                const reward = parseInt(btn.dataset.reward);
-                const url = btn.dataset.url;
-                const verify = btn.dataset.verify === 'true';
-                const isMainTask = true;
-                
-                window.open(url, '_blank');
-                this.isTaskRunning = true;
-                this.disableAllTaskButtons();
-                btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                btn.disabled = true;
-                
-                let seconds = APP_CONFIG.TASK_VERIFICATION_DELAY;
-                const interval = setInterval(() => {
-                    seconds--;
-                    if (seconds <= 0) {
-                        clearInterval(interval);
-                        btn.innerHTML = 'Claim';
-                        btn.disabled = false;
-                        btn.classList.remove('start');
-                        btn.classList.add('check');
-                        
-                        const newBtn = btn.cloneNode(true);
-                        btn.parentNode.replaceChild(newBtn, btn);
-                        
-                        newBtn.addEventListener('click', async (e) => {
-                            e.stopPropagation();
-                            newBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                            newBtn.disabled = true;
-                            await this.completeTask(id, reward, url, verify, newBtn, isMainTask);
-                        });
-                    }
-                }, 1000);
             });
         });
         
@@ -2502,34 +2388,56 @@ class App {
         const el = document.getElementById('team-page');
         if (!el) return;
         const link = APP_CONFIG.BOT_LINK + this.tgUser.id;
-        const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent('Join me on ZENTRIX and start mining TON!')}`;
+        
+        // Calculate active members
+        const activeMembers = this.referralPower > 0 ? Math.floor(this.referralPower / APP_CONFIG.REFERRAL_POWER_REWARD) : 0;
+        const totalEarnings = this.referralPower;
         
         el.innerHTML = `
-            <div class="team-benefits">
-                <h3><i class="fas fa-gift"></i> ${this.t('team_benefits_title')}</h3>
-                <div class="benefits-list">
-                    <div class="benefit-item"><i class="fas fa-bolt"></i><div class="benefit-text">${this.t('team_benefit_referral_power', { reward: APP_CONFIG.REFERRAL_POWER_REWARD })}</div></div>
-                    <div class="benefit-item"><i class="fas fa-chart-line"></i><div class="benefit-text">${this.t('team_benefit_referral_percent', { percent: APP_CONFIG.REFERRAL_PERCENTAGE })}</div></div>
+            <div class="team-card glass-card" style="padding:20px; border-radius:var(--border-radius); margin-bottom:20px;">
+                <h3 style="text-align:center; color:var(--primary-light); margin-bottom:20px;"><i class="fas fa-users"></i> ${this.t('invite_earn')}</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+                    <div class="team-stat-card">
+                        <div class="stat-number">+${APP_CONFIG.REFERRAL_POWER_REWARD}</div>
+                        <div class="stat-label">${this.t('verified_member')}</div>
+                    </div>
+                    <div class="team-stat-card">
+                        <div class="stat-number">${APP_CONFIG.REFERRAL_PERCENTAGE}%</div>
+                        <div class="stat-label">${this.t('team_earnings')}</div>
+                    </div>
+                </div>
+                <div style="text-align:center; color:#888; font-size:0.75rem; margin-bottom:16px;">
+                    ${this.t('more_active_members')}
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button id="copyLink" class="modern-support-btn" style="flex:1; margin:0;"><i class="fas fa-copy"></i> ${this.t('copy_link')}</button>
+                    <button id="shareLink" class="modern-support-btn telegram-btn" style="flex:1; margin:0;"><i class="fas fa-users"></i> ${this.t('get_referrals')}</button>
                 </div>
             </div>
-            <div class="referral-card">
-                <h4><i class="fas fa-share-alt"></i> ${this.t('share_earn')}</h4>
-                <div class="link-display">${link}</div>
-                <div class="referral-buttons">
-                    <button id="copyLink"><i class="fas fa-copy"></i> ${this.t('copy')}</button>
-                    <button id="shareLink"><i class="fab fa-telegram"></i> ${this.t('share')}</button>
+            
+            <div class="team-stats-grid">
+                <div class="team-stat-card">
+                    <div class="stat-number">${this.totalReferrals}</div>
+                    <div class="stat-label">${this.t('total_members')}</div>
                 </div>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-mini"><span class="stat-label">${this.t('total_members')}</span><span class="stat-number">${this.totalReferrals}</span></div>
-                <div class="stat-mini"><span class="stat-label">${this.t('power_earnings')}</span><span class="stat-number">${this.formatNumber(Math.floor(this.referralPower))}</span></div>
+                <div class="team-stat-card">
+                    <div class="stat-number">${activeMembers}</div>
+                    <div class="stat-label">${this.t('active_members')}</div>
+                </div>
+                <div class="team-stat-card" style="grid-column: span 2;">
+                    <div class="stat-number">${this.formatNumber(Math.floor(totalEarnings))}</div>
+                    <div class="stat-label">${this.t('total_earnings')}</div>
+                </div>
             </div>
         `;
+        
         document.getElementById('copyLink')?.addEventListener('click', () => {
             navigator.clipboard.writeText(link);
             this.showNotification(this.t('copy_success'), this.t('link_copied'), 'success');
         });
+        
         document.getElementById('shareLink')?.addEventListener('click', () => {
+            const shareUrl = APP_CONFIG.REFERRAL_LINK || 'https://t.me/NEJARS';
             window.open(shareUrl, '_blank');
         });
     }
@@ -2539,7 +2447,7 @@ class App {
         if (!el) return;
         const historyHtml = this.withdrawals && this.withdrawals.length ? this.withdrawals.map(w => `
             <div class="history-item">
-                <div class="history-amount"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:16px;height:16px"> ${w.amount.toFixed(5)} TON ${w.fees > 0 ? `(+${w.fees.toFixed(5)} fee)` : ''}</div>
+                <div class="history-amount"><img src="${APP_CONFIG.GRAM_ICON}" style="width:16px;height:16px;border-radius:50%;"> ${w.amount.toFixed(5)} GRAM ${w.fees > 0 ? `(+${w.fees.toFixed(5)} fee)` : ''}</div>
                 <div class="history-status ${w.status}">${w.status === 'pending' ? this.t('pending') : this.t('completed')}</div>
             </div>
         `).join('') : '<div class="no-data">' + this.t('no_withdrawals') + '</div>';
@@ -2548,7 +2456,7 @@ class App {
         
         el.innerHTML = `
             <div class="withdraw-card">
-                <div class="withdraw-balance"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:28px;height:28px"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} TON</div>
+                <div class="withdraw-balance"><img src="${APP_CONFIG.GRAM_ICON}" style="width:28px;height:28px;border-radius:50%;"> ${this.t('available')}: ${this.tonBalance.toFixed(6)} GRAM</div>
                 <div class="form-group">
                     <label class="form-label">${this.t('ton_wallet')}</label>
                     <div class="input-wrapper">
@@ -2558,11 +2466,11 @@ class App {
                 <div class="form-group">
                     <label class="form-label">${this.t('amount')}</label>
                     <div class="input-wrapper">
-                        <input type="number" id="withdraw-amount" class="form-input" placeholder="${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON" step="0.00001">
+                        <input type="number" id="withdraw-amount" class="form-input" placeholder="${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} GRAM" step="0.00001">
                         <button id="max-amount" class="action-btn">MAX</button>
                     </div>
                 </div>
-                <div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} TON</div>
+                <div class="withdraw-note"><i class="fas fa-info-circle"></i> ${this.t('min_withdraw')}: ${APP_CONFIG.MINIMUM_WITHDRAW} GRAM</div>
                 ${feesNote}
                 <button id="withdraw-btn" class="withdraw-confirm-btn disabled">${this.t('confirm_withdrawal')}</button>
             </div>
@@ -2616,8 +2524,6 @@ class App {
         
         const promoTitle = document.querySelector('#promo-info-modal .modal-header h3');
         if (promoTitle) promoTitle.innerHTML = `<i class="fas fa-ticket-alt"></i> ${this.t('promo_info_title')}`;
-        const promoText = document.getElementById('promo-info-text');
-        if (promoText) promoText.innerHTML = `<i class="fas fa-telegram"></i> ${this.t('promo_info_text')}`;
         const getPromoBtn = document.getElementById('get-promo-codes-btn');
         if (getPromoBtn) getPromoBtn.innerHTML = `<i class="fab fa-telegram"></i> ${this.t('get_promo_codes')}`;
         const stepsTitle = document.getElementById('promo-steps-title');
@@ -2671,9 +2577,9 @@ class App {
             const max = document.querySelector('#add-task-modal .completions-group .toggle-option.active')?.dataset.value || null;
             if (max) {
                 const price = (APP_CONFIG.TON_PRICE_PER_100 * (max / 100));
-                payBtn.innerHTML = `PAY ${price} TON`;
+                payBtn.innerHTML = `PAY ${price} GRAM`;
             } else {
-                payBtn.innerHTML = `PAY 0 TON`;
+                payBtn.innerHTML = `PAY 0 GRAM`;
             }
         }
         
@@ -2703,7 +2609,7 @@ class App {
             payBtn.disabled = false;
             payBtn.style.opacity = '1';
             payBtn.style.pointerEvents = 'auto';
-            payBtn.innerHTML = 'PAY 0 TON';
+            payBtn.innerHTML = 'PAY 0 GRAM';
         }
         
         if (checkBtn) {
@@ -2812,7 +2718,7 @@ class App {
         const checkBtn = document.getElementById('check-payment-btn');
         
         if (payBtn) {
-            payBtn.innerHTML = `PAY ${price} TON`;
+            payBtn.innerHTML = `PAY ${price} GRAM`;
             payBtn.disabled = false;
             payBtn.style.opacity = '1';
             payBtn.style.pointerEvents = 'auto';
@@ -2834,6 +2740,9 @@ class App {
         });
         document.getElementById('close-add-task-modal')?.addEventListener('click', () => {
             document.getElementById('add-task-modal').style.display = 'none';
+        });
+        document.getElementById('close-daily-bonus')?.addEventListener('click', () => {
+            document.getElementById('daily-bonus-modal').style.display = 'none';
         });
         
         document.addEventListener('visibilitychange', () => {
@@ -2865,7 +2774,6 @@ class App {
                 langMenu.style.display = 'none';
                 this.renderUI();
                 this.updateModalTranslations();
-                this.updateAdCooldownDisplay();
                 this.updateHeaderBalances();
                 this.showNotification('Language', `Changed to ${opt.innerText}`, 'success');
             });
@@ -2893,8 +2801,6 @@ class App {
         }
         const savedLang = localStorage.getItem('star_farmer_lang');
         if (savedLang) this.lang = savedLang;
-        const savedAdTime = localStorage.getItem('last_reward_ad_time');
-        if (savedAdTime) this.lastRewardAdTime = parseInt(savedAdTime);
     }
     
     getDeviceLanguage() {
@@ -2962,6 +2868,92 @@ class App {
         this.updateHeaderBalances();
     }
     
+    async checkDailyBonus() {
+        const today = this.getTodayUTC();
+        
+        // Check if already claimed today
+        if (this.dailyBonusClaimed && this.dailyBonusDate === today) {
+            return;
+        }
+        
+        // Reset if new day
+        if (this.dailyBonusDate !== today) {
+            this.dailyBonusClaimed = false;
+            this.dailyBonusDate = null;
+            await this.db.ref(`users/${this.tgUser.id}/dailyBonus`).set({ claimed: false, date: null });
+        }
+        
+        // Show daily bonus modal
+        this.showDailyBonusModal();
+    }
+    
+    showDailyBonusModal() {
+        const modal = document.getElementById('daily-bonus-modal');
+        if (!modal) return;
+        
+        const amountEl = document.getElementById('daily-bonus-amount');
+        if (amountEl) {
+            amountEl.innerText = `+${APP_CONFIG.DAILY_BONUS_AMOUNT} ${this.t('power')}`;
+        }
+        
+        modal.style.display = 'flex';
+        
+        const claimBtn = document.getElementById('claim-daily-bonus-btn');
+        if (claimBtn) {
+            claimBtn.removeEventListener('click', this.handleDailyBonusClaim);
+            claimBtn.addEventListener('click', this.handleDailyBonusClaim.bind(this));
+        }
+    }
+    
+    async handleDailyBonusClaim() {
+        const claimBtn = document.getElementById('claim-daily-bonus-btn');
+        if (!claimBtn) return;
+        
+        claimBtn.disabled = true;
+        claimBtn.innerText = this.t('loading');
+        
+        try {
+            const AdController = window.Adsgram.init({ blockId: APP_CONFIG.INTERSTITIAL_AD_BLOCK_ID });
+            await AdController.show();
+        } catch (e) {
+            this.showNotification('No Ads', 'No ads available at the moment', 'warning');
+            claimBtn.disabled = false;
+            claimBtn.innerText = this.t('claim_daily_bonus');
+            return;
+        }
+        
+        const reward = APP_CONFIG.DAILY_BONUS_AMOUNT;
+        const originalPower = this.powerBalance;
+        this.powerBalance += reward;
+        this._dirtyPower = true;
+        
+        const saved = await this.saveUserData(true);
+        
+        if (!saved) {
+            this.powerBalance = originalPower;
+            this._dirtyPower = false;
+            this.showNotification('Error', this.t('save_error'), 'error');
+            claimBtn.disabled = false;
+            claimBtn.innerText = this.t('claim_daily_bonus');
+            return;
+        }
+        
+        const today = this.getTodayUTC();
+        this.dailyBonusClaimed = true;
+        this.dailyBonusDate = today;
+        
+        await this.db.ref(`users/${this.tgUser.id}/dailyBonus`).set({ claimed: true, date: today });
+        await this.updateLevelFromPower();
+        
+        document.getElementById('daily-bonus-modal').style.display = 'none';
+        this.showNotification('Bonus Claimed!', `+${reward} ${this.t('power')}`, 'success');
+        this.renderMining();
+        if (this._earnLoaded) this.renderEarn();
+        
+        claimBtn.disabled = false;
+        claimBtn.innerText = this.t('claim_daily_bonus');
+    }
+    
     async initialize() {
         const progressBar = document.getElementById('loader-progress-bar');
         const loaderPercent = document.getElementById('loader-percent');
@@ -3006,9 +2998,6 @@ class App {
             await this.loadQuestsData();
             updateProgress(85);
             
-            const savedAdTime = localStorage.getItem('last_reward_ad_time');
-            if (savedAdTime) this.lastRewardAdTime = parseInt(savedAdTime);
-            
             if (this.miningActive && this.miningEndTime) {
                 const currentTime = this.getCurrentTime();
                 if (currentTime >= this.miningEndTime) {
@@ -3028,7 +3017,7 @@ class App {
             const headerHtml = `
                 <div class="header-balances" id="header-balances">
                     <div class="header-balance" id="header-power"><i class="fas fa-bolt"></i> ${this.formatNumber(Math.floor(this.powerBalance))}</div>
-                    <div class="header-balance" id="header-ton"><img src="https://cdn-icons-png.flaticon.com/512/12114/12114247.png" style="width:14px;height:14px;"> ${this.tonBalance.toFixed(4)}</div>
+                    <div class="header-balance" id="header-ton"><img src="${APP_CONFIG.GRAM_ICON}" style="width:14px;height:14px;border-radius:50%;object-fit:cover;"> ${this.tonBalance.toFixed(4)}</div>
                 </div>
             `;
             const headerActions = document.querySelector('.header-actions');
@@ -3039,7 +3028,6 @@ class App {
             this.setupEventListeners();
             this.renderUI();
             this.setupNavigation();
-            this.startCooldownTimer();
             
             setInterval(() => {
                 const resetTime = this.getDailyResetTimeUTC();
@@ -3068,13 +3056,14 @@ class App {
                         loader.style.display = 'none';
                         const app = document.getElementById('app');
                         if (app) app.style.display = 'block';
-                        this.updateAdCooldownDisplay();
                         this.updateMiningRing();
+                        // Check daily bonus after app loads
+                        this.checkDailyBonus();
                     }, 500);
                 } else {
                     const app = document.getElementById('app');
                     if (app) app.style.display = 'block';
-                    this.updateAdCooldownDisplay();
+                    this.checkDailyBonus();
                 }
             }, 500);
             
