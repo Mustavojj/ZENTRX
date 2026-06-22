@@ -2322,7 +2322,7 @@ class App {
         
         const header = document.querySelector('#earn-page .section-header:last-child h3');
         if (header) {
-            header.innerHTML = `<i class="fas fa-tasks"></i> ${this.t('available_tasks')} (${activeTasksCount})`;
+            header.innerHTML = `<i class="fas fa-tasks"></i> ${this.t('available_tasks')}`;
         }
         
         const p = document.querySelector('#earn-page .section-header:last-child p');
