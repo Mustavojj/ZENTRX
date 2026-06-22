@@ -2463,6 +2463,8 @@ class App {
         
         el.innerHTML = `
             <div class="withdraw-card">
+            <div style="font-size:1.1rem; font-weight:700; color:var(--primary-light); text-align:center; margin-bottom:16px;">${this.t('withdraw')} GRAM<div>
+            
                  <div class="form-group">
                     <label class="form-label">${this.t('ton_wallet')}</label>
                     <div class="input-wrapper">
